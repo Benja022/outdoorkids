@@ -1,12 +1,12 @@
 
 
-import ButtonEntry from "@/components/ButtonEntry";
+import Registro from "@/components/ButtonEntry";
 
 export default function Home() {
   return (
     <main>
       <>
-        <ButtonEntry text="¡Únete!" />
+      <Registro></Registro>
       </>
     </main>
   );

@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 150vh;
+    background-image: url('images/fondo.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+    /*z-index: 1;*/
+}
+    
+header {
+    background-color: #C9FFBB;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+
+/* Estilos para el logo */
+.logo {
+    width: 120px;
+    height: auto;
+    border-radius: 50px;
+}
+.text {
+    font-size: 40px;
+    font-weight: bold;
+    color: #17C61D;
+    text-align: left;
+    
+    
+}
+
+/* Estilos para los botones */
+
+.btn {
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 40px;
+    border: 2px solid #82e79f;
+    width: 200px;
+    height: 50px;
+
+}
+.btnInicio {
+    background-color: #F8FF33;
+    
+}
+.btnRegistrate {
+    background-color: #FF0000;
+
+}
+.btnIniciarSec {
+    background-color: #0048FF;
+    
+}
+.btnPreguntas {
+    background-color: #FF8C00;
+    
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: rgb(19, 212, 237);
+}
+
+/*.transparent-rectangle {
+    position: relative; 
+    top: 50%;
+    left: 50%;
+    padding: 20px; 
+    width: 1400px; 
+    height: 900px; 
+    background-color: rgba(109, 211, 242, 0.5);
+    transform: translate(-50%, -50%); 
+    
+    z-index: 2; */
+
+.form-container {
+    
+    margin: 20px auto;
+    padding: 60px;
+    border-radius: 90px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    width: 70%;
+    text-align: center;
+    font-size: 20px;
+        
+}
+.text-inicio {
+    font-size: 30px;
+    color: rgb(232, 239, 240);
+}
+.card {
+    width: 600px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #7FDD44;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 10px 20px;
+        
+}
+.simbolos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}   
+
+        .tiktok-icon {
+            font-size: 30px;
+            color: #070a07;
+            }
+            .tiktok-icon :hover {
+                color: #0048FF;
+
+            }
+
+        .whatsapp-icon {
+            
+            font-size: 40px;
+            color: hsl(143, 71%, 93%);
+            }
+
+                .whatsapp-icon:hover {
+                    color: #005582; 
+                }
+        .github-icon {
+            font-size: 35px;
+            color: #000;
+            }
+                
+                .github-icon i:hover {
+                    color: #4078c0;
+                }
+        .instagram-icon {
+            font-size: 40px;
+            color: #E1306C;
+            }
+            .instagram-icon:hover {
+                color: #005582; 
+            }
+        
+        .linkedin-icon {
+            font-size: 40px; 
+            color: #0077b5; 
+            }
+            
+            .linkedin-icon:hover {
+                color: #005582; /* Color del icono al pasar el cursor */
+            }
+           
+    
