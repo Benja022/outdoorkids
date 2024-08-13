@@ -1,11 +1,13 @@
 
-import Registro from '@/components/Registro'
+// import Registro from '@/components/Registro'
+import Inicio from '@/components/Inicio'
 
 export default function Home () {
   return (
 
     <>
-      <Registro />
+      {/* <Registro /> */}
+      <Inicio />
     </>
 
   )
