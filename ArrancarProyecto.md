@@ -49,6 +49,27 @@ Como vamos a usar archivos module, en el className de los componentes, se añadi
 className={styles['button--entry']}
 ~~~
 
+Para dar mas de una clase vamos a utilizar classNames.
+
+Se debe instarlar la libreria classNames:
+
+~~~
+npm install classnames
+~~~
+
+Y se importa de la siguiente manera:
+
+~~~
+import classNames from "classnames";
+~~~
+
+Se utiliza de la siguiente manera:
+
+~~~
+<button className={classNames(style.btn, style.btnInicio)}>
+~~~
+
+
 styles es el nombre del archivo CSS, se lo damos al generar la importacion de los estilos.
 
 Ejemlo:

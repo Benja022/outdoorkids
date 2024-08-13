@@ -1,13 +1,12 @@
 
+import Registro from '@/components/Registro'
 
-import Registro from "@/components/ButtonEntry";
-
-export default function Home() {
+export default function Home () {
   return (
-    <main>
-      <>
-      <Registro></Registro>
-      </>
-    </main>
-  );
+
+    <>
+      <Registro />
+    </>
+
+  )
 }

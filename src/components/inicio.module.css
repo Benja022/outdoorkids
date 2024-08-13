@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
     height: 150vh;
@@ -6,8 +6,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /*z-index: 1;*/
-}
+    /*z-index: 1;
+}*/
 .btn-cerar {
     font-size: 25px;
     font-weight: bold;
