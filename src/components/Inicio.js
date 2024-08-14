@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 /* eslint-disable space-infix-ops */
 /* eslint-disable no-undef */
 /* eslint-disable quotes */
@@ -5,8 +6,25 @@
 import style from "./Inicio.module.css";
 import className from "classnames";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Inicio() {
+  const navegacionRef = useRef(null);
+
+  const mostarMenu = () => {
+    const nav = document.querySelector(`.${style.navegacion}`);
+    nav.classList.toggle(style.ocultar);
+  };
+
+  useEffect(() => {
+    const currentRef = navegacionRef.current;
+    currentRef.addEventListener("click", mostarMenu);
+
+    return () => {
+      currentRef.removeEventListener("click", mostarMenu);
+    };
+  }, []);
+
   return (
     <>
       <header className={style.header}>
@@ -22,15 +40,15 @@ export default function Inicio() {
         </div>
 
         <h6 className={style.text}>OutdoorKids</h6>
-
-        <nav className={className(style.navegacion, style.ocultar)}>
-          <a href="#">Inicio</a>
-          <a href="#">Registrate</a>
-          <a href="#">Iniciar secion</a>
-          <a href="#">Preguntas frequentas</a>
-        </nav>
-
-        <div className={style.hamburguesa}>
+        <div className={style.inicio}>
+          <nav className={className(style.navegacion, style.ocultar)}>
+            <a href="#">Inicio</a>
+            <a href="#">Registrate</a>
+            <a href="#">Iniciar sesión</a>
+            <a href="#">Preguntas frecuentes</a>
+          </nav>
+        </div>
+        <div ref={navegacionRef} className={style.hamburguesa}>
           <span></span>
           <span></span>
           <span></span>
