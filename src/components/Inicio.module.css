@@ -1,3 +1,4 @@
+/* Menú hamburgesa */
 .btnCerrar {
   font-size: 25px;
   font-weight: bold;
@@ -12,46 +13,10 @@
   cursor: pointer;
 }
 
-.btnRojo {
-  text-decoration: none;
-  background-color: #ff0000;
-  color: white;
-  border: solid;
-  padding: 10px 20px;
-  font-size: 25px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Suaviza el cambio de color al pasar el ratón */
-  display: inline-block;
-  margin-top: 30px;
-}
-
-.btnRojo:hover {
-  background-color: rgb(212, 206, 32);
-}
-
 .ocultar {
   display: none;
 }
 
-.header {
-  background-color: #c9ffbb;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-/* Estilos para el logo */
-.logo {
-  width: 120px;
-  height: auto;
-  border-radius: 50%;
-}
-.text {
-  font-size: 60px;
-  color: #17c61d;
-  text-align: left;
-}
 .navegacion a:first-of-type {
   margin-top: 70px;
 }
@@ -88,6 +53,28 @@
   cursor: pointer;
 }
 
+
+/* Estilos para el header */
+.header {
+  background-color: #c9ffbb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 120px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.text {
+  font-size: 60px;
+  color: #17c61d;
+  text-align: left;
+}
+
 /*video*/
 
 /* .video {
@@ -95,33 +82,61 @@
   height: 70%;
 } */
 
-/*bienvenido*/
+/* Texto explicativo*/
 .contenedorNosotros {
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
-  flex: 1 50%;
+  flex-grow: 2;
 }
 
-.textoNosotros .bienvenido {
-  font-size: 30px;
+.textoNosotros {
+  /* color: white; */
+  padding: 0 30px;
+}
+
+.bienvenido {
+  font-size: 40px;
   color: white;
 }
+
 .textoNosotros h1 {
   font-size: 40px;
   color: orange;
   font-weight: bold;
 }
-.textoNosotros p {
+
+.textoNosotrosParrafos {
   font-size: 20px;
+  text-align: justify;
 }
 
 .img {
   border-radius: 20px;
   min-width: 300px;
 }
+
 .imagenesNosotros {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+
+/* Botón ¡Únete */
+.btnRojo {
+  text-decoration: none;
+  background-color: #ff0000;
+  color: white;
+  border: solid;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Suaviza el cambio de color al pasar el ratón */
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.btnRojo:hover {
+  background-color: rgb(212, 206, 32);
 }

@@ -1,4 +1,5 @@
-#### SOLO LA PRIMERA VEZ:
+#### SOLO LA PRIMERA VEZ
+
 Esto instala la libreria npm
 
 ~~~
@@ -11,35 +12,49 @@ Instalamos el paquete del proyecto
 pnpm i
 ~~~
 
-#### TODAS LAS VECES:
-Para poner en marcha el proyecto 
+#### TODAS LAS VECES
+
+Para poner en marcha el proyecto
+
 ~~~
 pnmp dev
 ~~~
 
-#### PARA LAS CLASE DE CSS:
+#### PARA LAS CLASE DE CSS
 
-Vamos a utilizar la natación de BEM. Se basa en seguir la estructura de bloques, elementos y modificadores. Ejemplo: para un botón de color rojo, el bloque sería el botón, el elemento sería el color y el modificador sería el rojo.
+Vamos a utilizar camelCase para los nombres de las clases. Ejemplo:
+
+~~~
+.buttonEntry {
+ display: inline-block;
+border-radius: 3px;
+}
+~~~
+
+**NEXT.JS NO ACEPA LA NOTACIÓN BEM**
+Vamos a utilizar la notación de BEM. Se basa en seguir la estructura de bloques, elementos y modificadores. Ejemplo: para un botón de color rojo, el bloque sería el botón, el elemento sería el color y el modificador sería el rojo.
 
 ~~~
 block block-modifier-value
 "button button--state-success"
 "button button--state-danger"
 ~~~
+
 En el CSS qudará así:
 
 ~~~
 .button {
-	display: inline-block;
-	border-radius: 3px;
+ display: inline-block;
+ border-radius: 3px;
 l;
 }
 .button--state-success {
-	color: #FFF;
-	background: #569E3D linear-gradient(#79D858, 
+ color: #FFF;
+ background: #569E3D 
+    linear-gradient: #79D858, 
 }
 .button--state-danger {
-	color: #900;
+ color: #900;
 }
 ~~~
 
@@ -69,7 +84,6 @@ Se utiliza de la siguiente manera:
 <button className={classNames(style.btn, style.btnInicio)}>
 ~~~
 
-
 styles es el nombre del archivo CSS, se lo damos al generar la importacion de los estilos.
 
 Ejemlo:
@@ -83,8 +97,21 @@ Ejemplo:
 ButtonEntry.js
 ButtonEntry.module.css
 
-Todos los componentes y sus hojas de estilo deben estar en la carpeta components. 
+Todos los componentes y sus hojas de estilo deben estar en la carpeta components.
 
-#### GIT 
+**IMPORTATE**
+Para facilitar la lectura del CSS, se deben poner las clases en el mismo orden, o lo más parecido posible, que en el HTML.
+
+#### GIT
 
 Para trabajar en la parte que hayamos elegido, debemos crear una rama con el nombre de la tarea que vamos a realizar. Luego, cuando hayamos terminado, hacemos un pull request a la rama principal. O solo subimos la rama y cuando lo comprobemos con un compañero lo mergeamos.
+
+#### MEDIA QUERIES
+
+Vamos a utilizar tres tamaños de pantalla: móvil, tablet y escritorio. Para ello, vamos a utilizar los siguientes tamaños:
+
+- Móvil: <= 576px
+- Tablet: 577px - 992px
+- Escritorio: >= 993px
+
+Si al ir montando la aplicación vemos que necesitamos más tamaños, los añadiremos.

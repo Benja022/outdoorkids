@@ -37,11 +37,11 @@ export default function Inicio() {
         </div>
       </header>
       <video className={style.video} src="images/Video.mp4" />
-      <div className={className(style.contenedorNosotros, style.contenedor)}>
+      <div className={className(style.contenedorNosotros)}>
         <div className={style.textoNosotros}>
           <p className={style.bienvenido}>Bienvenido a </p>
           <h1>OutdoorKids</h1>
-          <p>
+          <p className={style.textoNosotrosParrafos}>
             Nuestra misión es inspirar a los niños a disfrutar de la naturaleza
             mientras aprenden la importancia de protegerla. Con nuestro mapa
             interactivo, los pequeños exploradores pueden descubrir parques y
@@ -52,16 +52,12 @@ export default function Inicio() {
             sus experiencias y recomendaciones, creando una comunidad de jóvenes
             defensores del planeta.
           </p>
-
-          <p>
+          <p className={style.textoNosotrosParrafos}>
             Regístrate en OutdoorKids y empieza a explorar un mundo lleno de
             maravillas naturales. Descubre lugares increíbles, participa en
             actividades divertidas. ¡Únete a nosotros y convierte cada día en
             una aventura!
           </p>
-          <a href="#" className={className(style.btn, style.btnRojo)}>
-            ¡Únete!
-          </a>
         </div>
         <div className={style.imagenesNosotros}>
           <div className={style.imagen1}>
@@ -94,6 +90,9 @@ export default function Inicio() {
           </div>
         </div>
       </div>
+      <a href="#" className={className(style.btn, style.btnRojo)}>
+        ¡Únete!
+      </a>
     </>
   );
 }
