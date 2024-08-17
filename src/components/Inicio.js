@@ -6,24 +6,16 @@
 import style from "./Inicio.module.css";
 import className from "classnames";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 export default function Inicio() {
-  const navegacionRef = useRef(null);
+  const [menu, setMenu] = useState(false);
 
-  const mostarMenu = () => {
-    const nav = document.querySelector(`.${style.navegacion}`);
-    nav.classList.toggle(style.ocultar);
-  };
-
-  useEffect(() => {
-    const currentRef = navegacionRef.current;
-    currentRef.addEventListener("click", mostarMenu);
-
-    return () => {
-      currentRef.removeEventListener("click", mostarMenu);
-    };
-  }, []);
+  const abrirMenu = () => {
+    console.log("abrir menu");
+    console.log(menu);
+    setMenu(true);
+  }
 
   return (
     <>
@@ -41,20 +33,22 @@ export default function Inicio() {
 
         <h6 className={style.text}>OutdoorKids</h6>
         <div className={style.inicio}>
-          <nav className={className(style.navegacion, style.ocultar)}>
+          <nav className={menu ? style.navegacion : style.ocultar}>
+            <button className={style.btnCerrar} onClick={() => setMenu(false)}>x</button>
             <a href="#">Inicio</a>
             <a href="#">Registrate</a>
             <a href="#">Iniciar sesión</a>
             <a href="#">Preguntas frecuentes</a>
           </nav>
         </div>
-        <div ref={navegacionRef} className={style.hamburguesa}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className={style.hamburguesa} onClick={abrirMenu}>
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
       </header>
-      <video className={style.video} src="images/Video.mp4" />
+      <video className={style.video} src="" />
       <div className={className(style.contenedorNosotros)}>
         <div className={style.textoNosotros}>
           <p className={style.bienvenido}>Bienvenido a </p>
@@ -153,7 +147,6 @@ const cerarMenu = (boton, overlay) =>{
         overlay.remove();
         boton.remove();
     });
-    
     overlay.onclick = function() {
         overlay.remove();
         navegacion.classList.add('ocultar');

@@ -7,6 +7,7 @@
   top: 20px;
   right: 50px;
   user-select: none;
+  background-color: #17c61d;
 }
 
 .btnCerrar:hover {
@@ -14,7 +15,19 @@
 }
 
 .ocultar {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+}
+
+.navegacion {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  padding: 60px 50px;
+  background-color: #c9ffbb;
+  z-index: 1000;
 }
 
 .navegacion a:first-of-type {
@@ -33,15 +46,7 @@
 .navegacion a:hover {
   color: brown;
 }
-.navegacion {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  padding: 60px 50px;
-  background-color: #c9ffbb;
-}
+
 .hamburguesa span {
   background-color: white;
   display: block;
@@ -49,6 +54,7 @@
   height: 4px;
   margin-bottom: 5px;
 }
+
 .hamburguesa:hover {
   cursor: pointer;
 }

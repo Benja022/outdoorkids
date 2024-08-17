@@ -17,7 +17,7 @@ pnpm i
 Para poner en marcha el proyecto
 
 ~~~
-pnmp dev
+pnpm dev
 ~~~
 
 #### PARA LAS CLASE DE CSS
@@ -26,12 +26,12 @@ Vamos a utilizar camelCase para los nombres de las clases. Ejemplo:
 
 ~~~
 .buttonEntry {
- display: inline-block;
+display: inline-block;
 border-radius: 3px;
 }
 ~~~
 
-**NEXT.JS NO ACEPA LA NOTACIÓN BEM**
+**PARA USAR LA NOTACIÓN BEM HAY QUE USAR LITERALES**
 Vamos a utilizar la notación de BEM. Se basa en seguir la estructura de bloques, elementos y modificadores. Ejemplo: para un botón de color rojo, el bloque sería el botón, el elemento sería el color y el modificador sería el rojo.
 
 ~~~
@@ -64,7 +64,7 @@ Como vamos a usar archivos module, en el className de los componentes, se añadi
 className={styles['button--entry']}
 ~~~
 
-Para dar mas de una clase vamos a utilizar classNames.
+**Para dar mas de una clase vamos a utilizar classNames.**
 
 Se debe instarlar la libreria classNames:
 

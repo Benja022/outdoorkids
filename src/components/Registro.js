@@ -1,11 +1,11 @@
 /* eslint-disable quotes */
 /* eslint-disable jsx-quotes */
-import React from "react";
-import style from "./Registro.module.css";
-import Image from "next/image";
-import classNames from "classnames";
+import React from "react"
+import style from "./Registro.module.css"
+import Image from "next/image"
+import classNames from "classnames"
 
-export default function Registro() {
+export default function Registro () {
   return (
     <div className={style.body}>
       <header className={style.header}>
@@ -81,7 +81,7 @@ export default function Registro() {
         />
       </div>
     </div>
-  );
+  )
 }
 
 /*
