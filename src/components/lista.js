@@ -75,7 +75,7 @@ function searchPark() {
                     title: place.name
                 });
 
-                // Crear el botón con el nombre del parque
+                
                 createParkButton(place.name, place.geometry.location);
             } else {
                 alert('No se encontraron resultados para la búsqueda.');
@@ -87,12 +87,12 @@ function searchPark() {
 }
 
 function createParkButton(name, location) {
-    // Crear un nuevo botón
+    
     const button = document.createElement('button');
     button.textContent = name;
     button.className = 'park-item';
 
-    // Agregar el evento click al botón para abrir Google Maps con la ubicación
+ 
     button.onclick = function() {
         const lat = location.lat();
         const lng = location.lng();
@@ -100,12 +100,12 @@ function createParkButton(name, location) {
         window.open(url, '_blank');
     };
 
-    // Agregar el botón al contenedor de la lista de parques
+
     const parkList = document.querySelector('.park-list');
     parkList.appendChild(button);
 }
 
-// Añadir eventos de clic a los botones de la lista
+
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.park-item');
 
