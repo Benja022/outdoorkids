@@ -1,0 +1,60 @@
+/* Menú hamburgesa */
+.btnCerrar {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(6, 6, 79);
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    user-select: none;
+    background-color: #17c61d;
+  }
+  
+  .btnCerrar:hover {
+    cursor: pointer;
+  }
+  
+  .ocultar {
+    visibility: hidden;
+  }
+  
+  .navegacion {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    padding: 60px 50px;
+    background-color: #c9ffbb;
+    z-index: 1000;
+  }
+  
+  .navegacion a:first-of-type {
+    margin-top: 70px;
+  }
+  
+  .navegacion a {
+    text-decoration: none;
+    font-size: 30px;
+    padding: 20px;
+    padding-left: 10px;
+    display: block;
+    text-align: left;
+  }
+  
+  .navegacion a:hover {
+    color: brown;
+  }
+  
+  .hamburguesa span {
+    background-color: white;
+    display: block;
+    width: 50px;
+    height: 4px;
+    margin-bottom: 5px;
+  }
+  
+  .hamburguesa:hover {
+    cursor: pointer;
+  }
+  

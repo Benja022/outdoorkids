@@ -1,0 +1,20 @@
+/* Estilos para el header */
+.header {
+  background-color: #c9ffbb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 120px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.text {
+  font-size: 60px;
+  color: #17c61d;
+  text-align: left;
+}

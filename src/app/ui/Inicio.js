@@ -6,48 +6,10 @@
 import style from "./Inicio.module.css";
 import className from "classnames";
 import Image from "next/image";
-import React, { useState } from "react";
 
 export default function Inicio() {
-  const [menu, setMenu] = useState(false);
-
-  const abrirMenu = () => {
-    console.log("abrir menu");
-    console.log(menu);
-    setMenu(true);
-  }
-
   return (
     <>
-      <header className={style.header}>
-        <div className={style.logo}>
-          <Image
-            className={style.logo}
-            src="/images/Logo.jpg"
-            alt="logo"
-            width={120}
-            height={120}
-            layout="resposive"
-          />
-        </div>
-
-        <h6 className={style.text}>OutdoorKids</h6>
-        <div className={style.inicio}>
-          <nav className={menu ? style.navegacion : style.ocultar}>
-            <button className={style.btnCerrar} onClick={() => setMenu(false)}>x</button>
-            <a href="#">Inicio</a>
-            <a href="#">Registrate</a>
-            <a href="#">Iniciar sesión</a>
-            <a href="#">Preguntas frecuentes</a>
-          </nav>
-        </div>
-        <div className={style.hamburguesa} onClick={abrirMenu}>
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      </header>
       <video className={style.video} src="" />
       <div className={className(style.contenedorNosotros)}>
         <div className={style.textoNosotros}>
@@ -108,51 +70,3 @@ export default function Inicio() {
     </>
   );
 }
-
-/*
-const menu = document.querySelector('.hamburguesa');
-
-const navegacion = document.querySelector('.navegacion');
-
-document.addEventListener('DOMContentLoaded',()=>{
-    eventos();
-});
-
-const eventos = () =>{
-    menu.addEventListener('click', abrirMenu);
-}
-
-const abrirMenu = () =>{
-    navegacion.classList.remove('ocultar');
-    botonCerar();
-}
-
-const botonCerar = () =>{
-    const btnCerar = document.createElement('p');
-    const overlay = document.createElement('div');
-    overlay.classList.add('pantalla-completa');
-    const body = document.querySelector('body');
-    //if(document.querySelectorAll.length('.pantalla-completa') > 0) return;
-    body.appendChild(overlay);
-    btnCerar.textContent = 'x';
-    btnCerar.classList.add('btn-cerar');
-    console.log(navegacion.children);
-    navegacion.appendChild(btnCerar);
-    cerarMenu(btnCerar);
-}
-
-const cerarMenu = (boton, overlay) =>{
-    boton.addEventListener('click', ()=>{
-        navegacion.classList.add('ocultar');
-        overlay.remove();
-        boton.remove();
-    });
-    overlay.onclick = function() {
-        overlay.remove();
-        navegacion.classList.add('ocultar');
-        boton.remove();
-    }
-
-}
-
-*/

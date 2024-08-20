@@ -1,0 +1,59 @@
+/* El footer lo vamos a sacar a un componente nuevo */
+
+footer {
+  background-color: #7fdd44;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.simbolos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tiktok-icon {
+  font-size: 30px;
+  color: #070a07;
+}
+
+.tiktok-icon :hover {
+  color: #0048ff;
+}
+
+.whatsapp-icon {
+  font-size: 40px;
+  color: hsl(143, 71%, 93%);
+}
+
+.whatsapp-icon:hover {
+  color: #005582;
+}
+
+.github-icon {
+  font-size: 35px;
+  color: #000;
+}
+
+.github-icon i:hover {
+  color: #4078c0;
+}
+
+.instagram-icon {
+  font-size: 40px;
+  color: #e1306c;
+}
+.instagram-icon:hover {
+  color: #005582;
+}
+
+.linkedin-icon {
+  font-size: 40px;
+  color: #0077b5;
+}
+
+.linkedin-icon:hover {
+  color: #005582; /* Color del icono al pasar el cursor */
+}

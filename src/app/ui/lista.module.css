@@ -128,6 +128,7 @@ h1 {
 
 
 .park-item {
+    border: none;
     background-color: #fff;
     padding: 15px;
     cursor: pointer;
@@ -151,7 +152,7 @@ h1 {
     transform: translateY(-50%);
     width: 24px;
     height: 24px; 
-    background-image: url('/outdoorkids/public/images/image7.png'); 
+    background-image: url('/public/images/image7.png'); 
     background-size: contain;
     background-repeat: no-repeat;
 }
