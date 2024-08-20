@@ -6,9 +6,9 @@
 import React from "react";
 import style from "./Footer.module.css";
 
-export default function Footer() {
+export default function Footer () {
   return (
-    <footer>
+    <footer className={style.footer}>
       <div className="simbolos">
         <div className={`${style["tiktok-icon"]}`}>
           <i className={`${style["fab fa-tiktok"]}`} />

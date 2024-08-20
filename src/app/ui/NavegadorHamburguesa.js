@@ -7,19 +7,18 @@
 import style from "./NavegadorHamburguesa.module.css";
 import React, { useState } from "react";
 
-export default function NavegadorHamburguesa() {
+export default function NavegadorHamburguesa () {
   const [menu, setMenu] = useState(false);
 
   const abrirMenu = () => {
-    // console.log("abrir menu");
-    // console.log(menu);
-    setMenu(true);
+    setMenu(!menu);
   };
+
   return (
     <>
       <div className={style.inicio}>
         <nav className={menu ? style.navegacion : style.ocultar}>
-          <button className={style.btnCerrar} onClick={() => setMenu(false)}>
+          <button className={style.btnCerrar} onClick={abrirMenu}>
             x
           </button>
           <a href="#">Inicio</a>

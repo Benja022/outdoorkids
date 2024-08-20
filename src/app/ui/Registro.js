@@ -17,23 +17,6 @@ export default function Registro () {
           height={120}
           layout="resposive"
         />
-        <nav className={style.nav}>
-          <h6 className={style.textOutdoor}>OutdoorKids</h6>
-          <div className={style.divisor}>
-            <button className={classNames(style.btn, style.btnInicio)}>
-              Inicio
-            </button>
-            <button className={classNames(style.btn, style.btnRegistrate)}>
-              Registrate
-            </button>
-            <button className={classNames(style.btn, style.btnIniciarSes)}>
-              Iniciar sesión
-            </button>
-            <button className={classNames(style.btn, style.btnPreguntas)}>
-              Preguntas frecuentes
-            </button>
-          </div>
-        </nav>
       </header>
 
       <div class={style.formContainer}>
@@ -83,16 +66,3 @@ export default function Registro () {
     </div>
   )
 }
-
-/*
-document
-  .getElementById("formulario-registro")
-  .addEventListener("submit", function (event) {
-    var email = document.getElementById("email").value;
-    var emailRegex = /^[^s@]+@[^s@]+.[^s@]+$/;
-    if (!emailRegex.test(email)) {
-      event.preventDefault();
-      alert("Por favor ingrese un correo electrónico válido.");
-    }
-  });
-  */

@@ -7,13 +7,6 @@
   /* padding: 10px 20px; */
 }
 
-/* Estilos para el nav */
-.nav {
-  display: flex;
-  justify-content:space-between;
-  align-items: center;
-}
-
 /* Estilos para el logo */
 .logo {
   width: 120px;
