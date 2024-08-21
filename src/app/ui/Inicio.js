@@ -54,16 +54,16 @@ export default function Inicio() {
             />
             <Image
               className={style.img}
-              src="/images/imagen3.jpg"
-              alt="familia en aire libre"
+              src="/images/imagen2.jpg"
+              alt="ninos en aire libre"
               width={500}
               height={500}
               layout="responsive"
             />
             <Image
               className={style.img}
-              src="/images/imagen2.jpg"
-              alt="ninos en aire libre"
+              src="/images/imagen3.jpg"
+              alt="familia en aire libre"
               width={500}
               height={500}
               layout="responsive"

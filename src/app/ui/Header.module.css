@@ -4,6 +4,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /* Estilos para el logo */
