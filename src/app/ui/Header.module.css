@@ -4,9 +4,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
+  position:fixed;
   top: 0;
+  left: 0;
   width: 100%;
+  height: 120px;
 }
 
 /* Estilos para el logo */

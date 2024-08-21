@@ -1,14 +1,14 @@
 /* eslint-disable quotes */
 /* eslint-disable jsx-quotes */
-import React from "react"
-import style from "./Registro.module.css"
-import Image from "next/image"
-import classNames from "classnames"
+import React from "react";
+import style from "./Registro.module.css";
+import Image from "next/image";
+// import classNames from "classnames"
 
-export default function Registro () {
+export default function Registro() {
   return (
     <div className={style.body}>
-      <header className={style.header}>
+      <div class={style.formContainer}>
         <Image
           className={style.logo}
           src="/images/Logo.jpg"
@@ -17,28 +17,20 @@ export default function Registro () {
           height={120}
           layout="resposive"
         />
-      </header>
-
-      <div class={style.formContainer}>
         <form action="/registro.php" id="formulario-registro">
           <legend>Registrate!</legend>
           <br />
-          <label htmlFor="nombre">Nombre completo:</label>
+          <label htmlFor="nombre">Nombre:</label>
           <br />
           <input type="text" id="nombre" name="nombre" required />
+          <br />
+          <label htmlFor="apellidos">Apellidos:</label>
+          <br />
+          <input type="text" id="peque" name="peque" />
           <br />
           <label htmlFor="correo">Correo Electronico:</label>
           <br />
           <input type="email" id="correo" name="correo" required />
-          <br />
-          <br />
-          <label htmlFor="peque">Nombre del peque:</label>
-          <br />
-          <input type="text" id="peque" name="peque" />
-          <br />
-          <label htmlFor="edad">Edad:</label>
-          <br />
-          <input type="number" id="edad" name="edad" />
           <br />
           <label htmlFor="password">Contraseña:</label>
           <br />
@@ -53,16 +45,16 @@ export default function Registro () {
             Inicia Sesión
           </a>
         </div>
-      </div>
-      <div class={style.card}>
-        <Image
-          src="/images/imagenAbajoDeReistro.png"
-          alt="imagenes de debajo del registro"
-          width={600}
-          height={400}
-          layout="responsive"
-        />
+        <div class={style.card}>
+          <Image
+            src="/images/imagenAbajoDeReistro.png"
+            alt="imagenes de debajo del registro"
+            width={600}
+            height={400}
+            layout="responsive"
+          />
+        </div>
       </div>
     </div>
-  )
+  );
 }

@@ -10,7 +10,12 @@ import Image from "next/image";
 export default function Inicio() {
   return (
     <>
-      <video className={style.video} src="" />
+      <div className={style.videoContainer}>
+        <video className={style.video} src="/images/Video.mp4" controls>
+          <source src="/images/Video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className={className(style.contenedorNosotros)}>
         <p className={style.bienvenido}>Bienvenido a </p>
         <h1 className={style.outdoorTitle}>OutdoorKids</h1>

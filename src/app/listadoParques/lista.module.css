@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-image: url('/outdoorkids/public/images/image\ 1.svg');
@@ -12,9 +12,10 @@ header {
     align-items: center;
     background-color: #C9FFBB;
     padding: 10px 20px;
-}
+} */
 
-h1 {
+.h1 {
+    margin-top: 200px;
     font-size: 32px;
     color: rgb(21, 88, 8);
     text-align: center;
