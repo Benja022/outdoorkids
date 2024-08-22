@@ -1,4 +1,4 @@
-function initMap() {
+export default function initMap () {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 15,
@@ -54,7 +54,7 @@ function handleLocationError(browserHasGeolocation, pos, map) {
 }
 
 function searchPark() {
-  const parkName = document.getElementById("park-name").value;
+  const parkName = document.getElementById("parkName").value;
 
   if (parkName) {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -91,7 +91,7 @@ function searchPark() {
 function createParkButton(name, location) {
   const button = document.createElement("button");
   button.textContent = name;
-  button.className = "park-item";
+  button.className = "parkItem";
 
   button.onclick = function () {
     const lat = location.lat();
@@ -100,16 +100,16 @@ function createParkButton(name, location) {
     window.open(url, "_blank");
   };
 
-  const parkList = document.querySelector(".park-list");
+  const parkList = document.querySelector(".parkList");
   parkList.appendChild(button);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".park-item");
+  const buttons = document.querySelectorAll(".parkItem");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      const address = button.getAttribute("data-address");
+      const address = button.getAttribute("dataAddress");
       if (address) {
         window.open(
           `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
