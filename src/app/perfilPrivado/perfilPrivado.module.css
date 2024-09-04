@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('/outdoorkids/public/images/image 1.svg');
+    background-image: url(/public/images/image\ 1.svg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -60,7 +60,7 @@ body {
     height: 80px;
     border-radius: 50%;
     background-color: #f0f0f0;
-    background-image: url(/outdoorkids/public/images/imgen\ 3.jpg);
+    background-image: url(/public/images/imgen\ 3.jpg);
     background-size:contain;
     background-repeat: no-repeat;
     display: flex;
@@ -171,4 +171,17 @@ body {
 
 .submit-btn:hover {
     background-color: #388e3c;
+}
+.member {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.member .role {
+    margin-right: 10px;
+}
+
+.member .name {
+    flex-grow: 1;
 }

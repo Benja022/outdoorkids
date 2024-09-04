@@ -1,4 +1,4 @@
-export default function initMap () {
+/*export default function initMap () {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 15,
@@ -122,4 +122,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-window.onload = initMap;
+window.onload = initMap;*/
