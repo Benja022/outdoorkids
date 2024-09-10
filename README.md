@@ -9,7 +9,7 @@ npm install -g pnpm
 Instalamos el paquete del proyecto
 
 ~~~
-pnpm i
+npm install
 ~~~
 
 #### TODAS LAS VECES
