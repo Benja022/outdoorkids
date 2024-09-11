@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function IniciarSesion () {
   return (
     <div className={style.body}>
-      <div class={style.formContainer}>
+      <div className={style.formContainer}>
         <Image
           className={style.logo}
           src="/images/Logo.jpg"
@@ -31,7 +31,7 @@ export default function IniciarSesion () {
           <br />
           <input className={style.btn} type="submit" value="Enviar" />
         </form>
-        <div class={style.card}>
+        <div className={style.card}>
           <Image
             src="/images/imagenAbajoDeReistro.png"
             alt="imagenes de debajo del registro"
