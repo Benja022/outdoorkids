@@ -1,4 +1,5 @@
 // src/App.js
+"use client"
 import React from 'react';
 import MapComponent from './MapComponent';
 import ParkSearch from './ParkSearch';
