@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 import style from "./lista.module.css";
 import "./MapComponent";
 import "./ParkSearch"
