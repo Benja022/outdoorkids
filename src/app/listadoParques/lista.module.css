@@ -138,7 +138,7 @@
     transform: translateY(-50%);
     width: 24px;
     height: 24px; 
-    background-image: url('/public/images/image7.png'); 
+    background-image: url('/images/image7.png'); 
     background-size: contain;
     background-repeat: no-repeat;
 }

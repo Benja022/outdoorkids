@@ -1,4 +1,4 @@
-function initMap() {
+function initMap () {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 15,
@@ -70,7 +70,7 @@ function searchPark() {
 
     service.findPlaceFromQuery(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
-        const place = results[0];
+        const place = results[0]
         map.setCenter(place.geometry.location);
         new google.maps.Marker({
           map: map,
@@ -108,21 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".parkItem");
 
   buttons.forEach((button) => {
-    button.addEventListener(
-      "click",
-      () => {
-        const address = button.getAttribute("data-address");
-        if (address) {
-          window.open(
-            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              address
-            )}`,
-            "_blank"
-          );
-        }
-      },
-      { passive: true }
-    );
+    button.addEventListener("click", () => {
+      const address = button.getAttribute("dataAddress");
+      if (address) {
+        window.open(
+          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+            address
+          )}`,
+          "_blank"
+        );
+      }
+    });
   });
 });
 

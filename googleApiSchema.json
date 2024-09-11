@@ -1,0 +1,63 @@
+{
+         "business_status" : "OPERATIONAL",
+         "geometry" : 
+         {
+            "location" : 
+            {
+               "lat" : 36.6464697,
+               "lng" : -4.4888121
+            },
+            "viewport" : 
+            {
+               "northeast" : 
+               {
+                  "lat" : 36.6478471302915,
+                  "lng" : -4.487498119708498
+               },
+               "southwest" : 
+               {
+                  "lat" : 36.6451491697085,
+                  "lng" : -4.490196080291502
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/camping-71.png",
+         "icon_background_color" : "#4DB546",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/camping_pinlet",
+         "name" : "Camping Torremolinos",
+         "photos" : 
+         [
+            {
+               "height" : 2736,
+               "html_attributions" : 
+               [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113499384286160328274\"\u003eDirk De Ville\u003c/a\u003e"
+               ],
+               "photo_reference" : "AXCi2Q4yUm84NPqsBV2NsF8GvfxPCLfJ8HN-3my3ARIu2tMjNupTtG7sC__h5NmJMK2puC9lLkUEhiDCWx4bSJXQNK6KpPGqde8Muc3iWQ9KBJaAhfZg7E4O6zFNnss3Rz96cJ0BiXP9oiLI4gh10MfLNrjGJ2B3Jh8MZ7Amt0yKzpR4zD8A",
+               "raw_reference" : 
+               {
+                  "fife_url" : "https://lh3.googleusercontent.com/p/AF1QipMJbcPVPZrDfQILif7WreddvS8XN5JfdFJE-CDd=k"
+               },
+               "width" : 3648
+            }
+         ],
+         "place_id" : "ChIJu91srNH7cg0RP2n1Dy1tFyg",
+         "plus_code" : 
+         {
+            "compound_code" : "JGW6+HF Torremolinos, Spain",
+            "global_code" : "8C8QJGW6+HF"
+         },
+         "rating" : 3.2,
+         "reference" : "ChIJu91srNH7cg0RP2n1Dy1tFyg",
+         "scope" : "GOOGLE",
+         "types" : 
+         [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 1072,
+         "vicinity" : "Calle Loma del Paraiso, 2, Torremolinos"
+      }

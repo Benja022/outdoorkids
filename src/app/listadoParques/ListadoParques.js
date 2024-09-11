@@ -1,15 +1,15 @@
+/* eslint-disable semi */
 /* eslint-disable quotes */
 /* eslint-disable jsx-quotes */
 "use client";
 import style from "./lista.module.css";
-import "./lista.js";
 import Script from "next/script";
+import { searchPark } from "./lista.js";
 
-export default function ListadoParques (initMap) {
-  initMap();
+export default function ListadoParques () {
   return (
     <>
-      <h1> Tu Guía de Parques Infantiles </h1>
+      <h1 className={style.h1}> Tu Guía de Parques Infantiles </h1>
 
       <div className={style.searchContainer}>
         <div className={style.userInput}>
@@ -18,7 +18,7 @@ export default function ListadoParques (initMap) {
             id="parkName"
             placeholder="Escribe el nombre del parque..."
           />
-          <button onclick={() => window.searchPark()}>Buscar Parque</button>
+          <button onClick={() => searchPark()}>Buscar Parque</button>
         </div>
       </div>
 
@@ -60,6 +60,7 @@ export default function ListadoParques (initMap) {
       <Script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg&libraries=places"
         strategy="afterInteractive"
+        asunc
       />
     </>
   );
