@@ -1,17 +1,22 @@
-// src/components/MapComponent.js
-import React, { useEffect, useRef, useState } from 'react';
+'use client';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 const MapComponent = () => {
     const mapRef = useRef(null);
     const [map, setMap] = useState(null);
 
     useEffect(() => {
-        if (window.google && mapRef.current) {
-            const map = new window.google.maps.Map(mapRef.current, {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 15,
-            });
-            setMap(map);
+        if (window.google && mapRef.current && !map) {
+            const initMap = () => {
+                const newMap = new window.google.maps.Map(mapRef.current, {
+                    center: { lat: -34.397, lng: 150.644 },
+                    zoom: 15,
+                });
+                setMap(newMap);
+                return newMap;
+            };
+
+            const initializedMap = initMap();
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -20,9 +25,9 @@ const MapComponent = () => {
                             lat: position.coords.latitude,
                             lng: position.coords.longitude,
                         };
-                        map.setCenter(pos);
+                        initializedMap.setCenter(pos);
 
-                        const service = new window.google.maps.places.PlacesService(map);
+                        const service = new window.google.maps.places.PlacesService(initializedMap);
                         const request = {
                             location: pos,
                             radius: '5000',
@@ -33,7 +38,7 @@ const MapComponent = () => {
                             if (status === window.google.maps.places.PlacesServiceStatus.OK) {
                                 results.forEach((place) => {
                                     new window.google.maps.Marker({
-                                        map: map,
+                                        map: initializedMap,
                                         position: place.geometry.location,
                                         title: place.name,
                                     });
@@ -44,25 +49,26 @@ const MapComponent = () => {
                         });
                     },
                     () => {
-                        handleLocationError(true, map.getCenter(), map);
+                        handleLocationError(true, initializedMap.getCenter(), initializedMap);
                     }
                 );
             } else {
-                handleLocationError(false, map.getCenter(), map);
+                handleLocationError(false, initializedMap.getCenter(), initializedMap);
             }
         }
-    }, []);
+    }, );
 
-    const handleLocationError = (browserHasGeolocation, pos, map) => {
-        new window.google.maps.InfoWindow({
+    const handleLocationError = useCallback((browserHasGeolocation, pos, map) => {
+        const infoWindow = new window.google.maps.InfoWindow({
             content: browserHasGeolocation
                 ? 'Error: El servicio de geolocalización ha fallado.'
                 : 'Error: Tu navegador no soporta geolocalización.',
             position: pos,
-        }).open(map);
-    };
+        });
+        infoWindow.open(map);
+    }, []);
 
-    const searchPark = (parkName) => {
+    const searchPark = useCallback((parkName) => {
         if (map) {
             const service = new window.google.maps.places.PlacesService(map);
             const request = {
@@ -84,7 +90,7 @@ const MapComponent = () => {
                 }
             });
         }
-    };
+    }, [map]);
 
     return <div id="map" ref={mapRef} style={{ height: '500px', width: '100%' }}></div>;
 };

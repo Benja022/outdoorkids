@@ -1,20 +1,29 @@
-
+'use client';
 import React, { useState } from 'react';
 
 const ParkSearch = ({ onSearch }) => {
     const [parkName, setParkName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSearch = () => {
-        if (parkName) {
+        if (parkName.trim()) {
+            setErrorMessage('');
             onSearch(parkName);
         } else {
-            alert('Por favor, ingresa el nombre de un parque.');
+            setErrorMessage('Por favor, ingresa el nombre de un parque.');
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
         }
     };
 
     return (
         <div className="search-container">
             <div className="user-input">
+                <label htmlFor="park-name">Buscar Parque:</label>
                 <input
                     type="text"
                     id="park-name"
@@ -24,6 +33,7 @@ const ParkSearch = ({ onSearch }) => {
                 />
                 <button onClick={handleSearch}>Buscar Parque</button>
             </div>
+            {errorMessage && <p id="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
     );
 };

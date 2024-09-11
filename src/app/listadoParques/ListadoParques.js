@@ -1,15 +1,15 @@
-/* eslint-disable quotes */
-/* eslint-disable jsx-quotes */
 "use client";
 import style from "./lista.module.css";
-import "./lista.js";
+import "./MapComponent";
+import "./ParkSearch"
+import "./page"
 import Script from "next/script";
 
 export default function ListadoParques (initMap) {
   initMap();
   return (
     <>
-      <h1> Tu Guía de Parques Infantiles </h1>
+      <h1> Tu Guía de Actividades Infantiles </h1>
 
       <div className={style.searchContainer}>
         <div className={style.userInput}>
