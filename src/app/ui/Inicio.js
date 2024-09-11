@@ -11,10 +11,15 @@ export default function Inicio() {
   return (
     <>
       <div className={style.videoContainer}>
-        <video className={style.video} src="/images/Video.mp4" controls>
-          <source src="/images/Video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <iframe
+          className={style.video}
+          src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1"
+          title="video promocional OutdoorKids"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        />
       </div>
       <div className={className(style.contenedorNosotros)}>
         <p className={style.bienvenido}>Bienvenido a </p>

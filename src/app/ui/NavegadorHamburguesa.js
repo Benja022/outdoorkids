@@ -5,8 +5,11 @@
 /* eslint-disable jsx-quotes */
 import style from "./NavegadorHamburguesa.module.css";
 import React, { useState } from "react";
+import Link from "next/link";
+import classNames from "classnames";
 
-export default function NavegadorHamburguesa () {
+
+export default function NavegadorHamburguesa() {
   const [menu, setMenu] = useState(false);
 
   const abrirMenu = () => {
@@ -20,17 +23,35 @@ export default function NavegadorHamburguesa () {
           <button className={style.btnCerrar} onClick={abrirMenu}>
             x
           </button>
-          <a href="#">Inicio</a>
-          <a href="#">Registrate</a>
-          <a href="#">Iniciar sesión</a>
-          <a href="#">Preguntas frecuentes</a>
+          <Link href="/">
+            <button style={{background : "none", border : 0}}>
+              Inicio
+            </button>
+          </Link>
+          <Link href="/registro">
+            <button style={{background : "none", border : 0}}>
+              Registrate
+            </button>
+          </Link>
+          <Link href="/iniciarSesion">
+            <button style={{background : "none", border : 0}}>
+              Iniciar sesión
+            </button>
+          </Link>
+          <Link href="/preguntasfrecuentes">
+            <button style={{background : "none", border : 0}} >
+              Preguntas frecuentes
+            </button>
+          </Link>
         </nav>
-      </div>
-      <div className={style.hamburguesa} onClick={abrirMenu}>
-        <span />
-        <span />
-        <span />
-        <span />
+
+
+        <div className={style.hamburguesa} onClick={abrirMenu}>
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
       </div>
     </>
   );

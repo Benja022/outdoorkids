@@ -1,4 +1,8 @@
 /* Menú hamburgesa */
+.inicio {
+    display: flex;
+    justify-content: right;
+}
 .btnCerrar {
     font-size: 25px;
     font-weight: bold;
@@ -15,7 +19,8 @@
   }
   
   .ocultar {
-    visibility: hidden;
+    /* visibility: collapse; */
+    display: none;
   }
   
   .navegacion {

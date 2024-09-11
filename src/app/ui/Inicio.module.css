@@ -9,8 +9,8 @@
 
 .video {
   display: block;
-  width: 60%;
-  z-index: 0;
+  width: 800px;
+  height: 450px;
 }
 
 /* Centro de la página */
