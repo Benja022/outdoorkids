@@ -1,23 +1,10 @@
-.body {
-    font-family: Arial, sans-serif;
-    background-image: url(/public/images/image\ 1.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #333;
-}
-
-.family-form {
-    background-color:none ;
+.familyForm {
     border-radius: 15px;
     padding: 20px;
     max-width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    margin: 200px auto 0;
 }
 
 .header {
@@ -25,7 +12,7 @@
     margin-bottom: 20px;
 }
 
-.header h1 {
+.headerH1 {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 24px;
     color: #964B00;
@@ -33,14 +20,14 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.family-nickname-container {
+.familyNicknameContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.family-nickname-container input {
+.familyNicknameContainer input {
     width: 70%;
     padding: 10px;
     border-radius: 8px;
@@ -48,14 +35,14 @@
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.family-photo {
+.familyPhoto {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
 
-#family-photo {
+.familyPhoto {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -72,41 +59,48 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#family-photo:hover {
+.familyPhoto:hover {
     background-color: #e0e0e0;
     transform: scale(1.05);
 }
 
-#default-icon {
+.defaultIcon {
     width: 60%;
     height: 60%;
     object-fit: contain;
 }
 
-#family-photo-input {
+.familyPhotoInput {
     display: none;
 }
 
 
-#default-icon {
+.defaultIcon {
     width: 60%;
     height: 60%;
     object-fit: cover;
 }
 
-#family-photo-input {
+.familyPhotoInput {
     display: none;
 }
 
 
-.profile-icon-text {
+.profileIconText {
     position: absolute;
     font-size: 36px;
 }
 
-#family-photo-input {
+.familyPhotoInput {
     display: none;
 }
+
+/* .addingMember{
+    display: flex;
+    flex-direction: column;
+
+} */
+
 
 
 .members {
@@ -144,7 +138,7 @@
     outline: none;
 }
 
-.add-member-btn, .submit-btn {
+.addMemberBtn, .submitBtn {
     width: 100%;
     padding: 12px;
     border: none;
@@ -156,20 +150,20 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.add-member-btn {
+.addMemberBtn {
     background-color: #ff8000;
 }
 
-.add-member-btn:hover {
+.addMemberBtn:hover {
     background-color: #d75200;
 }
 
-.submit-btn {
+.submitBtn {
     background-color: #4caf50;
     margin-top: 10px;
 }
 
-.submit-btn:hover {
+.submitBtn:hover {
     background-color: #388e3c;
 }
 .member {

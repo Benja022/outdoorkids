@@ -27,7 +27,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={style.header}>
+    <>
+    <div className={style.header}>
       <div className={style.logo}>
         <Image
           className={style.logo}
@@ -40,6 +41,7 @@ export default function Header() {
       </div>
       <h6 className={style.text}>OutdoorKids</h6>
       <div>{isMobile ? <NavegadorHamburguesa /> : <Navegador />}</div>{" "}
-    </header>
+    </div>
+    </> 
   );
 }
