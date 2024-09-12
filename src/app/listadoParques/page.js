@@ -1,13 +1,18 @@
-"use client";
+
 import React from 'react';
 import App from './App';
 
-const HomePage = () => {
-  return (
-    <div>
-      <App /> {}
-    </div>
-  );
+const page = () => {
+    const handleSearch = (parkName) => {
+        window.searchPark(parkName);
+    };
+
+    return (
+        <div className="App">
+            <h1>Tu Guía de Actividades Infantiles</h1>
+            <App />
+        </div>
+    );
 };
 
-export default HomePage;
+export default App;
