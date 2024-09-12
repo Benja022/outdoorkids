@@ -42,12 +42,12 @@
     position: relative;
 }
 
-.familyPhoto {
+.familyPhotoInput {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     background-color: #f0f0f0;
-    background-image: url(/public/images/imgen\ 3.jpg);
+    /* background-image: url(/public/images/imgen\ 3.jpg); */
     background-size:contain;
     background-repeat: no-repeat;
     display: flex;
@@ -59,7 +59,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.familyPhoto:hover {
+.familyPhotoInput:hover {
     background-color: #e0e0e0;
     transform: scale(1.05);
 }
@@ -70,10 +70,6 @@
     object-fit: contain;
 }
 
-.familyPhotoInput {
-    display: none;
-}
-
 
 .defaultIcon {
     width: 60%;
@@ -81,27 +77,10 @@
     object-fit: cover;
 }
 
-.familyPhotoInput {
-    display: none;
-}
-
-
 .profileIconText {
     position: absolute;
     font-size: 36px;
 }
-
-.familyPhotoInput {
-    display: none;
-}
-
-/* .addingMember{
-    display: flex;
-    flex-direction: column;
-
-} */
-
-
 
 .members {
     margin-bottom: 20px;

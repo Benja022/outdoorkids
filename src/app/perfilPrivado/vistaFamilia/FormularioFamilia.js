@@ -1,39 +1,60 @@
 "use client";
 import React, { useState } from "react";
-//import { useNavigate } from 'react-router-dom';
 import style from "./formularioFamilia.module.css";
 import classNames from "classnames";
 import Image from "next/image";
 import ModificarFamilia from "./ModalModificarFamilia";
 
-
-
 const FormularioFamilia = () => {
-    const [nickname, setNickname] = useState("Mangor");
-    const [members, setMembers] = useState([{ role: "Tutor", name: "Benjamín" }]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-  // const navigate = useNavigate();
+  const [nickname, setNickname] = useState("Mangor");
+  const [members, setMembers] = useState([
+    { role: "Tutor", name: "Benjamín", edad: "30" },
+  ]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newMember, setNewMember] = useState({ role: "", name: "", edad: "" });
+  const [familyPhoto, setFamilyPhoto] = useState(null);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleInputChange = (index, e) => {
+    const { name, value } = e.target;
     const newMembers = [...members];
-    newMembers[index][e.target.name] = e.target.value;
+    newMembers[index][name] = value;
     setMembers(newMembers);
   };
 
+  const handleNewMemberChange = (e) => {
+    const { name, value } = e.target;
+    setNewMember({ ...newMember, [name]: value });
+  };
+
   const handleAddMember = () => {
-    setMembers([...members, { role: "", name: "" }]);
+    if (newMember.role && newMember.name && newMember.edad) {
+      setMembers([...members, newMember]);
+      setNewMember({ role: "", name: "", edad: "" });
+    } else {
+      alert(
+        "Por favor, completa todos los campos antes de agregar un nuevo miembro."
+      );
+    }
+  };
+
+  const handleDeleteMember = (index) => {
+    const newMembers = members.filter((_, i) => i !== index);
+    setMembers(newMembers);
   };
 
   const handleNickname = () => {
     setNickname(nickname);
   };
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     navigate("/summary", { state: { nickname, members } });
-  //   };
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFamilyPhoto(URL.createObjectURL(file));
+    }
+  };
 
   return (
     <div className={style.familyForm}>
@@ -41,20 +62,32 @@ const FormularioFamilia = () => {
         <h1 className={style.headerH1}>Mi familia</h1>
         <div className={style.familyNicknameContainer}>
           <div className={style.familyPhoto}>
-            <Image
-              className={style.img}
-              src="/images/estrella.png"
-              alt="Imagen de la familia"
-              width={200}
-              height={200}
-              layout="responsive"
-            />
-
+            {familyPhoto ? (
+              <Image
+                className={style.familyPhotoInput}
+                src={familyPhoto}
+                alt="Imagen de la familia"
+                width={200}
+                height={200}
+                layout="responsive"
+              />
+            ) : (
+              <Image
+                className={style.familyPhotoInput}
+                src="/images/estrella.png"
+                alt="Imagen de la familia"
+                width={200}
+                height={200}
+                layout="responsive"
+              />
+            )}
             <input
+              className={style.familyPhotoInput}
               type="file"
               id="familyPhotoInput"
               accept="image/*"
               aria-label="Subir foto de la familia"
+              onChange={handlePhotoChange}
             />
             <div id="familyPhoto" className={style.profileIcon}></div>
           </div>
@@ -69,39 +102,9 @@ const FormularioFamilia = () => {
           placeholder="Apodo de la familia"
           aria-label="Apodo de la familia"
         />
-        <button
-          type="submit"
-          //   value={nickname}
-          onClick={handleNickname}
-        >
+        <button type="submit" onClick={handleNickname}>
           Establecer
         </button>
-      </div>
-
-      <div className={style.addingMember}>
-        <div className={style.selectRole}>
-          <label htmlFor="role">Selecciona un rol:</label>
-          <select
-            name="role"
-            value=""
-            onChange={(e) => handleInputChange(index, e)}
-          >
-            <option value="Tutor">Tutor</option>
-            <option value="Peque">Peque</option>
-          </select>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="name"
-            value=""
-            onChange={(e) => handleInputChange(index, e)}
-            placeholder="Nombre"
-          />
-          <button onClick={handleAddMember} className="addMemberBtn">
-            Añadir miembro
-          </button>
-        </div>
       </div>
 
       <h1 className={classNames(style.headerH1, style.header)}>Miembros:</h1>
@@ -110,16 +113,24 @@ const FormularioFamilia = () => {
           <div key={index} className={style.member}>
             <p>{member.role}</p>
             <p>{member.name}</p>
+            <p>{member.edad}</p>
+            <button onClick={() => handleDeleteMember(index)}>Eliminar</button>
           </div>
         ))}
       </div>
+
       <div>
         <button onClick={openModal}>Agregar/Modificar Familia</button>
 
-        <ModificarFamilia isOpen={isModalOpen} onClose={closeModal}>
-          <h2>Este es un Modal</h2>
-          <p>Contenido del modal.</p>
-          <button onClick={closeModal}>Guardar</button>
+        <ModificarFamilia
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          newMember={newMember}
+          handleNewMemberChange={handleNewMemberChange}
+          handleAddMember={handleAddMember}
+        >
+          <h1 className={style.headerH1}>Modificar familia</h1>
+          <p>Agrega un miembro.</p>
         </ModificarFamilia>
       </div>
     </div>

@@ -2,13 +2,14 @@
 .header {
   background-color: #c9ffbb;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position:fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 120px;
+  padding: 0 1%;
 }
 
 /* Estilos para el logo */
