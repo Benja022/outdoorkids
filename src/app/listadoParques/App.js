@@ -1,18 +1,22 @@
-'use client'
+'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import useGoogleMaps from './useGoogleMaps';
 import styles from './lista.module.css';
 
 const App = () => {
-    const [parkName, setParkName] = useState('');
-    const [parks, setParks] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [places, setPlaces] = useState([]);
     const [map, setMap] = useState(null);
     const [activityType, setActivityType] = useState('park');
-    const [ageRange, setAgeRange] = useState('all'); // Estado para el rango de edad
+    const [nextPageToken, setNextPageToken] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPlace, setSelectedPlace] = useState(null);
+    const [resultsLimit] = useState(12); // Número máximo de resultados a mostrar
     const apiKey = 'AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg';
     const loaded = useGoogleMaps(apiKey);
 
     const initMap = useCallback(() => {
+        console.log('Using initMap')
         if (!loaded) return;
 
         const newMap = new google.maps.Map(document.getElementById('map'), {
@@ -36,22 +40,44 @@ const App = () => {
                         location: pos,
                         radius: '5000',
                         type: [activityType],
+                        ...(nextPageToken && { pageToken: nextPageToken }),
+                        rankBy: google.maps.places.RankBy.PROMINENCE,
                     };
 
-                    service.nearbySearch(request, (results, status) => {
+                    service.nearbySearch(request, (results, status, pagination) => {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
-                            // Aquí se filtran los parques según el rango de edad
-                            const filteredParks = results.filter(place => {
-                                // Filtrar según el rango de edad
-                                // Puedes ajustar la lógica de filtrado según la disponibilidad de datos
-                                return ageRange === 'all'; // Ejemplo de filtro básico
-                            });
+                            const filteredResults = results
+                                .filter(result => result.rating) // Filtra resultados sin valoración
+                                .filter(result => {
+                                    return result.types.includes(activityType);
+                                    /*
+                                    switch (activityType) {
+                                        case 'park natural':
+                                            return result.types.includes('park natural');
+                                        case 'museum':
+                                            return result.types.includes('museum');
+                                        case 'playground':
+                                            return result.types.includes('playground');
+                                        default:
+                                            return false;
+                                    }
+                                            */
+                                })
+                                .sort((a, b) => b.rating - a.rating); // Ordena por valoración
+                            console.log({results, pagination, filteredResults})
+                            setPlaces(prevPlaces => {
+                              console.log({prevPlaces})
+                              return [
+                                ...prevPlaces,
+                                ...filteredResults.slice(0, resultsLimit - prevPlaces.length).map(place => ({
+                                    name: place.name,
+                                    address: place.vicinity,
+                                    photoUrl: place.photos ? place.photos[0].getUrl() : '/default-image.png',
+                                    rating: place.rating
+                                }))
+                            ]});
 
-                            setParks(filteredParks.slice(0, 12).map(place => ({
-                                name: place.name,
-                                address: place.vicinity,
-                                photoUrl: place.photos ? place.photos[0].getUrl() : '/default-image.png'
-                            })));
+                            setNextPageToken(pagination.hasNextPage ? pagination.nextPageToken : null);
 
                             results.forEach((place) => {
                                 new google.maps.Marker({
@@ -61,7 +87,7 @@ const App = () => {
                                 });
                             });
                         } else {
-                            console.error('Error al buscar parques:', status);
+                            console.error('Error al buscar lugares:', status);
                         }
                     });
                 },
@@ -72,11 +98,11 @@ const App = () => {
         } else {
             handleLocationError(false, newMap.getCenter(), newMap);
         }
-    }, [loaded, activityType, ageRange]);
+    }, [loaded, activityType, nextPageToken, resultsLimit]);
 
     useEffect(() => {
         initMap();
-    }, [initMap]);
+    }, [initMap, activityType]);
 
     const handleLocationError = (browserHasGeolocation, pos, map) => {
         new google.maps.InfoWindow({
@@ -87,17 +113,17 @@ const App = () => {
         }).open(map);
     };
 
-    const searchPark = () => {
+    const searchPlace = () => {
         if (!map) return;
 
         const service = new google.maps.places.PlacesService(map);
         const request = {
-            query: parkName
+            query: searchQuery,
+            fields: ['name', 'geometry', 'formatted_address', 'photos', 'rating']
         };
 
         service.findPlaceFromQuery(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
-                console.log(results)
                 const place = results[0];
                 map.setCenter(place.geometry.location);
                 new google.maps.Marker({
@@ -105,6 +131,12 @@ const App = () => {
                     position: place.geometry.location,
                     title: place.name,
                 });
+                setPlaces([{
+                    name: place.name,
+                    address: place.formatted_address,
+                    photoUrl: place.photos ? place.photos[0].getUrl() : '/default-image.png',
+                    rating: place.rating
+                }]);
             } else {
                 alert('No se encontraron resultados para la búsqueda.');
             }
@@ -112,7 +144,16 @@ const App = () => {
     };
 
     const handleSearch = () => {
-        searchPark();
+        searchPlace();
+    };
+
+    const handleActivityTypeChange = (e) => {
+        setActivityType(e.target.value);
+        /*
+        setPlaces([]); // Limpiar lugares al cambiar la actividad
+        setNextPageToken(null); // Reiniciar el token de la siguiente página
+        initMap(); // Recargar mapa con la nueva actividad
+        */
     };
 
     return (
@@ -123,12 +164,12 @@ const App = () => {
                     <input
                         className={styles.userInputInput}
                         type="text"
-                        value={parkName}
-                        onChange={(e) => setParkName(e.target.value)}
-                        placeholder="Escribe el nombre del parque..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Escribe el nombre del lugar..."
                     />
                     <button className={styles.userInputButton} onClick={handleSearch}>
-                        Buscar Parque
+                        Buscar
                     </button>
                 </div>
                 <div className={styles.activitySelector}>
@@ -136,37 +177,50 @@ const App = () => {
                     <select
                         id="activityType"
                         value={activityType}
-                        onChange={(e) => setActivityType(e.target.value)}
+                        onChange={handleActivityTypeChange}
                     >
-                        <option value="park">Parque</option>
-                        <option value="skate park">Parque de skate
-                        </option>
+                        <option value="park natural">Parque</option>
+                        <option value="playground">Parque de Juegos</option>
                         <option value="museum">Museo</option>
-                        {/* Añadir más opciones según sea necesario */}
                     </select>
                 </div>
-
+                {nextPageToken && (
+                    <button className={styles.loadMoreButton} onClick={initMap}>
+                        Cargar Más Resultados
+                    </button>
+                )}
             </div>
             <div className={styles.contentContainer}>
                 <div className={styles.leftColumn}>
                     <div className={styles.parkList}>
-                        {parks.map((park, index) => (
+                        {places.map((place, index) => (
                             <button
                                 key={index}
                                 className={styles.parkItem}
-                                onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(park.address)}`, '_blank')}
+                                onClick={() => {
+                                    setSelectedPlace(place);
+                                    setIsModalOpen(true);
+                                }}
                             >
-                                <img src={park.photoUrl} alt={park.name} className={styles.parkImage} />
-                                <span>{park.name}</span>
+                                <img src={place.photoUrl} alt={place.name} className={styles.parkImage} />
+                                <span>{place.name}</span>
+                                <div className={styles.parkRating}>⭐ {place.rating}</div>
                             </button>
                         ))}
                     </div>
                 </div>
                 <div id="map" className={styles.map}></div>
             </div>
-            <div className={styles.movingImage}>
-
-            </div>
+            {isModalOpen && selectedPlace && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modalContent}>
+                        <button className={styles.closeButton} onClick={() => setIsModalOpen(false)}>Cerrar</button>
+                        <h2>{selectedPlace.name}</h2>
+                        <img src={selectedPlace.photoUrl} alt={selectedPlace.name} className={styles.modalImage} />
+                        <p>{selectedPlace.address}</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
