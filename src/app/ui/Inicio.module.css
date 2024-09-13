@@ -1,103 +1,96 @@
-/*video*/
-.videoContainer {
+/* Fondo de la página */
+.pageBackground {
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0); /* Gradiente suave */
+  padding: 40px 10%;
+  min-height: 100vh;
+}
+
+/* Contenedor de cada sección alterna */
+.section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: auto;
-  margin-top: 200px;
+  margin: 60px 0;
+}
+
+/* Sección con imagen a la izquierda y texto a la derecha */
+.section.textImage {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section.textImage .textBlock {
+  flex: 1;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.section.textImage .textBlock p {
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  color: #555;
+}
+
+.section.textImage .textImageSection img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección con imagen arriba y texto abajo */
+.section.imageText {
+  text-align: center;
+}
+
+.section.imageText .textBlock {
+  margin-top: 20px;
+}
+
+.section.imageText .textBlock p {
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  color: #555;
+}
+
+.section.imageText .textImageSection img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón CTA */
+.ctaButton {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #00796b;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #004d40;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del video */
+.videoContainer {
+  margin: 60px 0;
+  text-align: center;
 }
 
 .video {
-  display: block;
-  width: 800px;
-  height: 450px;
-}
-
-/* Centro de la página */
-.contenedorNosotros {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
-}
-
-.textoImagenesNosotros {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.bienvenido {
-  font-size: 40px;
-  color: white;
-}
-
-.outdoorTitle {
-  font-size: 40px;
-  color: orange;
-  font-weight: bold;
-  padding-bottom: 20px;
-}
-
-/* Párrafos */
-.textoNosotrosParrafos {
-  font-size: 20px;
-  text-align: justify;
-  padding-top: 20px;
-  padding-left: 20px;
-  color: white;
-}
-
-/* Contenedor de las imágenes */
-.imagenesNosotros {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-}
-
-.img {
-  border-radius: 20px;
-  min-width: 300px;
-  min-height: 200px;
-}
-
-/* Botón ¡Únete */
-
-.contenedorBotonRojo {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Opcional: para centrar verticalmente también */
-}
-
-.btnRojo {
-  background-color: #ff0000;
-  color: white;
-  border: solid;
-  padding: 10px 20px;
-  font-size: 25px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Suaviza el cambio de color al pasar el ratón */
-  /* display: inline-block; */
-  margin: 30px 0;
-}
-
-.btnRojo:hover {
-  background-color: rgb(212, 206, 32);
-}
-
-@media only screen and (max-width: 992px) {
-  .imagenesNosotros {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .img {
-    width: 100%;
-  }
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
 }
