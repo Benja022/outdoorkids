@@ -17,13 +17,6 @@ const FormularioFamilia = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleInputChange = (index, e) => {
-    const { name, value } = e.target;
-    const newMembers = [...members];
-    newMembers[index][name] = value;
-    setMembers(newMembers);
-  };
-
   const handleNewMemberChange = (e) => {
     const { name, value } = e.target;
     setNewMember({ ...newMember, [name]: value });
@@ -45,14 +38,18 @@ const FormularioFamilia = () => {
     setMembers(newMembers);
   };
 
-  const handleNickname = () => {
-    setNickname(nickname);
+  const handleNickname = (e) => {
+    setNickname(e.target.value);
   };
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFamilyPhoto(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFamilyPhoto(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -81,30 +78,11 @@ const FormularioFamilia = () => {
                 layout="responsive"
               />
             )}
-            <input
-              className={style.familyPhotoInput}
-              type="file"
-              id="familyPhotoInput"
-              accept="image/*"
-              aria-label="Subir foto de la familia"
-              onChange={handlePhotoChange}
-            />
             <div id="familyPhoto" className={style.profileIcon}></div>
           </div>
         </div>
         <h1 className={classNames(style.headerH1, style.header)}>Alias:</h1>
-        <p>{nickname}</p>
-        <input
-          className={classNames(style.headerH1, style.header)}
-          type="text"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-          placeholder="Apodo de la familia"
-          aria-label="Apodo de la familia"
-        />
-        <button type="submit" onClick={handleNickname}>
-          Establecer
-        </button>
+        <p className={classNames(style.headerH1, style.header)}>{nickname}</p>
       </div>
 
       <h1 className={classNames(style.headerH1, style.header)}>Miembros:</h1>
@@ -128,6 +106,10 @@ const FormularioFamilia = () => {
           newMember={newMember}
           handleNewMemberChange={handleNewMemberChange}
           handleAddMember={handleAddMember}
+          familyPhoto={familyPhoto}
+          handlePhotoChange={handlePhotoChange}
+          nickname={nickname}
+          handleNickname={handleNickname}
         >
           <h1 className={style.headerH1}>Modificar familia</h1>
           <p>Agrega un miembro.</p>
