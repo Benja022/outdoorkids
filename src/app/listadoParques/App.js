@@ -1,6 +1,7 @@
 'use client';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react'; // Asegúrate de importar useEffect
 import useGoogleMaps from './useGoogleMaps';
+import debounce from 'lodash/debounce';
 import styles from './lista.module.css';
 
 const App = () => {
@@ -11,19 +12,20 @@ const App = () => {
     const [nextPageToken, setNextPageToken] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedPlace, setSelectedPlace] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [resultsLimit] = useState(12); // Número máximo de resultados a mostrar
+    const [isFilterOpen, setIsFilterOpen] = useState(false); // Estado para controlar el filtro
     const apiKey = 'AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg';
     const loaded = useGoogleMaps(apiKey);
 
+    // Función de inicialización del mapa
     const initMap = useCallback(() => {
-        console.log('Using initMap')
         if (!loaded) return;
 
         const newMap = new google.maps.Map(document.getElementById('map'), {
             center: { lat: -34.397, lng: 150.644 },
             zoom: 15,
         });
-
         setMap(newMap);
 
         if (navigator.geolocation) {
@@ -35,61 +37,7 @@ const App = () => {
                     };
                     newMap.setCenter(pos);
 
-                    const service = new google.maps.places.PlacesService(newMap);
-                    const request = {
-                        location: pos,
-                        radius: '5000',
-                        type: [activityType],
-                        ...(nextPageToken && { pageToken: nextPageToken }),
-                        rankBy: google.maps.places.RankBy.PROMINENCE,
-                    };
-
-                    service.nearbySearch(request, (results, status, pagination) => {
-                        if (status === google.maps.places.PlacesServiceStatus.OK) {
-                            const filteredResults = results
-                                .filter(result => result.rating) // Filtra resultados sin valoración
-                                .filter(result => {
-                                    return result.types.includes(activityType);
-                                    /*
-                                    switch (activityType) {
-                                        case 'park natural':
-                                            return result.types.includes('park natural');
-                                        case 'museum':
-                                            return result.types.includes('museum');
-                                        case 'playground':
-                                            return result.types.includes('playground');
-                                        default:
-                                            return false;
-                                    }
-                                            */
-                                })
-                                .sort((a, b) => b.rating - a.rating); // Ordena por valoración
-                            console.log({results, pagination, filteredResults})
-                            setPlaces(prevPlaces => {
-                              console.log({prevPlaces})
-                              return [
-                                ...prevPlaces,
-                                ...filteredResults.slice(0, resultsLimit - prevPlaces.length).map(place => ({
-                                    name: place.name,
-                                    address: place.vicinity,
-                                    photoUrl: place.photos ? place.photos[0].getUrl() : '/default-image.png',
-                                    rating: place.rating
-                                }))
-                            ]});
-
-                            setNextPageToken(pagination.hasNextPage ? pagination.nextPageToken : null);
-
-                            results.forEach((place) => {
-                                new google.maps.Marker({
-                                    map: newMap,
-                                    position: place.geometry.location,
-                                    title: place.name,
-                                });
-                            });
-                        } else {
-                            console.error('Error al buscar lugares:', status);
-                        }
-                    });
+                    searchPlaces(newMap, pos);  // Llamada optimizada para la búsqueda de lugares
                 },
                 () => {
                     handleLocationError(true, newMap.getCenter(), newMap);
@@ -98,11 +46,12 @@ const App = () => {
         } else {
             handleLocationError(false, newMap.getCenter(), newMap);
         }
-    }, [loaded, activityType, nextPageToken, resultsLimit]);
+    }, [loaded]);
 
+    // Cargar mapa cuando cambie el tipo de actividad
     useEffect(() => {
         initMap();
-    }, [initMap, activityType]);
+    }, [initMap]);
 
     const handleLocationError = (browserHasGeolocation, pos, map) => {
         new google.maps.InfoWindow({
@@ -113,13 +62,53 @@ const App = () => {
         }).open(map);
     };
 
-    const searchPlace = () => {
-        if (!map) return;
+    // Función optimizada para buscar lugares cercanos
+    const searchPlaces = useCallback((map, location) => {
+        const service = new google.maps.places.PlacesService(map);
+        const request = {
+            location: location,
+            radius: '5000',
+            type: [activityType],
+            ...(nextPageToken && { pageToken: nextPageToken }),
+            rankBy: google.maps.places.RankBy.PROMINENCE,
+        };
 
+        service.nearbySearch(request, (results, status, pagination) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                const filteredResults = results
+                    .filter(result => result.rating)
+                    .sort((a, b) => b.rating - a.rating);
+
+                setPlaces(prevPlaces => [
+                    ...prevPlaces,
+                    ...filteredResults.slice(0, resultsLimit - prevPlaces.length).map(place => ({
+                        name: place.name,
+                        address: place.vicinity,
+                        photos: place.photos ? place.photos : [], // Guardar fotos
+                        rating: place.rating
+                    }))
+                ]);
+
+                setNextPageToken(pagination.hasNextPage ? pagination.nextPageToken : null);
+
+                results.forEach((place) => {
+                    new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location,
+                        title: place.name,
+                    });
+                });
+            }
+        });
+    }, [activityType, nextPageToken, resultsLimit]);
+
+    // Filtrado y búsqueda optimizados con debounce
+    const searchPlace = useMemo(() => debounce(() => {
+        if (!map) return;
         const service = new google.maps.places.PlacesService(map);
         const request = {
             query: searchQuery,
-            fields: ['name', 'geometry', 'formatted_address', 'photos', 'rating']
+            fields: ['name', 'geometry', 'formatted_address', 'photos', 'rating'],
         };
 
         service.findPlaceFromQuery(request, (results, status) => {
@@ -134,14 +123,12 @@ const App = () => {
                 setPlaces([{
                     name: place.name,
                     address: place.formatted_address,
-                    photoUrl: place.photos ? place.photos[0].getUrl() : '/default-image.png',
+                    photos: place.photos ? place.photos : [], // Guardar fotos
                     rating: place.rating
                 }]);
-            } else {
-                alert('No se encontraron resultados para la búsqueda.');
             }
         });
-    };
+    }, 300), [searchQuery, map]);
 
     const handleSearch = () => {
         searchPlace();
@@ -149,43 +136,51 @@ const App = () => {
 
     const handleActivityTypeChange = (e) => {
         setActivityType(e.target.value);
-        /*
-        setPlaces([]); // Limpiar lugares al cambiar la actividad
+        setPlaces([]); // Limpiar los resultados previos
         setNextPageToken(null); // Reiniciar el token de la siguiente página
         initMap(); // Recargar mapa con la nueva actividad
-        */
+    };
+
+    const handleImageChange = (direction) => {
+        if (!selectedPlace || !selectedPlace.photos) return;
+
+        const newIndex = (currentImageIndex + direction + selectedPlace.photos.length) % selectedPlace.photos.length;
+        setCurrentImageIndex(newIndex);
     };
 
     return (
         <div className={styles.App}>
             <h1 className={styles.h1}>Tu Guía de Actividades Infantiles</h1>
             <div className={styles.searchContainer}>
-                <div className={styles.userInput}>
+                <div className={styles.searchWrapper}>
                     <input
-                        className={styles.userInputInput}
+                        className={`${styles.searchInput} ${isFilterOpen ? styles.searchInputWithFilter : ''}`}
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Escribe el nombre del lugar..."
+                        placeholder={`Escribe el nombre del lugar... ${isFilterOpen ? '' : 'Filtrar'}`}
+                        onClick={() => setIsFilterOpen(!isFilterOpen)}
                     />
-                    <button className={styles.userInputButton} onClick={handleSearch}>
-                        Buscar
-                    </button>
+                    {isFilterOpen && (
+                        <div className={styles.dropdownMenu}>
+                            <label htmlFor="activityType">Selecciona tipo de actividad:</label>
+                            <select
+                                id="activityType"
+                                value={activityType}
+                                onChange={handleActivityTypeChange}
+                            >
+                                <option value="park">Parque</option>
+                                <option value="playground">Parque de Juegos</option>
+                                <option value="museum">Museo</option>
+                            </select>
+                        </div>
+                    )}
                 </div>
-                <div className={styles.activitySelector}>
-                    <label htmlFor="activityType">Selecciona tipo de actividad:</label>
-                    <select
-                        id="activityType"
-                        value={activityType}
-                        onChange={handleActivityTypeChange}
-                    >
-                        <option value="park natural">Parque</option>
-                        <option value="playground">Parque de Juegos</option>
-                        <option value="museum">Museo</option>
-                    </select>
-                </div>
+                <button className={styles.searchButton} onClick={handleSearch}>
+                    Buscar
+                </button>
                 {nextPageToken && (
-                    <button className={styles.loadMoreButton} onClick={initMap}>
+                    <button className={styles.loadMoreButton} onClick={() => searchPlaces(map)}>
                         Cargar Más Resultados
                     </button>
                 )}
@@ -199,25 +194,40 @@ const App = () => {
                                 className={styles.parkItem}
                                 onClick={() => {
                                     setSelectedPlace(place);
+                                    setCurrentImageIndex(0); // Reiniciar índice de imagen al seleccionar un lugar
                                     setIsModalOpen(true);
                                 }}
                             >
-                                <img src={place.photoUrl} alt={place.name} className={styles.parkImage} />
+                                <img src={place.photos.length > 0 ? place.photos[0].getUrl() : '/default-image.png'} alt={place.name} className={styles.parkImage} loading="lazy" />
                                 <span>{place.name}</span>
                                 <div className={styles.parkRating}>⭐ {place.rating}</div>
                             </button>
                         ))}
                     </div>
                 </div>
-                <div id="map" className={styles.map}></div>
+                <div className={styles.mapContainer}>
+                    <div id="map" className={styles.map}></div>
+                </div>
             </div>
             {isModalOpen && selectedPlace && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
-                        <button className={styles.closeButton} onClick={() => setIsModalOpen(false)}>Cerrar</button>
-                        <h2>{selectedPlace.name}</h2>
-                        <img src={selectedPlace.photoUrl} alt={selectedPlace.name} className={styles.modalImage} />
+                        <div className={styles.modalImages}>
+                            {selectedPlace.photos.length > 0 && (
+                                <img
+                                    src={selectedPlace.photos[currentImageIndex].getUrl()}
+                                    alt={selectedPlace.name}
+                                    className={styles.modalImage}
+                                />
+                            )}
+                            <div className={styles.modalNav}>
+                                <button onClick={() => handleImageChange(-1)}>❮</button>
+                                <button onClick={() => handleImageChange(1)}>❯</button>
+                            </div>
+                        </div>
                         <p>{selectedPlace.address}</p>
+                        <button className={styles.scheduleButton}>Agendar</button>
+                        <button className={styles.closeButton} onClick={() => setIsModalOpen(false)}>Cerrar</button>
                     </div>
                 </div>
             )}

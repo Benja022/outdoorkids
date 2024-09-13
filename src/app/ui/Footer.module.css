@@ -1,62 +1,74 @@
-/* El footer lo vamos a sacar a un componente nuevo */
-
 .footer {
-  background-color: #7fdd44;
+  background: #d6ffc6;
+  color: #333;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footerContent {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  flex-wrap: wrap;
 }
 
-.simbolos {
+.contactInfo, .siteLinks, .newsletter, .socialMedia {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.contactInfo h3, .siteLinks h3, .newsletter h3, .socialMedia h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #17c61d;
+}
+
+.contactInfo p {
+  margin: 5px 0;
+}
+
+.siteLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.siteLinks li {
+  margin-bottom: 10px;
+}
+
+.siteLinks a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.siteLinks a:hover {
+  color: #17c61d;
+}
+
+
+.socialMedia {
+  text-align: center;
+}
+
+.socialMedia .socialIcons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
 }
 
-.tiktok-icon {
-  font-size: 30px;
-  color: #070a07;
+.socialMedia .socialIcons a {
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s ease;
 }
 
-.tiktok-icon :hover {
-  color: #0048ff;
+.socialMedia .socialIcons a:hover {
+  color: #17c61d;
 }
 
-.whatsapp-icon {
-  font-size: 40px;
-  color: hsl(143, 71%, 93%);
-}
-
-.whatsapp-icon:hover {
-  color: #005582;
-}
-
-.github-icon {
-  font-size: 35px;
-  color: #000;
-}
-
-.github-icon i:hover {
-  color: #4078c0;
-}
-
-.instagram-icon {
-  font-size: 40px;
-  color: #e1306c;
-}
-.instagram-icon:hover {
-  color: #005582;
-}
-
-.linkedin-icon {
-  font-size: 40px;
-  color: #0077b5;
-}
-
-.linkedin-icon:hover {
-  color: #005582; /* Color del icono al pasar el cursor */
+.footerBottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
 }

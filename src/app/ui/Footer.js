@@ -1,41 +1,40 @@
-/* eslint-disable semi */
-/* eslint-disable space-infix-ops */
-/* eslint-disable no-undef */
-/* eslint-disable quotes */
-/* eslint-disable jsx-quotes */
-import React from "react";
+"use client";
 import style from "./Footer.module.css";
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
-export default function Footer () {
+export default function Footer() {
   return (
     <footer className={style.footer}>
-      <div className="simbolos">
-        <div className={`${style["tiktok-icon"]}`}>
-          <i className={`${style["fab fa-tiktok"]}`} />
+      <div className={style.footerContent}>
+        <div className={style.contactInfo}>
+          <h3>Contacto</h3>
+          <p>Email: OutdoorKids@gmail.com</p>
+          <p>Teléfono: +123 456 7890</p>
+        </div>
+        <div className={style.siteLinks}>
+          <h3>Enlaces Útiles</h3>
+          <ul>
+            <li><Link href="/about">Acerca de nosotros</Link></li>
+            <li><Link href="/contact">Contacto</Link></li>
+            <li><Link href="/privacy-policy">Política de Privacidad</Link></li>
+            <li><Link href="/terms">Términos de Servicio</Link></li>
+          </ul>
         </div>
 
-        <div className={`${style["whatsapp-icon"]}`}>
-          <i className={`${style["fab fa-whatsapp"]}`} />
+        <div className={style.socialMedia}>
+          <h3>Síguenos</h3>
+          <div className={style.socialIcons}>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          </div>
         </div>
-
-        <div className={`${style["github-icon"]}`}>
-          <i className={`${style["fab fa-github"]}`} />
-        </div>
-
-        <div className={`${style["instagram-icon"]}`}>
-          <i className={`${style["fab fa-instagram"]}`} />
-        </div>
-
-        <a href="https://www.linkedin.com" className="linkedin-icon">
-          <i className={`${style["fab fa-linkedin"]}`} />
-        </a>
       </div>
-      <span className="right-text">
-        <p className="copyright-text">
-          &copy;OutdoorKids by Esplai 2024 Todos los derechos reservados
-        </p>
-        <a href="ola.olga5@mail.ru">OutdoorKids@gmail.com</a>
-      </span>
+      <div className={style.footerBottom}>
+        <p>&copy; {new Date().getFullYear()} OutdoorKids. Todos los derechos reservados.</p>
+      </div>
     </footer>
   );
 }

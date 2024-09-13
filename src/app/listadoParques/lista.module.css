@@ -1,79 +1,89 @@
 .App {
-<<<<<<< HEAD
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 200px;
-=======
     background-size: cover;
-    padding: 50px;
+    padding: 80px;
     min-height: 100vh;
->>>>>>> a087f0d6b55d90b5cfa8918082f6c4977747b47c
 }
 
 .h1 {
+    color: #4CAF50;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     text-align: center;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 2.5em;
-    color: #6ab150;
-    margin-top: 20px;
 }
 
-.searchContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
+.searchWrapper {
+    position: relative;
+    width: 100%;
 }
 
-.userInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.userInputInput {
-    border-radius: 25px;
-    border: 2px solid #6ab150;
+.searchInput {
+    width: 100%;
     padding: 10px;
-    font-size: 1.2em;
-    width: 300px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.userInputButton {
-    background-color: #ffeb3b;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 1.2em;
+.searchInputWithFilter {
+    padding-right: 60px; /* Ajuste para el espacio del filtro */
+}
+
+.filterLabel {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: blue;
     cursor: pointer;
-    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownMenu select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.searchButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loadMoreButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.userInputButton:hover {
-    background-color: #fdd835;
-}
-
-.activitySelector {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 1.2em;
-}
-
-.activitySelector select {
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #6ab150;
-    margin-top: 10px;
-    font-size: 1em;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+.loadMoreButton:hover {
+    background-color: #45a049;
 }
 
 .parkList {
@@ -93,6 +103,7 @@
     transition: transform 0.3s ease;
     max-width: 85%;
 }
+
 .parkItem:hover {
     transform: scale(1.05);
 }
@@ -104,9 +115,14 @@
     border-radius: 15px;
 }
 
+.mapContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .map {
     width: 70%;
-    height: 300px;
+    height: 500px;
     margin-top: 20px;
     border-radius: 15px;
 }
@@ -136,12 +152,38 @@
     text-align: center;
 }
 
+.modalImages {
+    position: relative;
+}
+
 .modalImage {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
     margin-top: 10px;
+}
+
+.modalNav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.modalNav button {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modalNav button:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .closeButton {
