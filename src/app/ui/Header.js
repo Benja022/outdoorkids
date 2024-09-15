@@ -41,16 +41,19 @@ export default function Header() {
   return (
     <header className={`${style.header} ${isScrolled ? style.scrolled : ""}`}>
       <div className={style.logoContainer}>
-        <Image
-          className={style.logo}
-          src="/images/Logo.jpg"
-          alt="OutdoorKids Logo"
-          width={80}
-          height={80}
-          style={{ borderRadius: '8px' }} // Puedes ajustar el estilo según tus necesidades
-          // Aquí no se usa layout porque ahora es un prop de estilo
-        />
-        <h1 className={style.title}>OutdoorKids</h1>
+        <Link href="/">
+          <Image
+            className={style.logo}
+            src="/images/Logo.jpg"
+            alt="OutdoorKids Logo"
+            width={80}
+            height={80}
+            style={{ borderRadius: "8px" }}
+          />
+        </Link>
+        <Link href="/">
+          <h1 className={style.title}>OutdoorKids</h1>
+        </Link>
       </div>
       <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
         <ul className={style.navList}>

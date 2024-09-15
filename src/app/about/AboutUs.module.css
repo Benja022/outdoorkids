@@ -1,0 +1,55 @@
+.aboutContainer {
+  max-width: 800px;
+  margin: 120px auto 80px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.aboutTitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.teamMember {
+  width: 250px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.memberImage {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.memberName {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.memberRole {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.memberDescription {
+  font-size: 1em;
+  color: #555;
+}
