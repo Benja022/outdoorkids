@@ -1,16 +1,10 @@
-/* Fondo de la página */
-.pageBackground {
-  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0); /* Gradiente suave */
-  padding: 40px 10%;
-  min-height: 100vh;
-}
-
 /* Contenedor de cada sección alterna */
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 60px 0;
+  width: 100%;
 }
 
 /* Sección con imagen a la izquierda y texto a la derecha */
@@ -23,6 +17,7 @@
   flex: 1;
   padding: 0 20px;
   text-align: left;
+  max-width: 50%; /* Limita el ancho para que no se desborde */
 }
 
 .section.textImage .textBlock p {
@@ -31,20 +26,29 @@
   color: #555;
 }
 
+.section.textImage .textImageSection {
+  flex: 1;
+  max-width: 50%; /* Limita el ancho para que no se desborde */
+}
+
 .section.textImage .textImageSection img {
   width: 100%;
-  max-width: 600px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Sección con imagen arriba y texto abajo */
+/* Sección con imagen a la derecha y texto a la izquierda */
 .section.imageText {
-  text-align: center;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .section.imageText .textBlock {
-  margin-top: 20px;
+  flex: 1;
+  padding: 0 20px;
+  text-align: left;
+  max-width: 50%; /* Limita el ancho para que no se desborde */
 }
 
 .section.imageText .textBlock p {
@@ -53,21 +57,26 @@
   color: #555;
 }
 
+<<<<<<< HEAD
 .image{
   width: auto;
   height: auto;
+=======
+.section.imageText .textImageSection {
+  flex: 1;
+  max-width: 50%; /* Limita el ancho para que no se desborde */
+>>>>>>> 904e32e27496d462696a92f6c992d0f950c5141d
 }
 
 .section.imageText .textImageSection img {
   width: 100%;
-  max-width: 800px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Botón CTA */
 .ctaButton {
-  margin-top: 60px;
+  margin: 60px 0;
   text-align: center;
 }
 
@@ -90,12 +99,12 @@
 
 /* Contenedor del video */
 .videoContainer {
-  margin: 60px 0;
+  margin: 100px 0;
   text-align: center;
 }
 
 .video {
   width: 100%;
-  max-width: 800px;
+  max-width: 800px; /* Asegúrate de que el video no sea demasiado grande */
   border-radius: 12px;
 }
