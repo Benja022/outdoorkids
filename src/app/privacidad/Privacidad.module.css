@@ -1,0 +1,33 @@
+.container {
+  padding: 20px;
+  margin: 120px auto 80px;
+  font-family: 'Raleway', sans-serif;
+  color: #555;
+  height: 100vh;
+  width: 80vw;
+  overflow-y: visible;
+
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.subheader {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}

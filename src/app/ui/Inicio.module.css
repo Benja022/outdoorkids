@@ -57,15 +57,9 @@
   color: #555;
 }
 
-<<<<<<< HEAD
-.image{
-  width: auto;
-  height: auto;
-=======
 .section.imageText .textImageSection {
   flex: 1;
   max-width: 50%; /* Limita el ancho para que no se desborde */
->>>>>>> 904e32e27496d462696a92f6c992d0f950c5141d
 }
 
 .section.imageText .textImageSection img {

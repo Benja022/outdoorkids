@@ -16,7 +16,7 @@ export default function Footer() {
           <h3>Enlaces Útiles</h3>
           <ul>
             <li><Link href="/about">Acerca de nosotros</Link></li>
-            <li><Link href="/privacy-policy">Política de Privacidad</Link></li>
+            <li><Link href="/privacidad">Política de Privacidad</Link></li>
             <li><Link href="/terms">Términos de Servicio</Link></li>
           </ul>
         </div>
