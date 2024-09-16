@@ -3,9 +3,10 @@
 import React from "react";
 import style from "./IniciarSesion.module.css";
 import Image from "next/image";
+import Link from "next/link";
 // import classNames from "classnames"
 
-export default function IniciarSesion () {
+export default function IniciarSesion() {
   return (
     <div className={style.body}>
       <div className={style.formContainer}>
@@ -29,7 +30,13 @@ export default function IniciarSesion () {
           <input type="password" id="password" name="password" required />
           <br />
           <br />
-          <input className={style.btn} type="submit" value="Enviar" />
+          <Link href="/perfilPrivado">
+            <input className={style.btn} type="submit" value="Enviar" />
+          </Link>
+          <p> ¿No tienes cuenta? </p>
+          <Link href="/registro">
+            <p>Registrate</p>
+          </Link>
         </form>
         <div className={style.card}>
           <Image

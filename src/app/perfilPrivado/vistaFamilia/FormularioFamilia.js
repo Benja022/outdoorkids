@@ -1,3 +1,5 @@
+/* eslint-disable multiline-ternary */
+/* eslint-disable jsx-quotes */
 "use client";
 import React, { useState } from "react";
 import style from "./formularioFamilia.module.css";
@@ -6,7 +8,7 @@ import Image from "next/image";
 import ModificarFamilia from "./ModalModificarFamilia";
 
 const FormularioFamilia = () => {
-  const [nickname, setNickname] = useState("Mangor");
+  const [nickname, setNickname] = useState("");
   const [members, setMembers] = useState([
     { role: "Tutor", name: "Benjamín", edad: "30" },
   ]);
@@ -31,6 +33,11 @@ const FormularioFamilia = () => {
         "Por favor, completa todos los campos antes de agregar un nuevo miembro."
       );
     }
+  };
+
+  const handleAddMemberAndClose = () => {
+    handleAddMember();
+    closeModal();
   };
 
   const handleDeleteMember = (index) => {
@@ -78,7 +85,6 @@ const FormularioFamilia = () => {
                 layout="responsive"
               />
             )}
-            <div id="familyPhoto" className={style.profileIcon}></div>
           </div>
         </div>
         <h1 className={classNames(style.headerH1, style.header)}>Alias:</h1>
@@ -87,34 +93,44 @@ const FormularioFamilia = () => {
 
       <h1 className={classNames(style.headerH1, style.header)}>Miembros:</h1>
       <div id="members" className={style.members}>
+        <div className={style.memberTitle}>
+          <p>ROL</p>
+          <p>NOMBRE</p>
+          <p>EDAD</p>
+        </div>
         {members.map((member, index) => (
           <div key={index} className={style.member}>
             <p>{member.role}</p>
             <p>{member.name}</p>
             <p>{member.edad}</p>
-            <button onClick={() => handleDeleteMember(index)}>Eliminar</button>
           </div>
         ))}
       </div>
 
-      <div>
-        <button onClick={openModal}>Agregar/Modificar Familia</button>
+      <button
+        className={classNames(style.fileInputLabel, style.saveBtn)}
+        onClick={openModal}
+      >
+        Agregar/Modificar Familia
+      </button>
 
-        <ModificarFamilia
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          newMember={newMember}
-          handleNewMemberChange={handleNewMemberChange}
-          handleAddMember={handleAddMember}
-          familyPhoto={familyPhoto}
-          handlePhotoChange={handlePhotoChange}
-          nickname={nickname}
-          handleNickname={handleNickname}
-        >
-          <h1 className={style.headerH1}>Modificar familia</h1>
-          <p>Agrega un miembro.</p>
-        </ModificarFamilia>
-      </div>
+      <ModificarFamilia
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        newMember={newMember}
+        handleNewMemberChange={handleNewMemberChange}
+        handleAddMember={handleAddMember}
+        familyPhoto={familyPhoto}
+        handlePhotoChange={handlePhotoChange}
+        nickname={nickname}
+        handleNickname={handleNickname}
+        members={members}
+        handleDeleteMember={handleDeleteMember}
+        handleAddMemberAndClose={handleAddMemberAndClose}
+      >
+        <h1 className={style.headerH1}>Modificar familia</h1>
+        <p>Agrega un miembro.</p>
+      </ModificarFamilia>
     </div>
   );
 };
