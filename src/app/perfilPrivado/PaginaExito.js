@@ -6,16 +6,16 @@ import Image from "next/image";
 
 const PaginaExito = () => {
   return (
-    <div>
+    <div className={style.container}>
       <div className={style.formContainer}>
         <div className={style.contenedorEstrellas}>
-          <Link href="/perfilPrivado/vistaFamilia">
+          <Link href="/perfilPrivado/vistaFamilia" passHref>
             <div className={style.estrellaFamilia}>
               <Image
                 src="/images/estrella.png"
-                width={200}
-                height={200}
                 alt="enlace a mi familia"
+                layout="fill"
+                objectFit="cover"
               />
               <div className={style.textoSobreImagen}>MI FAMILIA</div>
             </div>
@@ -24,21 +24,21 @@ const PaginaExito = () => {
             <div className={style.estrellaMapa}>
               <Image
                 src="/images/estrella.png"
-                width={200}
-                height={200}
                 alt="enlace a mapa"
+                layout="fill"
+                objectFit="cover"
               />
               <div className={style.textoSobreImagen}>MAPA</div>
             </div>
           </Link>
         </div>
-        <Link href="/perfilPrivado/vistaAgenda">
+        <Link href="/perfilPrivado/vistaAgenda" passHref>
           <div className={style.estrellaAgenda}>
             <Image
               src="/images/estrella.png"
-              width={200}
-              height={200}
               alt="enlace a Agenda"
+              layout="fill"
+              objectFit="cover"
             />
             <div className={style.textoSobreImagen}>AGENDA</div>
           </div>

@@ -48,7 +48,6 @@ export default function Header() {
             alt="OutdoorKids Logo"
             width={80}
             height={80}
-            style={{ borderRadius: "8px" }}
           />
         </Link>
         <Link href="/">
