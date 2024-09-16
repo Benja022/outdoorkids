@@ -1,5 +1,17 @@
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+
+}
+
+/* Estilo general del contenedor */
 .formContainer {
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 140px;
   padding: 10px;
   border-radius: 90px;
@@ -7,34 +19,54 @@
   width: 50%;
   text-align: center;
   font-size: 20px;
-}
-.card {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo transparente */
 }
 
-.estrellaFamilia,
-.estrellaMapa,
-.estrellaAgenda {
-  position: relative; /* Para que funcione bien el texto sobre la imagen */
-}
-
+/* Contenedor de botones */
 .contenedorEstrellas {
-  display: flex;
   justify-content: center;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 160px;
+  gap: 20px;
   width: 100%;
-  /* padding-top: 20px; */
+  padding: 20px;
+}
+
+/* Botones arriba */
+.estrellaFamilia,
+.estrellaMapa {
+  position: relative;
+  width: 150px; /* Tamaño del botón reducido */
+  height: 150px; /* Tamaño del botón reducido */
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.estrellaFamilia:hover,
+.estrellaMapa:hover {
+  transform: scale(1.05);
+}
+
+.estrellaFamilia:active,
+.estrellaMapa:active {
+  transform: scale(0.96);
 }
 
 .estrellaAgenda {
+  position: relative;
+  width: 150px; /* Tamaño del botón reducido */
+  height: 150px; /* Tamaño del botón reducido */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 20px auto 0; /* Espacio entre los botones */
+  transition: transform 0.2s ease-in-out;
 }
 
 .textoSobreImagen {
@@ -43,20 +75,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(206, 83, 12);
-  font-size: 24px;
+  font-size: 18px; /* Tamaño del texto reducido */
   font-weight: bold;
-  /*z-index: 2;  Asegura que el texto esté por encima */
 }
 
-.estrellaFamilia:hover,
-.estrellaMapa:hover,
-.estrellaAgenda:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
+/* Imagen de abajo */
+.card {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto;
 }
 
-.estrellaFamilia:active,
-.estrellaMapa:active,
-.estrellaAgenda:active {
-  transform: scale(0.96); /* Efecto de "presionado" */
+
+/* Imagen de abajo */
+.cardImage {
+  width: 80%; /* Reducido */
+  max-width: 300px; /* Máximo tamaño */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
 }

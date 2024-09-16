@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import styles from "./GuardarVisita.module.css";
 
 const GuardarVisita = () => {
-  const [fecha, setFecha] = useState("14/10/2024");
-  const [hora, setHora] = useState("15:15");
-  const [parque, setParque] = useState("Los cartones");
+  const [fecha, setFecha] = useState("");
+  const [hora, setHora] = useState("");
+  const [parque, setParque] = useState("");
   const [visitas, setVisitas] = useState([]);
 
   const handleSubmit = (e) => {

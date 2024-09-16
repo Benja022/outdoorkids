@@ -1,104 +1,91 @@
-/* Contenedor de cada sección alterna */
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 60px 0;
+.videoSection {
+  position: relative;
   width: 100%;
-}
-
-/* Sección con imagen a la izquierda y texto a la derecha */
-.section.textImage {
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.section.textImage .textBlock {
-  flex: 1;
-  padding: 0 20px;
-  text-align: left;
-  max-width: 50%; /* Limita el ancho para que no se desborde */
-}
-
-.section.textImage .textBlock p {
-  font-size: 1.2rem;
-  font-family: 'Raleway', sans-serif;
-  color: #555;
-}
-
-.section.textImage .textImageSection {
-  flex: 1;
-  max-width: 50%; /* Limita el ancho para que no se desborde */
-}
-
-.section.textImage .textImageSection img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Sección con imagen a la derecha y texto a la izquierda */
-.section.imageText {
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.section.imageText .textBlock {
-  flex: 1;
-  padding: 0 20px;
-  text-align: left;
-  max-width: 50%; /* Limita el ancho para que no se desborde */
-}
-
-.section.imageText .textBlock p {
-  font-size: 1.2rem;
-  font-family: 'Raleway', sans-serif;
-  color: #555;
-}
-
-.section.imageText .textImageSection {
-  flex: 1;
-  max-width: 50%; /* Limita el ancho para que no se desborde */
-}
-
-.section.imageText .textImageSection img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Botón CTA */
-.ctaButton {
-  margin: 60px 0;
-  text-align: center;
-}
-
-.btn {
-  background-color: #00796b;
-  color: white;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.btn:hover {
-  background-color: #004d40;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Contenedor del video */
-.videoContainer {
-  margin: 100px 0;
-  text-align: center;
+  height: 400px; /* Ajusta la altura según tus necesidades */
+  overflow: hidden;
 }
 
 .video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px; /* Asegúrate de que el video no sea demasiado grande */
-  border-radius: 12px;
+  height: 100%;
+  object-fit: cover; /* Ajusta la escala del video para llenar el contenedor */
+  z-index: -1; /* Asegúrate de que el video esté detrás del contenido */
+}
+
+.overlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegúrate de que el texto esté por encima del video */
+  color: white; /* Ajusta el color del texto según tu diseño */
+  text-align: center;
+}
+
+.welcomeText {
+  font-size: 36px; /* Ajusta el tamaño del texto según tu diseño */
+  margin: 0;
+}
+
+.videoContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.section {
+  padding: 20px;
+}
+
+.textImage, .imageText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.textImage .textBlock {
+  flex: 1;
+  padding: 20px;
+}
+
+.textImage .textImageSection {
+  flex: 1;
+}
+
+.imageText .textImageSection {
+  flex: 1;
+}
+
+.imageText .textBlock {
+  flex: 1;
+  padding: 20px;
+}
+
+.textBlock h1, .textBlock h2 {
+  font-size: 28px;
+}
+
+.textBlock p {
+  font-size: 16px;
+}
+
+.ctaButton {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  background-color: #007bff; /* Ajusta el color del botón según tu diseño */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Ajusta el color del botón al pasar el mouse */
 }

@@ -1,34 +1,48 @@
-'use client'
-import Image from "next/image";
+"use client";
 import style from "./Inicio.module.css";
-import { useEffect } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function Inicio() {
+  const [backgroundClass, setBackgroundClass] = useState(style.pageBackground1);
+
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({
+      duration: 1000, // Duración de la animación
+    });
   }, []);
 
   return (
-    <div className={style.pageBackground}>
+    <div className={backgroundClass}>
+      {/* Sección de video en el header */}
+      <section id="banner" className={style.videoSection}>
+        <video
+          className={style.video}
+          preload="auto"
+          autoPlay
+          loop
+          muted
+        >
+          <source src="/videos/niñosheader.mp4" type="video/mp4" />
+          {/* Puedes añadir más fuentes si tienes otros formatos */}
+          Sorry, your browser does not support HTML5 video.
+        </video>
+        <div className={style.overlayText}>
+          <h1 className={style.welcomeText}>¡Bienvenido a OutdoorKids!</h1>
+        </div>
+      </section>
+
       {/* Sección de video al principio */}
       <div className={style.videoContainer} data-aos="fade-up">
-        <h1 className={style.welcomeText}>¡Bienvenido a OutdoorKids!</h1>
-        <iframe
-          className={style.video}
-          src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1"
-          title="video promocional OutdoorKids"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
+        {/* Puedes añadir un segundo video aquí si lo deseas */}
       </div>
 
-      {/* Resto del contenido */}
-      <div className={style.section + ' ' + style.textImage} data-aos="fade-up">
+      {/* Secciones de contenido */}
+      <div className={`${style.section} ${style.textImage}`} data-aos="fade-up">
         <div className={style.textBlock}>
-          <h1>Descubre la Naturaleza</h1>
+          <h1 className={style.welcomeText}>Descubre la Naturaleza</h1>
           <p>
             Nuestra misión es inspirar a los niños a disfrutar de la naturaleza
             mientras aprenden la importancia de protegerla.
@@ -44,7 +58,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      <div className={style.section + ' ' + style.imageText} data-aos="fade-up">
+      <div className={`${style.section} ${style.imageText}`} data-aos="fade-up">
         <div className={style.textImageSection}>
           <Image
             src="/images/jugando.avif"
@@ -60,7 +74,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      <div className={style.section + ' ' + style.textImage} data-aos="fade-up">
+      <div className={`${style.section} ${style.textImage}`} data-aos="fade-up">
         <div className={style.textBlock}>
           <h2>¡Únete a la Aventura!</h2>
           <p>
@@ -77,7 +91,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      <div className={style.section + ' ' + style.imageText} data-aos="fade-up">
+      <div className={`${style.section} ${style.imageText}`} data-aos="fade-up">
         <div className={style.textImageSection}>
           <Image
             src="/images/airelibre.jpg"
