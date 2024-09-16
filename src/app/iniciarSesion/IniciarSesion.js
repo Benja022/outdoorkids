@@ -13,10 +13,7 @@ export default function IniciarSesion() {
           alt="logo"
           width={120}
           height={120}
-<<<<<<< HEAD
-=======
           layout="intrinsic"
->>>>>>> 904e32e27496d462696a92f6c992d0f950c5141d
         />
         <form action="/registro.php" id="formulario-registro">
           <legend className={style.legend}>Inicia Sesión</legend>
