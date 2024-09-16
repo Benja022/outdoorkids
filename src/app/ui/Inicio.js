@@ -7,16 +7,28 @@ import 'aos/dist/aos.css';
 
 export default function Inicio() {
   useEffect(() => {
-    AOS.init({
-      duration: 1000, // Duración de la animación
-    });
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
     <div className={style.pageBackground}>
+      {/* Sección de video al principio */}
+      <div className={style.videoContainer} data-aos="fade-up">
+        <h1 className={style.welcomeText}>¡Bienvenido a OutdoorKids!</h1>
+        <iframe
+          className={style.video}
+          src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1"
+          title="video promocional OutdoorKids"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+
+      {/* Resto del contenido */}
       <div className={style.section + ' ' + style.textImage} data-aos="fade-up">
         <div className={style.textBlock}>
-          <h1 className={style.welcomeText}>Descubre la Naturaleza</h1>
+          <h1>Descubre la Naturaleza</h1>
           <p>
             Nuestra misión es inspirar a los niños a disfrutar de la naturaleza
             mientras aprenden la importancia de protegerla.
@@ -31,11 +43,11 @@ export default function Inicio() {
           />
         </div>
       </div>
-      
+
       <div className={style.section + ' ' + style.imageText} data-aos="fade-up">
         <div className={style.textImageSection}>
           <Image
-            src="/images/imagen3.jpg"
+            src="/images/jugando.avif"
             alt="familia en aire libre"
             width={800}
             height={500}
@@ -46,18 +58,6 @@ export default function Inicio() {
             Con nuestro mapa interactivo, los pequeños exploradores pueden descubrir parques y actividades emocionantes que respetan y protegen el medio ambiente.
           </p>
         </div>
-      </div>
-
-      <div className={style.videoContainer} data-aos="fade-up">
-        <iframe
-          className={style.video}
-          src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1"
-          title="video promocional OutdoorKids"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
       </div>
 
       <div className={style.section + ' ' + style.textImage} data-aos="fade-up">
@@ -80,7 +80,7 @@ export default function Inicio() {
       <div className={style.section + ' ' + style.imageText} data-aos="fade-up">
         <div className={style.textImageSection}>
           <Image
-            src="/images/actividades"
+            src="/images/airelibre.jpg"
             alt="actividades al aire libre"
             width={800}
             height={500}
@@ -99,4 +99,3 @@ export default function Inicio() {
     </div>
   );
 }
-
