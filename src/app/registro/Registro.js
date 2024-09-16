@@ -15,7 +15,6 @@ export default function Registro() {
           alt="logo"
           width={120}
           height={120}
-          layout="resposive"
         />
         <form action="/registro.php" id="formulario-registro">
           <legend>Registrate!</legend>
@@ -51,7 +50,6 @@ export default function Registro() {
             alt="imagenes de debajo del registro"
             width={600}
             height={400}
-            layout="responsive"
           />
         </div>
       </div>

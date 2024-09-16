@@ -37,8 +37,8 @@ export default function Inicio() {
           <Image
             src="/images/imagen3.jpg"
             alt="familia en aire libre"
-            width={800}
-            height={500}
+            width={600}
+            height={400}
           />
         </div>
         <div className={style.textBlock}>
@@ -73,6 +73,7 @@ export default function Inicio() {
             alt="exploradores"
             width={600}
             height={400}
+            className={style.image}
           />
         </div>
       </div>
@@ -82,8 +83,8 @@ export default function Inicio() {
           <Image
             src="/images/actividades"
             alt="actividades al aire libre"
-            width={800}
-            height={500}
+            width={600}
+            height={400}
           />
         </div>
         <div className={style.textBlock}>

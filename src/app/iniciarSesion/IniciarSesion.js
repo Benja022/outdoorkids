@@ -16,7 +16,6 @@ export default function IniciarSesion() {
           alt="logo"
           width={120}
           height={120}
-          layout="resposive"
         />
         <form action="/registro.php" id="formulario-registro">
           <legend>Inicia Sesión</legend>
@@ -44,7 +43,6 @@ export default function IniciarSesion() {
             alt="imagenes de debajo del registro"
             width={600}
             height={400}
-            layout="responsive"
           />
         </div>
       </div>

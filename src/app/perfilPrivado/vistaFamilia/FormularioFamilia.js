@@ -73,7 +73,6 @@ const FormularioFamilia = () => {
                 alt="Imagen de la familia"
                 width={200}
                 height={200}
-                layout="responsive"
               />
             ) : (
               <Image
@@ -82,7 +81,6 @@ const FormularioFamilia = () => {
                 alt="Imagen de la familia"
                 width={200}
                 height={200}
-                layout="responsive"
               />
             )}
           </div>

@@ -53,6 +53,11 @@
   color: #555;
 }
 
+.image{
+  width: auto;
+  height: auto;
+}
+
 .section.imageText .textImageSection img {
   width: 100%;
   max-width: 800px;

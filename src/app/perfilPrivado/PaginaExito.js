@@ -20,7 +20,7 @@ const PaginaExito = () => {
               <div className={style.textoSobreImagen}>MI FAMILIA</div>
             </div>
           </Link>
-          <Link href="/listadoParques">
+          <Link href="/perfilPrivado/listadoParques">
             <div className={style.estrellaMapa}>
               <Image
                 src="/images/estrella.png"
@@ -45,7 +45,10 @@ const PaginaExito = () => {
         </Link>
       </div>
       <div className={style.card}>
-        <img src="images/imagenAbajoDeReistro.png" />
+        <Image src="/images/imagenAbajoDeReistro.png"
+        width={800}
+        height={400}
+        alt="imagen de abajo del registro" />
       </div>
     </div>
   );
