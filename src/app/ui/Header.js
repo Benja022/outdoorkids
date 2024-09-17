@@ -1,45 +1,78 @@
 "use client";
-/* eslint-disable semi */
-/* eslint-disable space-infix-ops */
-/* eslint-disable no-undef */
-/* eslint-disable quotes */
-/* eslint-disable jsx-quotes */
-import Image from "next/image";
 import style from "./Header.module.css";
-import NavegadorHamburguesa from "./NavegadorHamburguesa";
-import Navegador from "./Navegador";
-import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { FaUser, FaQuestionCircle, FaTimes, FaBars } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 992);
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener("resize", handleResize);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    // Cleanup listener on component unmount
+    // Set initial values
+    handleResize();
+    handleScroll();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className={style.header}>
-      <div className={style.logo}>
-        <Image
-          className={style.logo}
-          src="/images/Logo.jpg"
-          alt="logo"
-          width={120}
-          height={120}
-          layout="resposive"
-        />
+    <header className={`${style.header} ${isScrolled ? style.scrolled : ""}`}>
+      <div className={style.logoContainer}>
+        <Link href="/">
+          <Image
+            className={style.logo}
+            src="/images/Logo.jpg"
+            alt="OutdoorKids Logo"
+            width={80}
+            height={80}
+          />
+        </Link>
+        <Link href="/">
+          <h1 className={style.title}>OutdoorKids</h1>
+        </Link>
       </div>
-      <h6 className={style.text}>OutdoorKids</h6>
-      <div>{isMobile ? <NavegadorHamburguesa /> : <Navegador />}</div>{" "}
+      <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
+        <ul className={style.navList}>
+          <li>
+            <Link href="/iniciarSesion">
+              <FaUser className={style.icon} />
+            </Link>
+          </li>
+          <li>
+            <Link href="/faq">
+              <FaQuestionCircle className={style.icon} />
+            </Link>
+          </li>
+        </ul>
+        {isMobile && (
+          <button className={style.menuToggle} onClick={toggleMenu}>
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        )}
+      </nav>
     </header>
   );
 }

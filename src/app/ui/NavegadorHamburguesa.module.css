@@ -50,13 +50,18 @@
   .navegacion a:hover {
     color: brown;
   }
+
+  .hamburguesa{
+    border: 1px solid white;
+    border-radius: 5px;
+  }
   
   .hamburguesa span {
     background-color: white;
     display: block;
     width: 50px;
     height: 4px;
-    margin-bottom: 5px;
+    margin: 5px ;
   }
   
   .hamburguesa:hover {

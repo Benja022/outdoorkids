@@ -146,6 +146,14 @@ import Link from 'next/link';
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+#### LIBRERIAS EXTERNAS A NEXTJS
+
+- **react-icons**: Para utilizar iconos de FontAwesome.
+- **classnames**: Para añadir más de una clase a un componente.
+- **aos**: Para añadir animaciones a los componentes.
+- **react-drag-and-drop-files**: Para añadir la funcionalidad de arrastrar y soltar.
+
+
 ## Getting Started
 
 First, run the development server:

@@ -1,27 +1,54 @@
+/* eslint-disable jsx-quotes */
 import React from "react";
 import style from "./paginaExito.module.css";
+import Link from "next/link";
+import Image from "next/image";
 
 const PaginaExito = () => {
   return (
-    <div>
+    <div className={style.container}>
       <div className={style.formContainer}>
         <div className={style.contenedorEstrellas}>
-          <div className={style.estrellaFamilia}>
-            <img src="images/estrella.png" />
-            <div className={style.textoSobreImagen}>MI FAMILIA</div>
-          </div>
-          <div className={style.estrellaMapa}>
-            <img src="images/estrella.png" />
-            <div className={style.textoSobreImagen}>MAPA</div>
-          </div>
+          <Link href="/perfilPrivado/vistaFamilia" passHref>
+            <div className={style.estrellaFamilia}>
+              <Image
+                src="/images/estrella.png"
+                alt="enlace a mi familia"
+                layout="fill"
+                objectFit="cover"
+              />
+              <div className={style.textoSobreImagen}>MI FAMILIA</div>
+            </div>
+          </Link>
+          <Link href="/perfilPrivado/listadoParques">
+            <div className={style.estrellaMapa}>
+              <Image
+                src="/images/estrella.png"
+                alt="enlace a mapa"
+                layout="fill"
+                objectFit="cover"
+              />
+              <div className={style.textoSobreImagen}>MAPA</div>
+            </div>
+          </Link>
         </div>
-        <div className={style.estrellaAgenda}>
-          <img src="images/estrella.png" />
-          <div className={style.textoSobreImagen}>AGENDA</div>
-        </div>
+        <Link href="/perfilPrivado/vistaAgenda" passHref>
+          <div className={style.estrellaAgenda}>
+            <Image
+              src="/images/estrella.png"
+              alt="enlace a Agenda"
+              layout="fill"
+              objectFit="cover"
+            />
+            <div className={style.textoSobreImagen}>AGENDA</div>
+          </div>
+        </Link>
       </div>
       <div className={style.card}>
-        <img src="images/imagenAbajoDeReistro.png" />
+        <Image src="/images/imagenAbajoDeReistro.png"
+        width={800}
+        height={400}
+        alt="imagen de abajo del registro" />
       </div>
     </div>
   );

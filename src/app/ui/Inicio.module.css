@@ -1,103 +1,91 @@
-/*video*/
-.videoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  margin-top: 200px;
+.videoSection {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Ajusta la altura según tus necesidades */
+  overflow: hidden;
 }
 
 .video {
-  display: block;
-  width: 800px;
-  height: 450px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la escala del video para llenar el contenedor */
+  z-index: -1; /* Asegúrate de que el video esté detrás del contenido */
 }
 
-/* Centro de la página */
-.contenedorNosotros {
+.overlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegúrate de que el texto esté por encima del video */
+  color: white; /* Ajusta el color del texto según tu diseño */
+  text-align: center;
+}
+
+.welcomeText {
+  font-size: 36px; /* Ajusta el tamaño del texto según tu diseño */
+  margin: 0;
+}
+
+.videoContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.section {
+  padding: 20px;
+}
+
+.textImage, .imageText {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding-top: 30px;
+  margin-bottom: 40px;
 }
 
-.textoImagenesNosotros {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.textImage .textBlock {
+  flex: 1;
+  padding: 20px;
 }
 
-.bienvenido {
-  font-size: 40px;
+.textImage .textImageSection {
+  flex: 1;
+}
+
+.imageText .textImageSection {
+  flex: 1;
+}
+
+.imageText .textBlock {
+  flex: 1;
+  padding: 20px;
+}
+
+.textBlock h1, .textBlock h2 {
+  font-size: 28px;
+}
+
+.textBlock p {
+  font-size: 16px;
+}
+
+.ctaButton {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  background-color: #007bff; /* Ajusta el color del botón según tu diseño */
   color: white;
-}
-
-.outdoorTitle {
-  font-size: 40px;
-  color: orange;
-  font-weight: bold;
-  padding-bottom: 20px;
-}
-
-/* Párrafos */
-.textoNosotrosParrafos {
-  font-size: 20px;
-  text-align: justify;
-  padding-top: 20px;
-  padding-left: 20px;
-  color: white;
-}
-
-/* Contenedor de las imágenes */
-.imagenesNosotros {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-}
-
-.img {
-  border-radius: 20px;
-  min-width: 300px;
-  min-height: 200px;
-}
-
-/* Botón ¡Únete */
-
-.contenedorBotonRojo {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Opcional: para centrar verticalmente también */
-}
-
-.btnRojo {
-  background-color: #ff0000;
-  color: white;
-  border: solid;
+  border: none;
   padding: 10px 20px;
-  font-size: 25px;
-  border-radius: 30px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Suaviza el cambio de color al pasar el ratón */
-  /* display: inline-block; */
-  margin: 30px 0;
 }
 
-.btnRojo:hover {
-  background-color: rgb(212, 206, 32);
-}
-
-@media only screen and (max-width: 992px) {
-  .imagenesNosotros {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .img {
-    width: 100%;
-  }
+.btn:hover {
+  background-color: #0056b3; /* Ajusta el color del botón al pasar el mouse */
 }

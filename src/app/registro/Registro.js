@@ -1,57 +1,55 @@
-/* eslint-disable quotes */
-/* eslint-disable jsx-quotes */
 import React from "react";
 import style from "./Registro.module.css";
 import Image from "next/image";
-// import classNames from "classnames"
+import Link from "next/link";
 
 export default function Registro() {
   return (
     <div className={style.body}>
-      <div class={style.formContainer}>
+      <div className={style.formContainer}>
         <Image
           className={style.logo}
           src="/images/Logo.jpg"
           alt="logo"
           width={120}
           height={120}
-          layout="resposive"
+<<<<<<< HEAD
+=======
+          layout="responsive"
+>>>>>>> 904e32e27496d462696a92f6c992d0f950c5141d
         />
         <form action="/registro.php" id="formulario-registro">
-          <legend>Registrate!</legend>
-          <br />
-          <label htmlFor="nombre">Nombre:</label>
-          <br />
-          <input type="text" id="nombre" name="nombre" required />
-          <br />
-          <label htmlFor="apellidos">Apellidos:</label>
-          <br />
-          <input type="text" id="peque" name="peque" />
-          <br />
-          <label htmlFor="correo">Correo Electronico:</label>
-          <br />
-          <input type="email" id="correo" name="correo" required />
-          <br />
-          <label htmlFor="password">Contraseña:</label>
-          <br />
-          <input type="password" id="password" name="password" required />
-          <br />
-          <br />
+          <legend className={style.legend}>¡Regístrate!</legend>
+          
+          <label className={style.label} htmlFor="nombre">Nombre:</label>
+          <input className={style.input} type="text" id="nombre" name="nombre" required />
+          
+          <label className={style.label} htmlFor="apellidos">Apellidos:</label>
+          <input className={style.input} type="text" id="apellidos" name="apellidos" />
+          
+          <label className={style.label} htmlFor="correo">Correo Electrónico:</label>
+          <input className={style.input} type="email" id="correo" name="correo" required />
+          
+          <label className={style.label} htmlFor="password">Contraseña:</label>
+          <input className={style.input} type="password" id="password" name="password" required />
+          
           <input className={style.btn} type="submit" value="Enviar" />
         </form>
-        <div class={style.textInicio}>
-          <h3>Ya tienes cuenta?</h3>
-          <a className={style.btn} href="#">
-            Inicia Sesión
-          </a>
+        
+        <div className={style.textContainer}>
+          <h3 className={style.text}>¿Ya tienes cuenta?</h3>
+          <Link href="/iniciarSesion" className={style.link}>
+                  Inicia Sesión
+            </Link>
+
         </div>
-        <div class={style.card}>
+        
+        <div className={style.cardImage}>
           <Image
             src="/images/imagenAbajoDeReistro.png"
-            alt="imagenes de debajo del registro"
+            alt="Imagen de abajo del registro"
             width={600}
             height={400}
-            layout="responsive"
           />
         </div>
       </div>
