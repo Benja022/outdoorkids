@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable semi */
 /* eslint-disable multiline-ternary */
 /* eslint-disable jsx-quotes */
 "use client";
@@ -6,6 +8,7 @@ import style from "./formularioFamilia.module.css";
 import classNames from "classnames";
 import Image from "next/image";
 import ModificarFamilia from "./ModalModificarFamilia";
+import Link from "next/link";
 
 const FormularioFamilia = () => {
   const [nickname, setNickname] = useState("");
@@ -65,6 +68,9 @@ const FormularioFamilia = () => {
       <div className={style.header}>
         <h1 className={style.headerH1}>Mi familia</h1>
         <div className={style.familyNicknameContainer}>
+          <Link href="/perfilPrivado" passHref>
+            <span className={style.backButton}>&#8592;</span>
+          </Link>
           <div className={style.familyPhoto}>
             {familyPhoto ? (
               <Image
