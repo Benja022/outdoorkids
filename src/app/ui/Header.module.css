@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s, padding 0.3s;
-  z-index: 1000; /* Asegúrate de que el encabezado esté por encima del video */
+  z-index: 1000; 
 }
 
 .header.scrolled {

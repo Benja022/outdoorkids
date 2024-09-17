@@ -13,10 +13,7 @@ export default function Registro() {
           alt="logo"
           width={120}
           height={120}
-<<<<<<< HEAD
-=======
           layout="responsive"
->>>>>>> 904e32e27496d462696a92f6c992d0f950c5141d
         />
         <form action="/registro.php" id="formulario-registro">
           <legend className={style.legend}>¡Regístrate!</legend>
@@ -48,8 +45,8 @@ export default function Registro() {
           <Image
             src="/images/imagenAbajoDeReistro.png"
             alt="Imagen de abajo del registro"
-            width={600}
-            height={400}
+            width={300}
+            height={200}
           />
         </div>
       </div>

@@ -12,17 +12,11 @@ const useGoogleMaps = (apiKey) => {
         const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
         script.async = true;
-        script.defer = true;
-
-        script.onload = () => {
-            setLoaded(true);  // Indicar que la API está cargada
-        };
-
-        document.head.appendChild(script);
+        script.onload = () => setLoaded(true);
+        document.body.appendChild(script);
 
         return () => {
-            // Limpiar el script cuando se desmonta el componente si es necesario
-            document.head.removeChild(script);
+            document.body.removeChild(script);
         };
     }, [apiKey]);
 

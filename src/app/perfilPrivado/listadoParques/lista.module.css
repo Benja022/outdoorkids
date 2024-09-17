@@ -1,173 +1,149 @@
+/* lista.module.css */
+
 .App {
-    background-size: cover;
-    padding: 80px;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 120px auto 80px;
+    padding: 0;
+    color: #333;
 }
 
 .h1 {
-    color: #4CAF50;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
     text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
 }
 
 .searchWrapper {
-    position: relative;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    flex-wrap: wrap;
 }
 
 .searchInput {
-    width: 100%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.searchInputWithFilter {
-    padding-right: 60px; /* Ajuste para el espacio del filtro */
-}
-
-.filterLabel {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: blue;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.dropdownMenu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdownMenu select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 250px;
 }
 
 .searchButton {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.loadMoreButton {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.loadMoreButton:hover {
-    background-color: #45a049;
+.searchButton:hover {
+    background-color: #218838;
+}
+
+.filterContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.filterLabel {
+    margin-right: 10px;
+}
+
+.dropdownMenu {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .parkList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* cuatro elementos por fila */
-    gap: 10px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
 }
 
 .parkItem {
-    background-color: #ffffff;
-    border-radius: 30px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
     padding: 10px;
-    text-align: center;
+    width: 200px;
     cursor: pointer;
-    transition: transform 0.3s ease;
-    max-width: 85%;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
 .parkItem:hover {
-    transform: scale(1.05);
+    background-color: #e2e6ea;
 }
 
 .parkImage {
     width: 100%;
-    height: 120px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 4px;
 }
 
 .mapContainer {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    height: 400px;
+    margin: 20px;
 }
 
 .map {
-    width: 70%;
-    height: 500px;
-    margin-top: 20px;
-    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-/* Modal */
+/* lista.module.css */
 .modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .modalContent {
-    background-color: rgb(193, 228, 201);
+    background: white;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 300px; /* Ajusta el ancho máximo del modal */
     padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    text-align: center;
+    z-index: 1002;
 }
 
 .modalImages {
     position: relative;
+    margin-bottom: 20px;
 }
 
 .modalImage {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 10px;
+    height: auto;
+    object-fit: cover; /* Recorta la imagen para ajustarla al contenedor */
+    border-radius: 8px;
 }
 
 .modalNav {
     position: absolute;
     top: 50%;
-    width: 100%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
@@ -175,27 +151,29 @@
 
 .modalNav button {
     background: rgba(0, 0, 0, 0.5);
-    border: none;
     color: white;
+    border: none;
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.modalNav button:hover {
-    background: rgba(0, 0, 0, 0.7);
+.modalActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
+.scheduleButton,
 .closeButton {
-    background-color: #f44336;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-.closeButton:hover {
-    background-color: #d32f2f;
+.closeButton {
+    background-color: #dc3545;
 }
