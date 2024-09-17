@@ -88,7 +88,7 @@
 .marqueeContent {
   display: flex;
   white-space: nowrap;
-  animation: marquee 60s linear infinite;
+  animation: marquee 20s linear infinite;
 }
 
 .marqueeImage {
@@ -102,7 +102,7 @@
 
 @keyframes marquee {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-100%);
