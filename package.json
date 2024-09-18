@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "aos": "^2.3.4",
     "classnames": "^2.5.1",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^2.4.0",
