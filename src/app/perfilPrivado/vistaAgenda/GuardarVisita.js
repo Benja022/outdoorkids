@@ -81,7 +81,7 @@ const GuardarVisita = () => {
           <li className={styles.visitaItem} key={index}>
             <span>{visita.fecha}</span>
             <span>{visita.hora}</span>
-            <spa>{visita.parque}</spa>
+            <span>{visita.parque}</span>
             <button
               onClick={() => handleDelete(index)}
               className={styles.deleteButton}
