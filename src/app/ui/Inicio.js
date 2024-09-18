@@ -2,7 +2,7 @@
 import React from 'react';
 import style from "./Inicio.module.css";
 import Image from "next/image";
-import Link from 'next/link'; // Asegúrate de importar Link desde next/link
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -68,82 +68,86 @@ export default function Inicio() {
             />
           </div>
         </div>
-
+        
         <div className={style.marquee}>
-          <div className={style.marqueeContent}>
-            {/* Contenido duplicado para el efecto continuo */}
-            {Array.from({ length: 2 }, (_, i) => (
-              <React.Fragment key={i}>
-                <Image
-                  src="/images/parquebolas.jfif"
-                  alt="Parque de bolas"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/museoavion.jpg"
-                  alt="Museo de aviación"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/parqueagua.webp"
-                  alt="Parque de agua"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/parquenatural.jfif"
-                  alt="Parque natural"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/parquetesoro.jfif"
-                  alt="Parque del tesoro"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/acuario.jfif"
-                  alt="Acuario"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/agua.jpg"
-                  alt="Parque del agua"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/columpio.jpg"
-                  alt="Parque del columpio"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/museo.jfif"
-                  alt="Museo"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/tobogan.jfif"
-                  alt="Parque del tobogán"
-                  width={300}
-                  height={200}
-                />
-                <Image
-                  src="/images/plaza.webp"
-                  alt="Plaza"
-                  width={300}
-                  height={200}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
+  <div className={style.marqueeText}>
+    OutdoorKids: Juegos Verdes, Futuro Seguro.
+  </div>
+  <div className={style.marqueeContent}>
+    {Array.from({ length: 2 }, (_, i) => (
+      <React.Fragment key={i}>
+        <Image
+          src="/images/parquebolas.jfif"
+          alt="Parque de bolas"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/museoavion.jpg"
+          alt="Museo de aviación"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/parqueagua.webp"
+          alt="Parque de agua"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/parquenatural.jfif"
+          alt="Parque natural"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/parquetesoro.jfif"
+          alt="Parque del tesoro"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/acuario.jfif"
+          alt="Acuario"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/agua.jpg"
+          alt="Parque del agua"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/columpio.jpg"
+          alt="Parque del columpio"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/museo.jfif"
+          alt="Museo"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/tobogan.jfif"
+          alt="Parque del tobogán"
+          width={300}
+          height={200}
+        />
+        <Image
+          src="/images/plaza.webp"
+          alt="Plaza"
+          width={300}
+          height={200}
+        />
+      </React.Fragment>
+    ))}
+  </div>
+</div>
+
+
 
         <div className={`${style.section} ${style.imageText}`} data-aos="fade-up">
           <div className={style.textImageSection}>
@@ -214,10 +218,10 @@ export default function Inicio() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <div className={style.ctaButton} data-aos="fade-up">
-          <Link href="/registro">
-                <button className={style.scheduleButton}>¡Únete!</button>
-              </Link>
+          <div className={style.ctaButton}>
+            <Link href="/registro">
+              <button className={style.scheduleButton}>¡Únete!</button>
+            </Link>
           </div>
         </div>
       </div>
