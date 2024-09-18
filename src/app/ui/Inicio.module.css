@@ -75,31 +75,52 @@
   font-size: 1rem;
   line-height: 1.6;
 }
-
+/* Estilo para el contenedor del marquee */
 .marquee {
-  overflow: hidden;
-  width: 100%;
-  background-color: #e0e0e0; /* Ajusta el color de fondo según sea necesario */
-  padding: 10px 0;
-  margin: 20px 0;
   position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.marquee::after {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .4;
+}
+/* Estilo para el texto en el marquee */
+.marqueeText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Roboto', sans-serif; /* Cambia la fuente a algo más bonito */
+  font-size: 1.5rem; /* Ajusta el tamaño de la fuente si es necesario */
+  color: #fff;
+  text-shadow: black;
+  z-index: 2;
+  white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
 }
 
+/* Estilo para el contenedor del contenido del marquee */
 .marqueeContent {
   display: flex;
-  white-space: nowrap;
-  animation: marquee 20s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
-.marqueeImage {
-  margin-right: 20px;
-  transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+/* Estilo para las imágenes dentro del marquee */
+.marqueeContent img {
+  width: 300px; /* Asegúrate de que todas las imágenes tengan el mismo tamaño */
+  height: 200px;
+  object-fit: cover; /* Mantiene la proporción de la imagen sin distorsión */
+  margin-right: 10px; /* Espacio entre las imágenes */
 }
 
-.marqueeImage:hover {
-  transform: scale(1.05); /* Aumenta ligeramente de tamaño */
-}
-
+/* Animación del marquee */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -108,7 +129,6 @@
     transform: translateX(-100%);
   }
 }
-
 
 .videoContainer {
   text-align: center;
