@@ -45,8 +45,8 @@ export default function Registro() {
           <Image
             src="/images/imagenAbajoDeReistro.png"
             alt="Imagen de abajo del registro"
-            width={600}
-            height={400}
+            width={300}
+            height={200}
           />
         </div>
       </div>

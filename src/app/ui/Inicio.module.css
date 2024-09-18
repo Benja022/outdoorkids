@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+
 .videoSection {
   position: relative;
   width: 100%;
-  height: 400px; /* Ajusta la altura según tus necesidades */
+  height: 400px;
   overflow: hidden;
 }
 
@@ -11,8 +14,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la escala del video para llenar el contenedor */
-  z-index: -1; /* Asegúrate de que el video esté detrás del contenido */
+  object-fit: cover;
+  z-index: -1;
 }
 
 .overlayText {
@@ -20,72 +23,125 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; /* Asegúrate de que el texto esté por encima del video */
-  color: white; /* Ajusta el color del texto según tu diseño */
+  z-index: 1;
+  color: white;
   text-align: center;
+  opacity: 0; /* Inicialmente oculto para la animación */
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .welcomeText {
-  font-size: 36px; /* Ajusta el tamaño del texto según tu diseño */
+  font-size: 3rem;
   margin: 0;
-}
-
-.videoContainer {
-  text-align: center;
-  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .section {
-  padding: 20px;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0; /* Inicialmente oculto para la animación */
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .textImage, .imageText {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 40px;
 }
 
-.textImage .textBlock {
+.textBlock {
   flex: 1;
   padding: 20px;
 }
 
-.textImage .textImageSection {
-  flex: 1;
-}
-
-.imageText .textImageSection {
-  flex: 1;
-}
-
-.imageText .textBlock {
+.textImageSection, .textImageSection {
   flex: 1;
   padding: 20px;
+  transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.textImageSection:hover {
+  transform: scale(1.05); /* Aumenta ligeramente de tamaño */
 }
 
 .textBlock h1, .textBlock h2 {
-  font-size: 28px;
+  font-size: 2.5rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .textBlock p {
-  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  background-color: #e0e0e0; /* Ajusta el color de fondo según sea necesario */
+  padding: 10px 0;
+  margin: 20px 0;
+  position: relative;
+}
+
+.marqueeContent {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+.marqueeImage {
+  margin-right: 20px;
+  transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.marqueeImage:hover {
+  transform: scale(1.05); /* Aumenta ligeramente de tamaño */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.videoContainer {
+  text-align: center;
+  margin: 20px auto;
 }
 
 .ctaButton {
   text-align: center;
-  margin-top: 40px;
+  margin: 20px 0;
 }
 
-.btn {
-  background-color: #007bff; /* Ajusta el color del botón según tu diseño */
+.scheduleButton {
+  background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #0056b3; /* Ajusta el color del botón al pasar el mouse */
+.scheduleButton:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }

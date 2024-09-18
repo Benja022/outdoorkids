@@ -2,6 +2,7 @@
 /* eslint-disable semi */
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import styles from "./GuardarVisita.module.css";
 
 const GuardarVisita = () => {
@@ -26,6 +27,9 @@ const GuardarVisita = () => {
 
   return (
     <div className={styles.container}>
+      <Link href="/perfilPrivado" passHref>
+        <span className={styles.backButton}>&#8592;</span>
+      </Link>
       <h2 className={styles.h2}>Guardar Visita</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
@@ -71,13 +75,13 @@ const GuardarVisita = () => {
           Guardar
         </button>
       </form>
-      <h2 className={styles.h2} >Visitas Guardadas</h2>
+      <h2 className={styles.h2}>Visitas Guardadas</h2>
       <ul className={styles.listaVisitas}>
         {visitas.map((visita, index) => (
           <li className={styles.visitaItem} key={index}>
             <span>{visita.fecha}</span>
             <span>{visita.hora}</span>
-            <spa>{visita.parque}</spa>
+            <span>{visita.parque}</span>
             <button
               onClick={() => handleDelete(index)}
               className={styles.deleteButton}

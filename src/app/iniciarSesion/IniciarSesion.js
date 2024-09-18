@@ -33,8 +33,8 @@ export default function IniciarSesion() {
           <Image
             src="/images/imagenAbajoDeReistro.png"
             alt="Imagen de registro"
-            width={600}
-            height={400}
+            width={300}
+            height={200}
           />
         </div>
       </div>

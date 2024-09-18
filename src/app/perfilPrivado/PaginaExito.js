@@ -16,6 +16,7 @@ const PaginaExito = () => {
                 alt="enlace a mi familia"
                 layout="fill"
                 objectFit="cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className={style.textoSobreImagen}>MI FAMILIA</div>
             </div>
@@ -27,6 +28,7 @@ const PaginaExito = () => {
                 alt="enlace a mapa"
                 layout="fill"
                 objectFit="cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className={style.textoSobreImagen}>MAPA</div>
             </div>
@@ -39,16 +41,11 @@ const PaginaExito = () => {
               alt="enlace a Agenda"
               layout="fill"
               objectFit="cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className={style.textoSobreImagen}>AGENDA</div>
           </div>
         </Link>
-      </div>
-      <div className={style.card}>
-        <Image src="/images/imagenAbajoDeReistro.png"
-        width={800}
-        height={400}
-        alt="imagen de abajo del registro" />
       </div>
     </div>
   );
