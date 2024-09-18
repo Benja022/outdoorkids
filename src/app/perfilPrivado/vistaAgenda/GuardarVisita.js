@@ -13,7 +13,17 @@ const GuardarVisita = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevaVisita = { fecha, hora, parque };
+
+    // Convertir la fecha al formato dd/MM/yyyy
+    const fechaObj = new Date(fecha);
+    const fechaFormateada = fechaObj.toLocaleDateString("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    });
+
+
+    const nuevaVisita = { fecha: fechaFormateada, hora, parque };
     setVisitas((prevVisitas) => [...prevVisitas, nuevaVisita]);
     // Limpiar el formulario después de enviar
     setFecha("");

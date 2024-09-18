@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap");
 
 .videoSection {
   position: relative;
@@ -32,7 +32,7 @@
 .welcomeText {
   font-size: 3rem;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .section {
@@ -44,7 +44,8 @@
 }
 
 /* Estilo para el contenedor del contenido de texto e imagen */
-.textImage, .imageText {
+.textImage,
+.imageText {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -57,19 +58,22 @@
   padding: 20px;
 }
 
-.textImageSection, .imageTextSection {
+.textImageSection,
+.imageTextSection {
   flex: 1;
   padding: 20px;
   transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
 }
 
-.textImageSection:hover, .imageTextSection:hover {
+.textImageSection:hover,
+.imageTextSection:hover {
   transform: scale(1.05); /* Aumenta ligeramente de tamaño */
 }
 
-.textBlock h1, .textBlock h2 {
+.textBlock h1,
+.textBlock h2 {
   font-size: 2.5rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .textBlock p {
@@ -93,7 +97,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 /* Estilo para el texto en el marquee */
@@ -102,7 +106,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Roboto', sans-serif; /* Cambia la fuente a algo más bonito */
+  font-family: "Roboto", sans-serif; /* Cambia la fuente a algo más bonito */
   font-size: 1.5rem; /* Ajusta el tamaño de la fuente si es necesario */
   color: #fff;
   text-shadow: black;
@@ -163,14 +167,13 @@
   }
 }
 
-
 .ctaButton {
   text-align: center;
   margin: 20px 0;
 }
 
 .scheduleButton {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 15px 30px;
@@ -197,11 +200,13 @@
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
-  .textImage, .imageText {
+  .textImage,
+  .imageText {
     flex-direction: column; /* Cambia a columna para dispositivos móviles */
   }
 
-  .textImageSection, .imageTextSection {
+  .textImageSection,
+  .imageTextSection {
     width: 100%; /* Asegura que la sección de imagen y texto ocupe todo el ancho en móviles */
     margin-bottom: 20px; /* Espacio entre las secciones en móviles */
   }
@@ -211,7 +216,8 @@
   }
 
   /* Adaptar imágenes fuera del marquee para móviles */
-  .textImage img, .imageText img {
+  .textImage img,
+  .imageText img {
     max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
     height: auto; /* Mantiene la proporción de la imagen */
   }

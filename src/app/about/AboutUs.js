@@ -4,25 +4,25 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "Juan Pérez",
-    role: "Desarrollador Frontend",
+    name: "Olga Sorokina",
+    role: "Full Stack Web Developer",
     description:
-      "Juan es un experto en React y tiene más de 5 años de experiencia en desarrollo frontend.",
-    image: "/images/member1.jpg",
+      "Capacitada para cualquier tarea, trabaja con tesón sin perder de vista el objetivo.",
+    image: "/images/estrella.png",
   },
   {
-    name: "María García",
-    role: "Desarrolladora Backend",
+    name: "Siwar Karoni",
+    role: "Full Stack Web Developer",
     description:
-      "María se especializa en Node.js y ha trabajado en varios proyectos de gran escala.",
-    image: "/images/member2.jpg",
+      "Resolutiva y proactiva, se desenvuelve en cualquier entorno sin perder su instinto natural para el diseño.",
+    image: "/images/estrella.png",
   },
   {
-    name: "Carlos López",
-    role: "Diseñador UX/UI",
+    name: "Benjamín Mancera",
+    role: "Full Stack Web Developer",
     description:
-      "Carlos tiene un ojo para el diseño y se asegura de que nuestras aplicaciones sean intuitivas y atractivas.",
-    image: "/images/member3.jpg",
+      "Siempre entre el Front y el Back. Cuidadoso en los detalles y apasionado por la programación.",
+    image: "/images/FotoBenjamin.png",
   },
 ];
 
@@ -36,8 +36,8 @@ const AboutUs = () => {
             <Image
               width={200}
               height={200}
-              src={"/images/estrella.png"}
-              // src={member.image}
+              priority
+              src={member.image}
               alt={member.name}
               className={styles.memberImage}
             />
