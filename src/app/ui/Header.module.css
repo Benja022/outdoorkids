@@ -1,23 +1,21 @@
-/* Header.module.css */
-
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 20px; /* Ajusta el padding según tu diseño */
-  background-color: rgba(203, 255, 202, 0.8); /* Fondo blanco con opacidad */
-  backdrop-filter: blur(10px); /* Añade un desenfoque de fondo para mejor contraste */
+  padding: 10px 20px;
+  background-color: rgba(203, 255, 202, 0.8);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s, padding 0.3s;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .header.scrolled {
-  background-color: rgba(203, 255, 202, 0.8); /* Fondo más opaco cuando se hace scroll */
-  padding: 5px 20px; /* Menor padding cuando se hace scroll */
+  background-color: rgba(203, 255, 202, 0.9); /* Fondo más opaco cuando se hace scroll */
+  padding: 5px 20px;
 }
 
 .logoContainer {
@@ -26,13 +24,15 @@
 }
 
 .logo {
-  border-radius: 8px;
+  border-radius: 50%;
 }
 
 .title {
   margin-left: 10px;
-  font-size: 24px;
-  color: #333; /* Ajusta el color del texto según tu diseño */
+  font-size: 28px; /* Aumenta el tamaño de la fuente */
+  font-family: 'Arial', sans-serif; /* Cambia la fuente para una más bonita */
+  color: #333;
+  text-align: center; /* Centra el texto */
 }
 
 .nav {
@@ -48,29 +48,44 @@
 }
 
 .navList li {
-  margin: 0 10px;
+  margin: 0 15px; /* Aumenta el margen entre los elementos */
+  display: flex;
+  align-items: center;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.navText {
+  margin-left: 5px; /* Espacio entre el ícono y el texto */
+  font-size: 18px; /* Tamaño de fuente del texto del menú */
+  font-family: 'Arial', sans-serif; /* Fuente del texto del menú */
 }
 
 .icon {
   font-size: 24px;
-  color: #333; /* Ajusta el color del ícono según tu diseño */
+  color: #333;
 }
 
 .menuToggle {
-  display: none; /* Ocultar por defecto y mostrar solo en móvil */
+  display: none;
 }
 
 @media (max-width: 768px) {
   .navList {
-    display: none; /* Ocultar menú en dispositivos móviles */
+    display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px; /* Ajusta la posición según el tamaño del encabezado */
+    top: 60px;
     right: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     padding: 10px;
-    width: 200px; /* Ajusta el ancho del menú según tu diseño */
+    width: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
@@ -81,6 +96,6 @@
   .menuToggle {
     display: block;
     font-size: 24px;
-    color: #333; /* Ajusta el color del ícono según tu diseño */
+    color: #333;
   }
 }
