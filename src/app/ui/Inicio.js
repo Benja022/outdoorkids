@@ -2,6 +2,7 @@
 import React from 'react';
 import style from "./Inicio.module.css";
 import Image from "next/image";
+import Link from 'next/link'; // Asegúrate de importar Link desde next/link
 import { useEffect, useState } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -97,45 +98,45 @@ export default function Inicio() {
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/parquetesoro.jfif" 
-                  alt="Parque del tesoro" 
+                <Image
+                  src="/images/parquetesoro.jfif"
+                  alt="Parque del tesoro"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/acuario.jfif" 
-                  alt="Acuario" 
+                <Image
+                  src="/images/acuario.jfif"
+                  alt="Acuario"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/agua.jpg" 
-                  alt="Parque del agua" 
+                <Image
+                  src="/images/agua.jpg"
+                  alt="Parque del agua"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/columpio.jpg" 
-                  alt="Parque del columpio" 
+                <Image
+                  src="/images/columpio.jpg"
+                  alt="Parque del columpio"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/museo.jfif" 
-                  alt="Museo" 
+                <Image
+                  src="/images/museo.jfif"
+                  alt="Museo"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/tobogan.jfif" 
-                  alt="Parque del tobogán" 
+                <Image
+                  src="/images/tobogan.jfif"
+                  alt="Parque del tobogán"
                   width={300}
                   height={200}
                 />
-                <Image 
-                  src="/images/plaza.webp" 
-                  alt="Plaza" 
+                <Image
+                  src="/images/plaza.webp"
+                  alt="Plaza"
                   width={300}
                   height={200}
                 />
@@ -204,8 +205,8 @@ export default function Inicio() {
 
         {/* Sección de video al final */}
         <div className={style.videoContainer} data-aos="fade-up">
-          <iframe 
-            src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1" 
+          <iframe
+            src="https://www.youtube.com/embed/ZtiOgqrDqso?autoplay=1&mute=1"
             title="Video Promocional"
             width="560"
             height="315"
@@ -214,7 +215,9 @@ export default function Inicio() {
             allowFullScreen
           ></iframe>
           <div className={style.ctaButton} data-aos="fade-up">
-            <button className={style.btn}>¡Únete!</button>
+          <Link href="/registro">
+                <button className={style.scheduleButton}>¡Únete!</button>
+              </Link>
           </div>
         </div>
       </div>

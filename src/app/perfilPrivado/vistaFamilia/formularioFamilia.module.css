@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  position: relative; /* Para posicionar el botón de back */
 }
 
 .header {
@@ -147,7 +148,6 @@
   display: flex;
   align-items: center;
 }
-
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -159,17 +159,20 @@
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  overflow-y: auto;
 }
 
 .modalContent {
   background: #c9ffbb;
   padding: 20px;
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
+  max-width: 400px;
+  min-width: 300px;
   height: auto;
-  max-width: 500px;
+  max-height: 90vh;
   position: relative;
-  overflow: visible;
+  overflow-y: auto;
 }
 
 .img {
@@ -309,23 +312,21 @@
 
 .backButton {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 10px; /* Ajusta el botón 10px desde la parte superior */
+  left: 10px; /* Ajusta el botón 10px desde la izquierda */
   width: 40px;
   height: 40px;
   border: none;
   border-radius: 50%;
   background-color: #4caf50;
   color: white;
-  font-size: 6rem;
+  font-size: xx-large;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  z-index: 3000;
-  font-size: xx-large;
-  font-weight: bolder;
+  z-index: 1000;
 }
 
 .backButton:hover {

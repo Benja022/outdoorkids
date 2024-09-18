@@ -80,20 +80,3 @@
   font-weight: bold;
 }
 
-/* Imagen de abajo */
-.card {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px auto;
-}
-
-
-/* Imagen de abajo */
-.cardImage {
-  width: 80%; /* Reducido */
-  max-width: 300px; /* Máximo tamaño */
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-}

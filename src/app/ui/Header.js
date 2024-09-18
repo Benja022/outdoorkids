@@ -57,13 +57,15 @@ export default function Header() {
       <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
         <ul className={style.navList}>
           <li>
-            <Link href="/iniciarSesion">
+            <Link href="/iniciarSesion" className={style.navItem}>
               <FaUser className={style.icon} />
+              <span className={style.navText}>Iniciar sesión</span>
             </Link>
           </li>
           <li>
-            <Link href="/faq">
+            <Link href="/faq" className={style.navItem}>
               <FaQuestionCircle className={style.icon} />
+              <span className={style.navText}>Preguntas frecuentes</span>
             </Link>
           </li>
         </ul>

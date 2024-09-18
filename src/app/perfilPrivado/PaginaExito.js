@@ -47,12 +47,6 @@ const PaginaExito = () => {
           </div>
         </Link>
       </div>
-      <div className={style.card}>
-        <Image src="/images/imagenAbajoDeReistro.png"
-        width={800}
-        height={400}
-        alt="imagen de abajo del registro" />
-      </div>
     </div>
   );
 };
