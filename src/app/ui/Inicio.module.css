@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 .videoSection {
   position: relative;
   width: 100%;
@@ -25,25 +25,40 @@
   z-index: 1;
   color: white;
   text-align: center;
-  opacity: 0; /* Inicialmente oculto para la animación */
+  opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  width: 90%;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 
 .welcomeText {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "lora", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .overlayText {
+    width: 90%;
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .welcomeText {
+    font-size: 2rem;
+    margin-bottom: 50px;
+  }
 }
 
 .section {
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  opacity: 0; /* Inicialmente oculto para la animación */
+  opacity: 0;
   animation: fadeIn 1s ease-out forwards;
 }
 
-/* Estilo para el contenedor del contenido de texto e imagen */
 .textImage,
 .imageText {
   display: flex;
@@ -67,7 +82,7 @@
 
 .textImageSection:hover,
 .imageTextSection:hover {
-  transform: scale(1.05); /* Aumenta ligeramente de tamaño */
+  transform: scale(1.05);
 }
 
 .textBlock h1,
@@ -106,12 +121,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: "Roboto", sans-serif; /* Cambia la fuente a algo más bonito */
-  font-size: 1.5rem; /* Ajusta el tamaño de la fuente si es necesario */
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
   color: #fff;
   text-shadow: black;
   z-index: 2;
-  white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
+  white-space: nowrap;
 }
 
 /* Estilo para el contenedor del contenido del marquee */
@@ -120,12 +135,12 @@
   animation: marquee 30s linear infinite;
 }
 
-/* Estilo para las imágenes dentro del marquee */
+
 .marqueeContent img {
-  width: 300px; /* Asegúrate de que todas las imágenes tengan el mismo tamaño */
+  width: 300px;
   height: 200px;
-  object-fit: cover; /* Mantiene la proporción de la imagen sin distorsión */
-  margin-right: 10px; /* Espacio entre las imágenes */
+  object-fit: cover;
+  margin-right: 10px;
 }
 
 /* Animación del marquee */
@@ -140,7 +155,7 @@
 
 .videoContainer {
   position: relative;
-  width: 100%;
+  width: 60%;
   max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
   overflow: hidden;
   padding-top: 56.25%; /* Relación de aspecto 16:9 */
@@ -191,7 +206,6 @@
   transform: translateY(-2px);
 }
 
-/* Animación fadeIn */
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -218,8 +232,8 @@
   /* Adaptar imágenes fuera del marquee para móviles */
   .textImage img,
   .imageText img {
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 100%;
+    height: auto;
   }
 
   /* Mantén el diseño del marquee igual para móviles */
@@ -228,12 +242,12 @@
   }
 
   .marqueeContent img {
-    width: 300px; /* Mantén el tamaño de las imágenes en el marquee igual */
+    width: 300px;
     height: 200px;
-    margin-right: 10px; /* Espacio entre las imágenes */
+    margin-right: 10px;
   }
 
   .marqueeText {
-    font-size: 1.2rem; /* Ajusta el tamaño del texto para dispositivos móviles */
+    font-size: 1.2rem;
   }
 }
