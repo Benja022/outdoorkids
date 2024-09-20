@@ -159,8 +159,9 @@
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
+
 
 .modalContent {
   background: #c9ffbb;
@@ -174,6 +175,27 @@
   position: relative;
   overflow-y: auto;
 }
+
+/* Estilos específicos para WebKit (Chrome, Safari, Edge) */
+.modalContent::-webkit-scrollbar {
+  width: 16px; /* Ancho del scrollbar */
+}
+.modalContent::-webkit-scrollbar-track {
+  background: #c9ffbb; /* Color de fondo del track del scrollbar */
+  border-radius: 8px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: #c9ffbb; /* Color del thumb del scrollbar */
+  border-radius: 10px; /* Bordes redondeados del thumb */
+  min-height: 30px; /* Altura máxima del thumb */
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #17c61d; /* Color del thumb del scrollbar al pasar el mouse */
+}
+
 
 .img {
   width: 200px;
