@@ -1,0 +1,101 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/registro/Registro.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/* Estilo general del cuerpo */
+.Registro_body__2GG1u {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+}
+
+/* Contenedor del formulario */
+.Registro_formContainer___uRMC {
+  margin-top: 150px;;
+  margin-bottom: 60px;
+  background: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Logo */
+.Registro_logo__W2tbp {
+  border-radius: 50%;
+  margin-bottom: 20px;
+  max-width: 120px;
+}
+
+/* Títulos y leyendas */
+.Registro_legend__h_Pbw {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00796b;
+  margin-bottom: 20px;
+}
+
+/* Etiquetas e inputs */
+.Registro_label__ozMsI {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00796b;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.Registro_input__VNfTV {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #00796b;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.Registro_input__VNfTV:focus {
+  border-color: #004d40;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 77, 64, 0.3);
+}
+
+/* Botones */
+.Registro_btn__v_WuU {
+  background-color: #00796b;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+}
+
+.Registro_btn__v_WuU:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+/* Enlaces */
+.Registro_link__PFomK {
+  color: #00796b;
+  font-size: 14px;
+}
+
+.Registro_link__PFomK:hover {
+  text-decoration: underline;
+}
+
+/* Imagen de abajo */
+.Registro_cardImage__63NWP {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+

@@ -95,3 +95,8 @@
   border-radius: 12px;
   margin-top: 20px;
 }
+
+.success {
+  color: green;
+  margin-bottom: 15px;
+}
