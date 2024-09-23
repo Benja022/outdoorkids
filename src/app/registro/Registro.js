@@ -30,7 +30,12 @@ export default function Registro() {
           <label className={style.label} htmlFor="password">Contraseña:</label>
           <input className={style.input} type="password" id="password" name="password" required />
           
+
+          <Link href="/perfilPrivado" className={style.link}>
           <input className={style.btn} type="submit" value="Enviar" />
+            </Link>
+
+
         </form>
         
         <div className={style.textContainer}>

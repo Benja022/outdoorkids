@@ -8,14 +8,14 @@ const teamMembers = [
     role: "Full Stack Web Developer",
     description:
       "Capacitada para cualquier tarea, trabaja con tesón sin perder de vista el objetivo.",
-    image: "/images/estrella.png",
+    image: "/images/olga1.JPG",
   },
   {
     name: "Siwar Karoni",
     role: "Full Stack Web Developer",
     description:
       "Resolutiva y proactiva, se desenvuelve en cualquier entorno sin perder su instinto natural para el diseño.",
-    image: "/images/estrella.png",
+    image: "/images/yo.jpg",
   },
   {
     name: "Benjamín Mancera",
