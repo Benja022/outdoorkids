@@ -1,102 +1,94 @@
 /* Estilo general del cuerpo */
 .body {
-  margin: 0;
+  margin: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-
+  min-height: 100vh; /* Altura mínima para centrar verticalmente */
 }
 
-/* Contenedor del formulario */
-.formContainer {
-  margin-top: 150px;;
-  margin-bottom: 60px;
-  background: white;
-  padding: 40px 60px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+/* Estilo del formulario */
+.registerForm {
+  padding: 40px;
   text-align: center;
+  width: 100%;
+  max-width: 400px; /* Ancho máximo */
 }
 
-/* Logo */
-.logo {
-  border-radius: 50%;
-  margin-bottom: 20px;
-  max-width: 120px;
-}
-
-/* Títulos y leyendas */
-.legend {
-  font-size: 24px;
-  font-weight: 700;
-  color: #00796b;
-  margin-bottom: 20px;
+/* Estilo de los grupos de formulario */
+.formGroup {
+  margin-bottom: 30px;
+  position: relative; /* Para el posicionamiento de la etiqueta */
 }
 
 /* Etiquetas e inputs */
-.label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #00796b;
-  display: block;
-  margin-bottom: 8px;
+.formGroup label {
+  font-size: 16px;
+  color: #555; /* Color de las etiquetas */
+  position: absolute; /* Para permitir el desplazamiento de la etiqueta */
+  left: 0;
+  top: 10px; /* Posición inicial */
+  transition: all 0.3s ease; /* Transición suave */
 }
 
-.input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #00796b;
-  border-radius: 8px;
+.formGroup input {
+  width: 100%;
+  padding: 10px 0; /* Solo padding vertical */
+  border: none; /* Sin borde */
+  border-bottom: 1px solid #ccc; /* Línea debajo */
+  background: transparent; /* Sin fondo */
   font-size: 16px;
   color: #333;
+  margin-top: 20px; /* Espacio superior para el input */
+  transition: border-color 0.3s;
 }
 
-.input:focus {
-  border-color: #004d40;
+.formGroup input:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 77, 64, 0.3);
+  border-bottom: 1px solid #00796b; /* Color de la línea al enfocar */
 }
 
-/* Botones */
-.btn {
-  background-color: #00796b;
+/* Cambiar posición de la etiqueta al enfocar */
+.formGroup input:focus + label,
+.formGroup input:not(:placeholder-shown) + label {
+  top: -10px; /* Desplazar la etiqueta hacia arriba */
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  color: #00796b; /* Cambiar color al enfocar */
+}
+
+/* Botón de registro */
+.registerButton {
+  background-color: #00796b; /* Color del botón */
   color: white;
-  padding: 12px 20px;
+  padding: 12px;
   font-size: 16px;
   border: none;
-  border-radius: 30px;
+  border-radius: 4px; /* Bordes ligeramente redondeados */
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  margin-top: 10px;
+  margin-top: 20px;
+  width: 100%; /* Ancho completo */
 }
 
-.btn:hover {
-  background-color: #004d40;
-  transform: scale(1.05);
+.registerButton:hover {
+  background-color: #005f50; /* Color al pasar el ratón */
 }
 
 /* Enlaces */
-.link {
-  color: #00796b;
+.loginLink {
+  color: #00796b; /* Color del enlace */
   font-size: 14px;
+  margin-top: 20px; /* Espacio superior */
+  display: block; /* Para asegurarse de que esté en una nueva línea */
 }
 
-.link:hover {
-  text-decoration: underline;
-}
-
-/* Imagen de abajo */
-.cardImage {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 20px;
-}
-
+/* Mensajes de éxito y error */
 .success {
   color: green;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
   margin-bottom: 15px;
 }

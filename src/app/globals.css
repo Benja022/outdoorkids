@@ -50,10 +50,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  background-image: url('/images/fondo1.webp');
-  background-size:auto;
-  background-repeat:repeat;
-  background-position: center;
+  background-color: rgb(232, 252, 226);
 }
 .animated-element {
   position: absolute;

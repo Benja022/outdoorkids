@@ -1,8 +1,7 @@
-"use client";
+'use client'
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./Registro.module.css";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Registro() {
@@ -61,94 +60,80 @@ export default function Registro() {
         setError("Error en el registro. Por favor, inténtalo de nuevo.");
       }
     } catch (error) {
-      setError(
-        "Error al conectar con el servidor. Por favor, inténtalo de nuevo."
-      );
+      setError("Error al conectar con el servidor. Por favor, inténtalo de nuevo.");
     }
   };
 
   return (
     <div className={style.body}>
-      <div className={style.formContainer}>
-        <Image
-          className={style.logo}
-          src="/images/Logo.jpg"
-          alt="logo"
-          width={120}
-          height={120}
-        />
-        <form onSubmit={handleSubmit} className={style.registerForm}>
-          <h2>Registro</h2>
-          {error && <p className={style.error}>{error}</p>}
-          {success && <p className={style.success}>{success}</p>}
-          <div className={style.formGroup}>
-            <label htmlFor="username">Nombre:</label>
-            <input
-              type="text"
-              id="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={style.formGroup}>
-            <label htmlFor="surname">Apellido:</label>
-            <input
-              type="text"
-              id="surname"
-              value={formData.surname}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={style.formGroup}>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={style.formGroup}>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={style.formGroup}>
-            <label htmlFor="confirmPassword">Confirmar Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className={style.registerButton}>
-            Registrar
-          </button>
-        </form>
+      <form onSubmit={handleSubmit} className={style.registerForm}>
+        <h2>Registro</h2>
+        {error && <p className={style.error}>{error}</p>}
+        {success && <p className={style.success}>{success}</p>}
+        <div className={style.formGroup}>
+          <input
+            type="text"
+            id="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+            placeholder=" "
+          />
+          <label htmlFor="username">Nombre:</label>
+        </div>
+        <div className={style.formGroup}>
+          <input
+            type="text"
+            id="surname"
+            value={formData.surname}
+            onChange={handleChange}
+            required
+            placeholder=" "
+          />
+          <label htmlFor="surname">Apellido:</label>
+        </div>
+        <div className={style.formGroup}>
+          <input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder=" "
+          />
+          <label htmlFor="email">Email:</label>
+        </div>
+        <div className={style.formGroup}>
+          <input
+            type="password"
+            id="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            placeholder=" "
+          />
+          <label htmlFor="password">Password:</label>
+        </div>
+        <div className={style.formGroup}>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+            placeholder=" "
+          />
+          <label htmlFor="confirmPassword">Confirmar Password:</label>
+        </div>
+        <button type="submit" className={style.registerButton}>
+          Registrar
+        </button>
         <Link href="/iniciarSesion">
           <p className={style.loginLink}>
             ¿Ya tienes una cuenta? Inicia sesión
           </p>
         </Link>
-        <div className={style.cardImage}>
-          <Image
-            src="/images/imagenAbajoDeReistro.png"
-            alt="Imagen de abajo del registro"
-            width={300}
-            height={200}
-          />
-        </div>
-      </div>
+      </form>
     </div>
   );
 }
