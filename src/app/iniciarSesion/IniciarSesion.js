@@ -1,55 +1,26 @@
-// import React from "react";
-// import style from "./IniciarSesion.module.css";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function IniciarSesion() {
-//   return (
-//     <div className={style.body}>
-//       <div className={style.formContainer}>
-//         <Image
-//           className={style.logo}
-//           src="/images/Logo.jpg"
-//           alt="logo"
-//           width={120}
-//           height={120}
-//           layout="intrinsic"
-//         />
-//         <form action="/registro.php" id="formulario-registro">
-//           <legend className={style.legend}>Inicia Sesión</legend>
-//           <label htmlFor="correo" className={style.label}>Correo Electrónico:</label>
-//           <input type="email" id="correo" name="correo" className={style.input} required />
-//           <label htmlFor="password" className={style.label}>Contraseña:</label>
-//           <input type="password" id="password" name="password" className={style.input} required />
-//           <Link href="/perfilPrivado">
-//             <input className={style.btn} type="submit" value="Enviar" />
-//           </Link>
-//           <p className={style.link}>¿No tienes cuenta?</p>
-//           <Link href="/registro" className={style.link}>
-//             Regístrate
-//           </Link>
-//         </form>
-//         <div className={style.cardImage}>
-//           <Image
-//             src="/images/imagenAbajoDeReistro.png"
-//             alt="Imagen de registro"
-//             width={300}
-//             height={200}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import style from "./IniciarSesion.module.css";
 import Link from "next/link";
 
 export default function IniciarSesion() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,21 +30,27 @@ export default function IniciarSesion() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
       });
 
       if (response.ok) {
-        // Redirigir al usuario a la página correspondiente
-        window.location.href = "/perfilPrivado";
+        setSuccess(
+          "Inicio de sesión exitoso. Redirigiendo a perfil privado..."
+        ); // Actualizar estado success
+        setTimeout(() => {
+          router.push("/perfilPrivado"); // Redirigir a la página de perfil privado
+        }, 2000);
       } else {
         setError("Credenciales inválidas. Por favor, inténtalo de nuevo.");
       }
     } catch (error) {
       setError(
-        
         "Error al conectar con el servidor. Por favor, inténtalo de nuevo."
       );
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -90,13 +67,14 @@ export default function IniciarSesion() {
         <form onSubmit={handleSubmit} className={style.loginForm}>
           <h2>Iniciar Sesión</h2>
           {error && <p className={style.error}>{error}</p>}
+          {success && <p className={style.success}>{success}</p>}
           <div className={style.formGroup}>
             <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -105,8 +83,8 @@ export default function IniciarSesion() {
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
