@@ -44,14 +44,14 @@ export default function Header() {
         <Link href="/">
           <Image
             className={style.logo}
-            src="/images/Logo.jpg"
+            src="/images/logopng.png"
             alt="OutdoorKids Logo"
             width={80}
             height={80}
           />
         </Link>
         <Link href="/">
-          <h1 className={style.title}>OutdoorKids</h1>
+          <h1 className={style.title}>Outdoor Kids</h1>
         </Link>
       </div>
       <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
