@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 "use client";
 import style from "./Header.module.css";
 import Image from "next/image";
@@ -5,12 +6,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaUser, FaQuestionCircle, FaTimes, FaBars } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../AuthContext";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Cambia a true para probar
+  const { isLoggedIn, login, logout } = useAuth(); // Cambia a true para probar
   const [activeButton, setActiveButton] = useState("mapa");
   const router = useRouter();
 
@@ -60,10 +62,19 @@ export default function Header() {
         <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
           <ul className={style.navList}>
             <li>
-              <Link href="/iniciarSesion" className={style.navItem}>
-                <FaUser className={style.icon} />
-                <span className={style.navText}>Iniciar sesión</span>
-              </Link>
+              {isLoggedIn ? (
+                <Link href="/">
+                  <button onClick={logout} className={style.navItem}>
+                    <FaUser className={style.icon} />
+                    <span className={style.navText}>Cerrar sesión</span>
+                  </button>
+                </Link>
+              ) : (
+                <Link href="/iniciarSesion" className={style.navItem}>
+                  <FaUser className={style.icon} />
+                  <span className={style.navText}>Iniciar sesión</span>
+                </Link>
+              )}
             </li>
             <li>
               <Link href="/faq" className={style.navItem}>
@@ -85,7 +96,9 @@ export default function Header() {
           <nav className={style.secondaryNav}>
             <Link href="/perfilPrivado/vistaFamilia">
               <button
-                className={`${style.navButton} ${activeButton === "familia" ? style.active : ""}`}
+                className={`${style.navButton} ${
+                  activeButton === "familia" ? style.active : ""
+                }`}
                 onClick={() => handleButtonClick("familia")}
               >
                 Mi Familia
@@ -93,7 +106,9 @@ export default function Header() {
             </Link>
             <Link href="/perfilPrivado/listadoParques">
               <button
-                className={`${style.navButton} ${activeButton === "mapa" ? style.active : ""}`}
+                className={`${style.navButton} ${
+                  activeButton === "mapa" ? style.active : ""
+                }`}
                 onClick={() => handleButtonClick("mapa")}
               >
                 Mapa
@@ -101,7 +116,9 @@ export default function Header() {
             </Link>
             <Link href="/perfilPrivado/vistaAgenda">
               <button
-                className={`${style.navButton} ${activeButton === "agenda" ? style.active : ""}`}
+                className={`${style.navButton} ${
+                  activeButton === "agenda" ? style.active : ""
+                }`}
                 onClick={() => handleButtonClick("agenda")}
               >
                 Agenda

@@ -41,7 +41,6 @@ export default function ModificarFamilia({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch(
         `http://localhost:8080/api/familia/${userId}`,
@@ -59,9 +58,6 @@ export default function ModificarFamilia({
         setFormData({
           photo: "",
           alias: "",
-          role: "",
-          name: "",
-          years: "",
         });
         setError("");
       } else {
