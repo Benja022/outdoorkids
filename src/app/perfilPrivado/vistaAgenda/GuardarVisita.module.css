@@ -1,11 +1,11 @@
 .container {
   max-width: 500px;
-  margin: 120px auto 80px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
   height: auto;
+  margin: auto;
 }
 
 .h2 {
