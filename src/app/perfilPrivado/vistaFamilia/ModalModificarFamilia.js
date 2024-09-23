@@ -1,10 +1,12 @@
-/* eslint-disable jsx-quotes */
-/* eslint-disable multiline-ternary */
+"use client";
+// /* eslint-disable jsx-quotes */
+// /* eslint-disable multiline-ternary */
+import React, { useState } from "react";
 import styles from "./formularioFamilia.module.css";
 import Image from "next/image";
 import classNames from "classnames";
 
-const ModificarFamilia = ({
+export default function ModificarFamilia({
   isOpen,
   onClose,
   newMember,
@@ -17,7 +19,61 @@ const ModificarFamilia = ({
   members,
   handleDeleteMember,
   handleAddMemberAndClose,
-}) => {
+}) {
+  const [formData, setFormData] = useState({
+    photo: "",
+    alias: "",
+    role: "",
+    name: "",
+    years: "",
+  });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/familia/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        setSuccess("Miembro de la familia registrado exitosamente.");
+        setFormData({
+          photo: "",
+          alias: "",
+          role: "",
+          name: "",
+          years: "",
+        });
+        setError("");
+      } else {
+        setError("Error en el registro. Por favor, inténtalo de nuevo.");
+      }
+    } catch (error) {
+      setError(
+        "Error al conectar con el servidor. Por favor, inténtalo de nuevo."
+      );
+    }
+  };
+
   if (!isOpen) return null;
   return (
     <div className={styles.modalOverlay}>
@@ -26,7 +82,9 @@ const ModificarFamilia = ({
           &times;
         </span>
         <div className={styles.familyPhoto}>
-          <h1 className={classNames(styles.headerH1, styles.header)}>MI FAMILIA</h1>
+          <h1 className={classNames(styles.headerH1, styles.header)}>
+            MI FAMILIA
+          </h1>
           {familyPhoto ? (
             <Image
               className={classNames(styles.familyPhotoInput, styles.img)}
@@ -80,7 +138,9 @@ const ModificarFamilia = ({
             placeholder="Apodo de la familia"
             aria-label="Apodo de la familia"
           />
-          <p className={classNames(styles.headerH1, styles.header)}>Agrega un miembro</p>
+          <p className={classNames(styles.headerH1, styles.header)}>
+            Agrega un miembro
+          </p>
           <div className={styles.select}>
             <select
               name="role"
@@ -124,9 +184,7 @@ const ModificarFamilia = ({
           >
             Añadir
           </button>
-          <p className={classNames(styles.headerH1, styles.header)}>
-            Miembros
-          </p>
+          <p className={classNames(styles.headerH1, styles.header)}>Miembros</p>
           <div id="members" className={styles.members}>
             {members.map((member, index) => (
               <div key={index} className={styles.member}>
@@ -153,6 +211,4 @@ const ModificarFamilia = ({
       </div>
     </div>
   );
-};
-
-export default ModificarFamilia;
+}

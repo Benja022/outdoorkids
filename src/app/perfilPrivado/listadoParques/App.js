@@ -1,11 +1,10 @@
-/* eslint-disable multiline-ternary */
-"use client";
+'use client';
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import useGoogleMaps from "./useGoogleMaps";
 import debounce from "lodash/debounce";
 import styles from "./lista.module.css";
 import { motion } from "framer-motion";
-import Link from "next/link"; // Asegúrate de importar Link si lo usas
+import Link from "next/link";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,7 +15,7 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [resultsLimit] = useState(12);
+  const [resultsLimit] = useState(15);
   const apiKey = "AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg";
   const loaded = useGoogleMaps(apiKey);
 
@@ -129,14 +128,12 @@ const App = () => {
               position: place.geometry.location,
               title: place.name,
             });
-            setPlaces([
-              {
-                name: place.name,
-                address: place.formatted_address,
-                photos: place.photos ? place.photos : [],
-                rating: place.rating,
-              },
-            ]);
+            setPlaces([{
+              name: place.name,
+              address: place.formatted_address,
+              photos: place.photos ? place.photos : [],
+              rating: place.rating,
+            }]);
           } else {
             console.error("Error en la búsqueda de lugar:", status);
           }
@@ -172,13 +169,17 @@ const App = () => {
     setCurrentImageIndex(newIndex);
   };
 
+  // Verifica el contenido de selectedPlace
+  useEffect(() => {
+    if (selectedPlace) {
+      console.log('Selected Place:', selectedPlace);
+    }
+  }, [selectedPlace]);
+
   return (
     <div className={styles.App}>
       <h1 className={styles.h1}>Tu Guía de Actividades Infantiles</h1>
       <div className={styles.searchWrapper}>
-        <Link href="/perfilPrivado" passHref>
-          <span className={styles.backButton}>&#8592;</span>
-        </Link>
         <input
           className={`${styles.searchInput} ${styles.searchInputWithFilter}`}
           type="text"
@@ -271,22 +272,41 @@ const App = () => {
                 )}
               </div>
             )}
-            <p>{selectedPlace.address}</p>
-            <div className={styles.modalActions}>
-              <Link href="/perfilPrivado/vistaAgenda">
-                <button className={styles.scheduleButton}>Agendar</button>
-              </Link>
-              <button
-                className={styles.closeButton}
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cerrar
-              </button>
-            </div>
+            {selectedPlace.rating && (
+              <div className={styles.ratingContainer}>
+                {Array.from({ length: 5 }, (_, index) => (
+                  <span
+                    key={index}
+                    className={styles.star}
+                    style={{
+                      color: index < Math.round(selectedPlace.rating)
+                        ? "yellow"
+                        : "gray",
+                    }}
+                  >
+                    &#9733;
+                  </span>
+                ))}
+              </div>
+            )}
+            {selectedPlace.vicinity && (
+              <p className={styles.modalAddress}>{selectedPlace.vicinity}</p>
+            )}
+            <button
+              className={styles.modalButton}
+              onClick={() => setIsModalOpen(false)}
+            >
+              Cerrar
+            </button>
+            <Link href="/perfilPrivado/vistaAgenda">
+              <button className={styles.customButton}>Agendar</button>
+            </Link>
           </motion.div>
         </motion.div>
+        
       )}
     </div>
+    
   );
 };
 

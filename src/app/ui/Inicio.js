@@ -15,8 +15,7 @@ export default function Inicio() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
 
-    // Simular carga de contenido
-    setTimeout(() => setLoading(false), 3000); // Simula tiempo de carga de 3 segundos
+    setTimeout(() => setLoading(false), 3000);
   }, []);
 
   return (
@@ -42,7 +41,7 @@ export default function Inicio() {
             Sorry, your browser does not support HTML5 video.
           </video>
           <div className={style.overlayText}>
-            <h1 className={style.welcomeText}>¡Bienvenido a OutdoorKids!</h1>
+            <h1 className={style.welcomeText}>¡Bienvenido a Outdoor Kids!</h1>
           </div>
         </section>
 

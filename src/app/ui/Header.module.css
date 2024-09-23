@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
 .header {
+  /*
   position: fixed;
   top: 0;
   left: 0;
+  */
   width: 100%;
   padding: 10px 20px;
   background-color: rgba(203, 255, 202, 0.8);
@@ -21,6 +25,7 @@
 .logoContainer {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -29,10 +34,10 @@
 
 .title {
   margin-left: 10px;
-  font-size: 28px; /* Aumenta el tamaño de la fuente */
-  font-family: 'Arial', sans-serif; /* Cambia la fuente para una más bonita */
-  color: #333;
-  text-align: center; /* Centra el texto */
+  font-size: 28px;
+  font-family: 'Lora', serif;
+  color: #003d03;
+  white-space: nowrap;
 }
 
 .nav {
@@ -48,7 +53,7 @@
 }
 
 .navList li {
-  margin: 0 15px; /* Aumenta el margen entre los elementos */
+  margin: 0 15px;
   display: flex;
   align-items: center;
 }
@@ -57,18 +62,26 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: #003d03;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navItem:hover {
+  background-color: rgba(203, 255, 202, 0.3);
+  color: #005500;
 }
 
 .navText {
-  margin-left: 5px; /* Espacio entre el ícono y el texto */
-  font-size: 18px; /* Tamaño de fuente del texto del menú */
-  font-family: 'Arial', sans-serif; /* Fuente del texto del menú */
+  margin-left: 5px;
+  font-size: 20px;
+  font-family: 'Lora', serif;
 }
 
 .icon {
   font-size: 24px;
-  color: #333;
+  color: #003d03;
 }
 
 .menuToggle {
@@ -77,25 +90,116 @@
 
 @media (max-width: 768px) {
   .navList {
-    display: none;
+    display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 10px;
-    width: 200px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%);
+    opacity: 0;
   }
 
   .nav.open .navList {
-    display: flex;
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .menuToggle {
     display: block;
-    font-size: 24px;
-    color: #333;
+    font-size: 20px;
+    color: #003d03;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
+
+  .menuToggle:hover {
+    background-color: rgba(203, 255, 202, 0.8);
+    transform: scale(1.1) translateY(-50%);
+  }
+
+  .menuToggle:focus {
+    outline: none;
+  }
+
+  .header {
+    padding: 10px;
+  }
+
+  .logoContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  .nav {
+    position: relative;
+    width: 100%;
+  }
+}
+.secondaryHeader {
+  background-color: #f9f9f9; /* Cambia el color de fondo según tu diseño */
+  padding: 10px 20px; /* Espaciado */
+  border-bottom: 2px solid #ccc; /* Línea inferior opcional */
+}
+
+.secondaryNav {
+  display: flex;
+  justify-content: space-around; /* Distribuye los botones */
+}
+
+.secondaryHeader {
+  background-color: #f9f9f9; /* Cambia el color de fondo según tu diseño */
+  padding: 10px 20px; /* Espaciado */
+  border-bottom: 2px solid #ccc; /* Línea inferior opcional */
+  position: relative; /* Para un mejor control de posición */
+  z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.secondaryNav {
+  display: flex;
+  justify-content: space-around; /* Distribuye los botones */
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  position: relative; /* Para la línea activa */
+}
+
+.navButton.active {
+  font-weight: bold; /* Opcional: resaltar el botón activo */
+}
+
+.navButton.active::after {
+  content: "";
+  display: block;
+  height: 2px; /* Grosor de la línea */
+  background-color: #0070f3; /* Color de la línea */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px; /* Espacio debajo del botón */
 }
