@@ -1,9 +1,13 @@
+'use client';
 import React from "react";
 import style from "./Registro.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Registro() {
+
+  
+
   return (
     <div className={style.body}>
       <div className={style.formContainer}>
