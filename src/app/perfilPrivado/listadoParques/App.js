@@ -180,9 +180,6 @@ const App = () => {
     <div className={styles.App}>
       <h1 className={styles.h1}>Tu Guía de Actividades Infantiles</h1>
       <div className={styles.searchWrapper}>
-        <Link href="/perfilPrivado" passHref>
-          <span className={styles.backButton}>&#8592;</span>
-        </Link>
         <input
           className={`${styles.searchInput} ${styles.searchInputWithFilter}`}
           type="text"

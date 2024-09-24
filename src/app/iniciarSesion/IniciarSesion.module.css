@@ -72,6 +72,29 @@
   background-color: #005f50; /* Verde más oscuro en hover */
 }
 
+/* Botón mostrar contraseña*/
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.passwordWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.togglePasswordButton {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.togglePasswordButton:hover {
+  text-decoration: underline;
+}
+
 /* Enlaces */
 .link {
   color: #333;

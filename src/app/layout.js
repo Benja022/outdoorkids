@@ -1,26 +1,25 @@
 /* eslint-disable quotes */
 /* eslint-disable jsx-quotes */
+'use client';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
-const inter = Inter({ subsets: ["latin"] });
+import { AuthProvider } from "./AuthContext";
+import {metadata} from "./metadata";
 
-export const metadata = {
-  title: "OutdoorKids",
-  description: "Find your next park adventure",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}
-
-      <Header />
-      <Footer />
-
+      <body className={inter.className}>
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
-      
     </html>
   );
 }
