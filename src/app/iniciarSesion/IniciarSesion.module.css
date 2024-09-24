@@ -10,13 +10,6 @@
 }
 
 
-
-/* Logo centrado */
-.logo {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
 /* Títulos */
 .legend {
   font-size: 24px; /* Tamaño ajustado para parecerse más a la imagen */
@@ -96,6 +89,15 @@
 .togglePasswordButton:hover {
   text-decoration: underline;
 }
+
+.formGroup input:focus + label,
+.formGroup input:not(:focus):valid + label {
+  top: -10px; /* Desplazar la etiqueta hacia arriba */
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  color: #00796b; /* Cambiar color al enfocar */
+}
+
+
 
 /* Enlaces */
 .link {

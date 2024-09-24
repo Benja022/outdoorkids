@@ -92,7 +92,7 @@ export default function ModificarFamilia({
           ) : (
             <Image
               className={classNames(styles.familyPhotoInput, styles.img)}
-              src="/images/estrella.png"
+              src="/images/fotoPerfil.jpg"
               alt="Imagen de la familia"
               width={50}
               height={50}
@@ -127,7 +127,7 @@ export default function ModificarFamilia({
         </div>
         <div className={styles.familyNicknameContainer}>
           <input
-            className={classNames(styles.headerH1, styles.header)}
+            className={classNames(styles.headerH1, styles.header, styles.inputApodo)}
             type="text"
             value={nickname}
             onChange={handleNickname}

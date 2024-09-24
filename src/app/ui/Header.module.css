@@ -157,49 +157,38 @@
   }
 }
 .secondaryHeader {
-  background-color: #f9f9f9; /* Cambia el color de fondo según tu diseño */
-  padding: 10px 20px; /* Espaciado */
-  border-bottom: 2px solid #ccc; /* Línea inferior opcional */
-}
-
-.secondaryNav {
-  display: flex;
-  justify-content: space-around; /* Distribuye los botones */
-}
-
-.secondaryHeader {
-  background-color: #f9f9f9; /* Cambia el color de fondo según tu diseño */
+  background-color: #bdf4a8; /* Cambia el color de fondo según tu diseño */
+  background: radial-gradient(circle, #e0f7d4 0%, #bdf4a8 60%, #8ccf70 100%);
   padding: 10px 20px; /* Espaciado */
   border-bottom: 2px solid #ccc; /* Línea inferior opcional */
   position: relative; /* Para un mejor control de posición */
-  z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
+  z-index: 1
 }
 
 .secondaryNav {
   display: flex;
   justify-content: space-around; /* Distribuye los botones */
+  
 }
 
 .navButton {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
+  font-family: 'lora';
   padding: 10px;
   position: relative; /* Para la línea activa */
 }
 
 .navButton.active {
-  font-weight: bold; /* Opcional: resaltar el botón activo */
+  background-color: transparent; /* Fondo transparente */
+  color: #007700; /* Color del texto */
+  border: none;
+  border-radius: 10px;
+  box-shadow:  0 10px 24px rgba(65, 135, 4, 0.5);
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  
 }
 
-.navButton.active::after {
-  content: "";
-  display: block;
-  height: 2px; /* Grosor de la línea */
-  background-color: #0070f3; /* Color de la línea */
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px; /* Espacio debajo del botón */
-}
+

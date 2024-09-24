@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import style from "./IniciarSesion.module.css";
 import Link from "next/link";
 import { useAuth } from "../AuthContext";
+import { ROUTE_AFTER_LOGIN } from "../consts";
 
 export default function IniciarSesion() {
   const [formData, setFormData] = useState({

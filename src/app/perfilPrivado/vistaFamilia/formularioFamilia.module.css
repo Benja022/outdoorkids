@@ -1,110 +1,394 @@
-.familyForm {
-  padding: 30px;
-  max-width: 500px;
-  width: 90%;
-  margin: auto;
-  background-color: transparent; /* Sin fondo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .title {
-  font-family: "Roboto", sans-serif;
-  font-size: 28px;
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
   color: #2c3e50;
-  margin-bottom: 10px;
+  text-align: center;
+  margin: 30px 0;
 }
 
-.nicknameTitle {
-  font-size: 20px;
-  color: #34495e;
-}
-
-.nickname {
-  font-size: 22px;
-  color: #16a085;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.familyNicknameContainer {
+.familyPhotoContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .familyPhotoInput {
   border: 3px solid #16a085;
   border-radius: 50%;
-  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 150px;
+  width: 150px;
+  margin-top: 30px;
+}
+
+.nicknameTitle {
+  font-size: 20px;
+  color: #34495e;
+  text-align: center;
+}
+
+.nickname {
+  font-size: 22px;
+  color: #16a085;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px; /* Espacio entre el nickname y la lista de miembros */
 }
 
 .membersTitle {
-  font-size: 24px;
+  font-size: 28px;
   color: #2c3e50;
-  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.members {
-  width: 100%;
-  margin-bottom: 20px;
+.membersTable {
+  width: 80%; /* Reducir ancho para que la tabla sea más compacta */
+  margin: 0 auto; /* Centrar la tabla */
+  border-collapse: collapse;
+  border-radius: 8px; /* Bordes suaves */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-.member {
-  padding: 12px;
-  border-radius: 8px;
-  background-color: #ecf0f1; /* Fondo claro para cada miembro */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.membersTable th,
+.membersTable td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Aumentar un poco el padding para más espacio */
+  text-align: left;
+  font-size: 0.9rem; /* Reducir ligeramente el tamaño de fuente */
 }
 
-.memberInfo {
-  flex-grow: 1;
+.membersTable th {
+  background-color: #f0f9f0; /* Fondo verde claro */
+  color: #333;
+  font-weight: bold;
+}
+
+.membersTable tr:nth-child(even) {
+  background-color: #f2ffe5; /* Alternar color de fondo para mayor claridad */
+}
+
+.membersTable tr:hover {
+  background-color: #e0f7dc; /* Color al pasar el mouse */
+}
+.buttonContainer {
+  display: flex; /* Usar Flexbox */
+  justify-content: flex-end; /* Alinear el botón a la derecha */
+  margin-top: 20px; /* Espaciado superior */
 }
 
 .saveBtn {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 4px;
-  background-color: #27ae60;
+  background-color: #4CAF50;
   color: white;
-  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 125px 80px;
 }
 
 .saveBtn:hover {
-  background-color: #2ecc71;
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.saveBtn:active {
+  transform: scale(0.95);
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modalContent {
+  background: #f2ffe5;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  min-width: 300px;
+  height: auto;
+  max-height: 90vh;
+  position: relative;
+  overflow-y: auto;
+}
+
+.modalContent::-webkit-scrollbar {
+  width: 16px;
+}
+.modalContent::-webkit-scrollbar-track {
+  background: #c9ffbb;
+  border-radius: 8px;
+}
+.modalContent::-webkit-scrollbar-thumb {
+  background: #c9ffbb;
+  border-radius: 10px;
+  min-height: 30px; /* Altura máxima del thumb */
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #7bd67e; /* Color del thumb del scrollbar al pasar el mouse */
+}
+
+
+@keyframes modalFadeIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #e74c3c;
+}
+
+.fileInput {
+  margin: 10px 0;
+}
+
+.fileInputInput {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.fileInputLabel {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: #17c61d;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.fileInputLabel svg {
+  height: 16px;
+  margin-right: 4px;
+}
+.inputApodo {
+  margin: 0.5em 0;
+  padding: 0.75em;
+  border-radius: 8px;
+  border: 2px solid #6AB04A; /* Verde inspirado en naturaleza */
+  background-color: #f0f9f0; /* Fondo suave y amigable */
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.inputApodo:focus {
+  border-color: #28A745; /* Verde más intenso al enfocar */
+  box-shadow: 0 0 8px rgba(106, 176, 74, 0.5); /* Efecto de resplandor */
+  outline: none;
+}
+
+.inputApodo::placeholder {
+  color: #8D8D8D;
+  font-style: italic;
+}
+
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #fefefe;
+  background-image: none;
+  flex: 1;
+  padding: 0 0.5em;
+  color: #878787;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #5c6664;
+  overflow: hidden;
+  border-radius: 0.25em;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #17c61d;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+  color: #ffffff;
+}
+.select:hover::after {
+  color: #000000;
+}
+
+.option {
+  color: black;
+}
+
+.inputsNameAge,
+.select {
+  margin: 0.5em 0;
+  padding: 0.75em;
+  border-radius: 8px;
+  border: 2px solid #6AB04A; /* Verde inspirado en naturaleza */
+  background-color: #f0f9f0; /* Fondo suave y amigable */
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.inputsNameAge:focus,
+.select:focus {
+  border-color: #28A745; /* Verde más intenso al enfocar */
+  box-shadow: 0 0 8px rgba(106, 176, 74, 0.5); /* Efecto de resplandor */
+  outline: none;
+}
+
+.inputsNameAge::placeholder {
+  color: #8D8D8D;
+  font-style: italic;
+}
+
+.select {
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  appearance: none; /* Ocultar el estilo del selector por defecto */
+  cursor: pointer;
+}
+
+.saveBtn {
+  border: none;
+}
+
+.spanDlt {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: xx-large;
+  font-weight: bolder;
+  background-color: red;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0 5px;
 }
 
 .backButton {
-  font-size: 24px;
-  color: #ffffff;
-  background-color: #2980b9;
+  position: absolute;
+  top: 10px; /* Ajusta el botón 10px desde la parte superior */
+  left: 10px; /* Ajusta el botón 10px desde la izquierda */
+  width: 40px;
+  height: 40px;
+  border: none;
   border-radius: 50%;
-  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: background-color 0.3s ease;
+  z-index: 1000;
 }
 
 .backButton:hover {
-  background-color: #3498db;
+  background-color: #45a049;
+}
+#members {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  background-color: #f0f9f0; /* Fondo suave acorde a la naturaleza */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  max-width: 600px;
+  margin: 0 auto; /* Centrar el contenedor */
 }
 
-.deleteButton {
-  background: transparent;
-  border: none;
-  color: #e74c3c;
-  cursor: pointer;
-  font-size: 16px;
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 2px solid #6AB04A; /* Verde que recuerda la naturaleza */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.member:hover {
+  transform: scale(1.02); /* Efecto hover sutil */
+}
+
+.member p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.member p:first-child {
   font-weight: bold;
+  color: #28A745; /* Color verde para el rol */
+}
+
+.spanDlt {
+  font-size: 1.5rem;
+  color: #ff4c4c; /* Color rojo para el ícono de eliminar */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.spanDlt:hover {
+  color: #ff0000; /* Cambio de color en hover */
 }

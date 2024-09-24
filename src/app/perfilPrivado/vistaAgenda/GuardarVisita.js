@@ -37,9 +37,6 @@ const GuardarVisita = () => {
 
   return (
     <div className={styles.container}>
-      <Link href="/perfilPrivado" passHref>
-        <span className={styles.backButton}>&#8592;</span>
-      </Link>
       <h2 className={styles.h2}>Guardar Visita</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
