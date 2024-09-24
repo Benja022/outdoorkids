@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./Registro.module.css";
 import Link from "next/link";
+import { ROUTE_AFTER_LOGIN } from "../consts";
 
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ export default function Registro() {
           confirmPassword: "",
         });
         setError("");
-        router.push('/perfilPrivado');
+        router.push(ROUTE_AFTER_LOGIN);
       } else {
         setError("Error en el registro. Por favor, inténtalo de nuevo.");
       }

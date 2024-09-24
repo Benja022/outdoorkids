@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../AuthContext";
+import { ROUTE_AFTER_LOGIN } from "../consts";
 
 export default function IniciarSesion() {
   const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ export default function IniciarSesion() {
           "Inicio de sesión exitoso. Redirigiendo a perfil privado..."
         ); // Actualizar estado success
         setTimeout(() => {
-          router.push("/perfilPrivado"); // Redirigir a la página de perfil privado
+          router.push(ROUTE_AFTER_LOGIN); // Redirigir a la página de perfil privado
         }, 2000);
       } else {
         setError("Credenciales inválidas. Por favor, inténtalo de nuevo.");
