@@ -68,6 +68,7 @@
   transition: background-color 0.3s, transform 0.3s;
   margin-top: 20px;
   width: 100%; /* Ancho completo */
+  text-transform: uppercase;
 }
 
 .registerButton:hover {

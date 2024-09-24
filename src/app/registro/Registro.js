@@ -1,9 +1,10 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./Registro.module.css";
 import Link from "next/link";
-import { ROUTE_AFTER_LOGIN } from "../consts";
+import { useAuth } from "../AuthContext";
+import Alert from "./Alert";
 
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export default function Registro() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -56,13 +58,23 @@ export default function Registro() {
           confirmPassword: "",
         });
         setError("");
-        router.push(ROUTE_AFTER_LOGIN);
+        login(true);
+        setTimeout(() => {
+          router.push("/perfilPrivado/listadoParques");
+        }, 2000);
       } else {
         setError("Error en el registro. Por favor, inténtalo de nuevo.");
       }
     } catch (error) {
-      setError("Error al conectar con el servidor. Por favor, inténtalo de nuevo.");
+      setError(
+        "Error al conectar con el servidor. Por favor, inténtalo de nuevo."
+      );
     }
+  };
+
+  const closeAlert = () => {
+    setError("");
+    setSuccess("");
   };
 
   return (
@@ -127,7 +139,7 @@ export default function Registro() {
           <label htmlFor="confirmPassword">Confirmar Password:</label>
         </div>
         <button type="submit" className={style.registerButton}>
-          Registrar
+          Registro
         </button>
         <Link href="/iniciarSesion">
           <p className={style.loginLink}>
@@ -135,6 +147,8 @@ export default function Registro() {
           </p>
         </Link>
       </form>
+      {error && <Alert message={error} onClose={closeAlert} />}
+      {success && <Alert message={success} onClose={closeAlert} />}
     </div>
   );
 }
