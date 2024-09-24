@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./IniciarSesion.module.css";
 import Link from "next/link";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../AuthContext";
 
 export default function IniciarSesion() {
@@ -30,7 +29,6 @@ export default function IniciarSesion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    login(true)
     try {
       const response = await fetch("http://localhost:8080/api/login", {
         method: "POST",
@@ -43,13 +41,14 @@ export default function IniciarSesion() {
           password: formData.password,
         }),
       });
-
+      
       if (response.ok) {
         setSuccess(
           "Inicio de sesión exitoso. Redirigiendo a perfil privado..."
         ); // Actualizar estado success
+        login(true)
         setTimeout(() => {
-          router.push("/perfilPrivado"); // Redirigir a la página de perfil privado
+          router.push("/perfilPrivado/listadoParques"); // Redirigir a la página de perfil privado
         }, 2000);
       } else {
         setError("Credenciales inválidas. Por favor, inténtalo de nuevo.");
@@ -58,7 +57,7 @@ export default function IniciarSesion() {
       setError(
         "Error al conectar con el servidor. Por favor, inténtalo de nuevo."
       );
-      console.log(error);
+      //console.log(error);
     }
   };
 

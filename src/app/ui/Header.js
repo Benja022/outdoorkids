@@ -12,7 +12,7 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(true);
-  const { isLoggedIn, login, logout } = useAuth(); // Cambia a true para probar
+  const { isLoggedIn, login, logout } = useAuth(false); // Cambia a true para probar
   const [activeButton, setActiveButton] = useState("mapa");
   const router = useRouter();
 
