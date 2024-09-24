@@ -20,7 +20,7 @@
 .contactInfo h3, .siteLinks h3, .newsletter h3, .socialMedia h3 {
   margin-bottom: 20px;
   font-size: 20px;
-  color: #17c61d;
+  color: #003d03;
 }
 
 .contactInfo p {
@@ -58,7 +58,7 @@
 }
 
 .socialMedia .socialIcons a {
-  color: #333;
+  color: #003d03;
   font-size: 24px;
   transition: color 0.3s ease;
 }
