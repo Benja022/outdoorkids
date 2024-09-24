@@ -53,8 +53,7 @@ const FormularioFamilia = () => {
   };
 
   return (
-    <div>
-      <h1 className={style.title}>Mi Familia</h1>
+    <div className="flexiando">
       <div className={style.familyPhotoContainer}>
         <Image
           className={style.familyPhotoInput}
@@ -64,10 +63,16 @@ const FormularioFamilia = () => {
           height={200}
         />
       </div>
-      <h2 className={style.nicknameTitle}>Alias:</h2>
-      <p className={style.nickname}>{nickname}</p>
+      
+      {/* Renderizado condicional de "Alias:" y el nickname */}
+      {nickname && (
+        <>
+          <h2 className={style.nicknameTitle}>Alias:</h2>
+          <p className={style.nickname}>{nickname}</p>
+        </>
+      )}
 
-      <h2 className={style.membersTitle}>Miembros:</h2>
+      <h2 className={style.membersTitle}>Miembros</h2>
       <table className={style.membersTable}>
         <thead>
           <tr>
@@ -87,9 +92,11 @@ const FormularioFamilia = () => {
         </tbody>
       </table>
 
-      <button className={style.saveBtn} onClick={openModal}>
-        Agregar/Modificar Miembros
-      </button>
+      <div className={style.buttonContainer}>
+        <button className={style.saveBtn} onClick={openModal}>
+          Agregar/Modificar Miembros
+        </button>
+      </div>
 
       {showRegistration && (
         <ModificarFamilia
