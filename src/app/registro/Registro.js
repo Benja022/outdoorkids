@@ -1,3 +1,6 @@
+/* eslint-disable jsx-quotes */
+/* eslint-disable semi */
+/* eslint-disable quotes */
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -5,6 +8,7 @@ import style from "./Registro.module.css";
 import Link from "next/link";
 import { useAuth } from "../AuthContext";
 import Alert from "./Alert";
+import styles from "./Alert.module.css";
 
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -18,7 +22,7 @@ export default function Registro() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, setActiveButton } = useAuth();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -59,9 +63,10 @@ export default function Registro() {
         });
         setError("");
         login(true);
+        setActiveButton("mapa");
         setTimeout(() => {
           router.push("/perfilPrivado/listadoParques");
-        }, 2000);
+        }, 1800);
       } else {
         setError("Error en el registro. Por favor, inténtalo de nuevo.");
       }
@@ -90,7 +95,7 @@ export default function Registro() {
             value={formData.username}
             onChange={handleChange}
             required
-            placeholder=" "
+            placeholder=""
           />
           <label htmlFor="username">Nombre:</label>
         </div>
@@ -147,8 +152,16 @@ export default function Registro() {
           </p>
         </Link>
       </form>
-      {error && <Alert message={error} onClose={closeAlert} />}
-      {success && <Alert message={success} onClose={closeAlert} />}
+      {error && (
+        <Alert className={styles.error} message={error} onClose={closeAlert} />
+      )}
+      {success && (
+        <Alert
+          className={styles.succes}
+          message={success}
+          onClose={closeAlert}
+        />
+      )}
     </div>
   );
 }

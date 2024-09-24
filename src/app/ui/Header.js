@@ -5,16 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaUser, FaQuestionCircle, FaTimes, FaBars } from "react-icons/fa";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useAuth } from "../AuthContext";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(true);
-  const { isLoggedIn, login, logout } = useAuth(false); // Cambia a true para probar
-  const [activeButton, setActiveButton] = useState("mapa");
-  const router = useRouter();
+  const { isLoggedIn, logout, activeButton, setActiveButton } = useAuth(false); // Cambia a true para probar
+  // const [activeButton, setActiveButton] = useState("mapa");
+  // const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,8 +59,8 @@ export default function Header() {
             />
           </Link>
           <Link href="/">
-          <h1 className={style.title}>OutdoorKids</h1>
-        </Link>
+            <h1 className={style.title}>OutdoorKids</h1>
+          </Link>
         </div>
         <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
           <ul className={style.navList}>
