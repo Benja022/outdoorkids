@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import style from "./IniciarSesion.module.css";
 import Link from "next/link";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../AuthContext";
 
 export default function IniciarSesion() {

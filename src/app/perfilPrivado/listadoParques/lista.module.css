@@ -1,7 +1,7 @@
 /* lista.module.css */
 
 .App {
-  font-family: Arial, sans-serif;
+  
   padding: 0;
   color: #333;
 }
@@ -34,6 +34,7 @@
   background-color: #28a745;
   color: #fff;
   border: none;
+  margin-right: 20px;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -46,6 +47,7 @@
   display: flex;
   align-items: center;
   margin-top: 10px;
+  text-transform: uppercase;
 }
 
 .filterLabel {
@@ -157,6 +159,8 @@
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
+  margin-right: 10px;
+  
 }
 
 .modalActions {
