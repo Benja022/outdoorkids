@@ -15,7 +15,7 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [resultsLimit] = useState(15);
+  const [resultsLimit] = useState(18);
   const apiKey = "AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg";
   const loaded = useGoogleMaps(apiKey);
 
