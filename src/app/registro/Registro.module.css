@@ -73,6 +73,8 @@
 
 .registerButton:hover {
   background-color: #005f50; /* Color al pasar el ratón */
+    transform: translateY(-2px);
+
 }
 
 /* Enlaces */

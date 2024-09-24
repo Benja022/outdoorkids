@@ -1,12 +1,12 @@
-'use client';
-import React from 'react';
-import style from './Inicio.module.css';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import Head from 'next/head';
+"use client";
+import React from "react";
+import style from "./Inicio.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Head from "next/head";
 
 export default function Inicio() {
   const [backgroundClass, setBackgroundClass] = useState(style.pageBackground1);
@@ -22,21 +22,21 @@ export default function Inicio() {
     <>
       <Head>
         <title>OutdoorKids - Explora la Naturaleza</title>
-        <meta name="description" content="Descubre parques y actividades para niños al aire libre con OutdoorKids. Regístrate para explorar y aprender más sobre la naturaleza." />
-        <meta name="keywords" content="parques, actividades para niños, naturaleza, aventura, exploración" />
+        <meta
+          name="description"
+          content="Descubre parques y actividades para niños al aire libre con OutdoorKids. Regístrate para explorar y aprender más sobre la naturaleza."
+        />
+        <meta
+          name="keywords"
+          content="parques, actividades para niños, naturaleza, aventura, exploración"
+        />
         <meta name="robots" content="index, follow" />
       </Head>
       {loading && <div className="spinner"></div>}
       <div className={backgroundClass}>
         {/* Sección de video en el header */}
         <section id="banner" className={style.videoSection}>
-          <video
-            className={style.video}
-            preload="auto"
-            autoPlay
-            loop
-            muted
-          >
+          <video className={style.video} preload="auto" autoPlay loop muted>
             <source src="/videos/niñosheader.mp4" type="video/mp4" />
             Sorry, your browser does not support HTML5 video.
           </video>
@@ -46,14 +46,19 @@ export default function Inicio() {
         </section>
 
         {/* Secciones de contenido */}
-        <div className={`${style.section} ${style.textImage}`} data-aos="fade-up">
+        <div
+          className={`${style.section} ${style.textImage}`}
+          data-aos="fade-up"
+        >
           <div className={style.textBlock}>
             <h1 className={style.welcomeText}>Descubre la Naturaleza</h1>
             <p>
-              Nuestra misión es inspirar a los niños a explorar y disfrutar al máximo del mundo natural,
-              mientras adquieren valiosas lecciones sobre la importancia de cuidarlo y preservarlo para las
-              futuras generaciones. A través de la aventura y el juego, queremos fomentar en ellos un profundo
-              amor y respeto por el medio ambiente.
+              Nuestra misión es inspirar a los niños a explorar y disfrutar al
+              máximo del mundo natural, mientras adquieren valiosas lecciones
+              sobre la importancia de cuidarlo y preservarlo para las futuras
+              generaciones. A través de la aventura y el juego, queremos
+              fomentar en ellos un profundo amor y respeto por el medio
+              ambiente.
             </p>
           </div>
           <div className={style.textImageSection}>
@@ -65,7 +70,7 @@ export default function Inicio() {
             />
           </div>
         </div>
-        
+
         <div className={style.marquee}>
           <div className={style.marqueeText}>
             OutdoorKids: Juegos Verdes, Futuro Seguro.
@@ -144,7 +149,10 @@ export default function Inicio() {
           </div>
         </div>
 
-        <div className={`${style.section} ${style.imageText}`} data-aos="fade-up">
+        <div
+          className={`${style.section} ${style.imageText}`}
+          data-aos="fade-up"
+        >
           <div className={style.textImageSection}>
             <Image
               src="/images/jugando.avif"
@@ -155,25 +163,34 @@ export default function Inicio() {
           </div>
           <div className={style.textBlock}>
             <p>
-              Con nuestro mapa interactivo, los pequeños exploradores tendrán la oportunidad de descubrir una
-              amplia variedad de parques y actividades diseñadas específicamente para ellos, en entornos que
-              promueven la diversión mientras se respeta y protege el medio ambiente. Ya sea que busquen
-              espacios verdes para jugar o actividades al aire libre llenas de aprendizaje, nuestro mapa
-              los guiará hacia experiencias inolvidables, fomentando su conexión con la naturaleza.
+              Con nuestro mapa interactivo, los pequeños exploradores tendrán la
+              oportunidad de descubrir una amplia variedad de parques y
+              actividades diseñadas específicamente para ellos, en entornos que
+              promueven la diversión mientras se respeta y protege el medio
+              ambiente. Ya sea que busquen espacios verdes para jugar o
+              actividades al aire libre llenas de aprendizaje, nuestro mapa los
+              guiará hacia experiencias inolvidables, fomentando su conexión con
+              la naturaleza.
             </p>
           </div>
         </div>
 
-        <div className={`${style.section} ${style.textImage}`} data-aos="fade-up">
+        <div
+          className={`${style.section} ${style.textImage}`}
+          data-aos="fade-up"
+        >
           <div className={style.textBlock}>
             <h2>¡Únete a la Aventura!</h2>
             <p>
-              Regístrate en OutdoorKids para comenzar tu emocionante viaje hacia la exploración y el descubrimiento.
-              Al convertirte en parte de nuestra comunidad, tendrás acceso a una amplia gama de lugares increíbles y
-              actividades divertidas diseñadas para inspirar y educar. Desde parques asombrosos hasta experiencias al aire
-              libre únicas, te ofrecemos la oportunidad de disfrutar de la naturaleza mientras te diviertes y aprendes.
-              No pierdas la oportunidad de ser parte de esta emocionante aventura que te conectará con lo mejor de la
-              vida al aire libre.
+              Regístrate en OutdoorKids para comenzar tu emocionante viaje hacia
+              la exploración y el descubrimiento. Al convertirte en parte de
+              nuestra comunidad, tendrás acceso a una amplia gama de lugares
+              increíbles y actividades divertidas diseñadas para inspirar y
+              educar. Desde parques asombrosos hasta experiencias al aire libre
+              únicas, te ofrecemos la oportunidad de disfrutar de la naturaleza
+              mientras te diviertes y aprendes. No pierdas la oportunidad de ser
+              parte de esta emocionante aventura que te conectará con lo mejor
+              de la vida al aire libre.
             </p>
           </div>
           <div className={style.textImageSection}>
@@ -186,7 +203,10 @@ export default function Inicio() {
           </div>
         </div>
 
-        <div className={`${style.section} ${style.imageText}`} data-aos="fade-up">
+        <div
+          className={`${style.section} ${style.imageText}`}
+          data-aos="fade-up"
+        >
           <div className={style.textImageSection}>
             <Image
               src="/images/airelibre.jpg"
@@ -197,11 +217,13 @@ export default function Inicio() {
           </div>
           <div className={style.textBlock}>
             <p>
-              Explora y únete a nuestra comunidad para mantener a tus hijos activos y conectados
-              con la naturaleza, descubriendo juntos nuevas aventuras al aire libre,
-              participando en emocionantes actividades que fomentan el desarrollo físico y emocional,
-              y construyendo recuerdos inolvidables mientras se relacionan con otros niños
-              y familias que comparten la misma pasión por el bienestar y la exploración del mundo natural.
+              Explora y únete a nuestra comunidad para mantener a tus hijos
+              activos y conectados con la naturaleza, descubriendo juntos nuevas
+              aventuras al aire libre, participando en emocionantes actividades
+              que fomentan el desarrollo físico y emocional, y construyendo
+              recuerdos inolvidables mientras se relacionan con otros niños y
+              familias que comparten la misma pasión por el bienestar y la
+              exploración del mundo natural.
             </p>
           </div>
         </div>
@@ -217,6 +239,9 @@ export default function Inicio() {
             allowFullScreen
           ></iframe>
         </div>
+          <Link href="/registro">
+            <p className={style.scheduleButton}>¡Únete!</p>
+          </Link>
       </div>
     </>
   );

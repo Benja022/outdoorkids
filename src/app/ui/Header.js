@@ -58,6 +58,9 @@ export default function Header() {
               height={80}
             />
           </Link>
+          <Link href="/">
+          <h1 className={style.title}>OutdoorKids</h1>
+        </Link>
         </div>
         <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
           <ul className={style.navList}>

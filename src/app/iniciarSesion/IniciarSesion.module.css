@@ -63,6 +63,8 @@
 
 .btn:hover {
   background-color: #005f50; /* Verde más oscuro en hover */
+  transform: translateY(-2px);
+
 }
 
 /* Botón mostrar contraseña*/
