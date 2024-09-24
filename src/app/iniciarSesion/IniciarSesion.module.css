@@ -1,21 +1,15 @@
-/* Estilo general del cuerpo */
 .body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin-top: 80px;
-  padding: 0 20px; /* Espaciado para vistas móviles */
-  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif; /* Fuente similar a la de la imagen */
+  color: #003d03;
 }
 
-/* Contenedor del formulario (sin borde ni fondo) */
-.formContainer {
-  width: 100%;
-  max-width: 400px;
-  text-align: left;
-  color: #1c1c1c; /* Color principal del texto */
-}
+
 
 /* Logo centrado */
 .logo {
@@ -25,21 +19,21 @@
 
 /* Títulos */
 .legend {
-  font-size: 36px;
-  font-weight: 700;
-  color: #1c1c1c;
+  font-size: 24px; /* Tamaño ajustado para parecerse más a la imagen */
+  font-weight: bold;
   margin-bottom: 30px;
   text-align: center;
-  font-family: 'Georgia', serif; /* Fuente serif */
+  color: black;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Etiquetas de inputs */
 .label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1c1c1c;
-  margin-bottom: 10px;
+  font-size: 16px; /* Tamaño ajustado */
+  font-weight: normal; /* Menos énfasis para un aspecto más simple */
+  margin-bottom: 5px; /* Menos espacio entre etiquetas */
   display: block;
+  color: black;
 }
 
 /* Estilo de inputs */
@@ -47,28 +41,27 @@
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #e6e2d9;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid #888; /* Solo línea inferior */
+  border-radius: 0; /* Sin bordes redondeados */
   font-size: 16px;
-  color: #333;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: transparent; /* Fondo igual al cuerpo */
 }
 
 .input:focus {
-  border-color: #000;
+  border-bottom: 1px solid #000; /* Resalta en negro al recibir foco */
   outline: none;
 }
 
 /* Botón */
 .btn {
-  background-color: #000;
+  background-color: #00796b; /* Verde oscuro del botón */
   color: white;
   padding: 12px;
   width: 100%;
   font-size: 16px;
   border: none;
-  border-radius: 30px;
+  border-radius: 5px; /* Borde más redondeado */
   cursor: pointer;
   margin-top: 10px;
   text-transform: uppercase;
@@ -76,7 +69,7 @@
 }
 
 .btn:hover {
-  background-color: #333;
+  background-color: #005f50; /* Verde más oscuro en hover */
 }
 
 /* Enlaces */
@@ -100,8 +93,4 @@
   margin-top: 15px;
   display: block;
   color: #666;
-}
-
-.secondary-link:hover {
-  text-decoration: underline;
 }

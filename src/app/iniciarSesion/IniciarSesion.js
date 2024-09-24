@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import style from "./IniciarSesion.module.css";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 
 export default function IniciarSesion() {
   const [formData, setFormData] = useState({
@@ -58,42 +58,37 @@ export default function IniciarSesion() {
   return (
     <div className={style.body}>
       <div className={style.formContainer}>
-        <Image
-          className={style.logo}
-          src="/images/Logo.jpg"
-          alt="logo"
-          width={120}
-          height={120}
-        />
-        <form onSubmit={handleSubmit} className={style.loginForm}>
-          <h2>Iniciar Sesión</h2>
-          {error && <p className={style.error}>{error}</p>}
-          {success && <p className={style.success}>{success}</p>}
+        <h2 className={style.legend}>Iniciar Sesión</h2>
+        {error && <p className={style.error}>{error}</p>}
+        {success && <p className={style.success}>{success}</p>}
+        <form onSubmit={handleSubmit}>
           <div className={style.formGroup}>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" className={style.label}>Email:</label>
             <input
               type="email"
               id="email"
               value={formData.email}
               onChange={handleChange}
               required
+              placeholder=" "
+              className={style.input}
             />
           </div>
           <div className={style.formGroup}>
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" className={style.label}>Password:</label>
             <input
               type="password"
               id="password"
               value={formData.password}
               onChange={handleChange}
               required
+              placeholder=" "
+              className={style.input}
             />
           </div>
-          <button type="submit" className={style.loginButton}>
-            Login
-          </button>
+          <button type="submit" className={style.btn}>Login</button>
         </form>
-        <Link href="/registro" className={style.registerLink}>
+        <Link href="/registro" className={style.link}>
           ¿No tienes una cuenta? Regístrate
         </Link>
       </div>
