@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import useGoogleMaps from "./useGoogleMaps";
 import debounce from "lodash/debounce";
@@ -39,6 +39,7 @@ const App = () => {
             .sort((a, b) => b.rating - a.rating);
 
           setPlaces(filteredResults.slice(0, resultsLimit));
+          console.log(places);
 
           setNextPageToken(
             pagination.hasNextPage ? pagination.nextPageToken : null
@@ -61,6 +62,7 @@ const App = () => {
           console.error("Error en la búsqueda de lugares:", status);
         }
       });
+      updateParques();
     },
     [activityType, nextPageToken, resultsLimit]
   );
@@ -128,12 +130,14 @@ const App = () => {
               position: place.geometry.location,
               title: place.name,
             });
-            setPlaces([{
-              name: place.name,
-              address: place.formatted_address,
-              photos: place.photos ? place.photos : [],
-              rating: place.rating,
-            }]);
+            setPlaces([
+              {
+                name: place.name,
+                address: place.formatted_address,
+                photos: place.photos ? place.photos : [],
+                rating: place.rating,
+              },
+            ]);
           } else {
             console.error("Error en la búsqueda de lugar:", status);
           }
@@ -144,6 +148,7 @@ const App = () => {
 
   const handleSearch = () => {
     searchPlace();
+    // updateParques();
   };
 
   const handleActivityTypeChange = (e) => {
@@ -172,10 +177,37 @@ const App = () => {
   // Verifica el contenido de selectedPlace
   useEffect(() => {
     if (selectedPlace) {
-      console.log('Selected Place:', selectedPlace);
+      console.log("Selected Place:", selectedPlace);
     }
   }, [selectedPlace]);
 
+  const updateParques = async () => {
+    const parquesData = places.map(place => ({
+      name: place.name,
+      address: place.vicinity,
+    }));
+
+    const url = `http://localhost:8080/api/parques`;
+
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(parquesData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log('Parques actualizados:', result);
+    } catch (error) {
+      console.error('Error al actualizar los parques:', error);
+    }
+  };
   return (
     <div className={styles.App}>
       <h1 className={styles.h1}>Tu Guía de Actividades Infantiles</h1>
@@ -279,9 +311,10 @@ const App = () => {
                     key={index}
                     className={styles.star}
                     style={{
-                      color: index < Math.round(selectedPlace.rating)
-                        ? "yellow"
-                        : "gray",
+                      color:
+                        index < Math.round(selectedPlace.rating)
+                          ? "yellow"
+                          : "gray",
                     }}
                   >
                     &#9733;
@@ -303,10 +336,8 @@ const App = () => {
             </Link>
           </motion.div>
         </motion.div>
-        
       )}
     </div>
-    
   );
 };
 
