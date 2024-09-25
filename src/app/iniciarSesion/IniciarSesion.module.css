@@ -20,13 +20,20 @@
   font-family: 'Arial', sans-serif;
 }
 
+/* Estilo de los grupos de formulario */
+.formGroup {
+  margin-bottom: 30px;
+  position: relative; /* Para el posicionamiento de la etiqueta */
+}
+
 /* Etiquetas de inputs */
-.label {
-  font-size: 16px; /* Tamaño ajustado */
-  font-weight: normal; /* Menos énfasis para un aspecto más simple */
-  margin-bottom: 5px; /* Menos espacio entre etiquetas */
-  display: block;
-  color: black;
+.formGroup label {
+  font-size: 16px;
+  color: #555; /* Color de las etiquetas */
+  position: absolute; /* Para permitir el desplazamiento de la etiqueta */
+  left: 0;
+  top: 10px; /* Posición inicial */
+  transition: all 0.3s ease; /* Transición suave */
 }
 
 /* Estilo de inputs */
