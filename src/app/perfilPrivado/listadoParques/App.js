@@ -5,6 +5,7 @@ import debounce from "lodash/debounce";
 import styles from "./lista.module.css";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useAuth } from "../../AuthContext";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +19,7 @@ const App = () => {
   const [resultsLimit] = useState(18);
   const apiKey = "AIzaSyDRprasEZWaNEDEFPoRAad-ROkFBH2rNSg";
   const loaded = useGoogleMaps(apiKey);
+  const { setActiveButton } = useAuth();
 
   const searchPlaces = useCallback(
     (map, location) => {
@@ -212,6 +214,7 @@ const App = () => {
   const handleAgendarClick = () => {
     if (selectedPlace) {
       localStorage.setItem('selectedParque', JSON.stringify(selectedPlace));
+      setActiveButton("agenda");
     }
   }; 
   
@@ -262,7 +265,7 @@ const App = () => {
                 src={
                   place.photos && place.photos.length > 0
                     ? place.photos[0].getUrl()
-                    : "/default-image.png"
+                    : "/images/default-image.png"
                 }
                 alt={place.name}
                 className={styles.parkImage}

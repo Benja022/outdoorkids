@@ -1,3 +1,12 @@
+.familyForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 30px 0;
+}
+
 .title {
   font-family: "Playfair Display", serif;
   font-size: 36px;
@@ -19,6 +28,21 @@
   height: 150px;
   width: 150px;
   margin-top: 30px;
+  object-fit: cover;
+}
+
+.headerH1{
+  font-size: 24px;
+  font-family: 'Lora', serif;
+  color: #003d03;
+  white-space: nowrap;
+  margin: 10px 0;
+}
+.header{
+  font-size: 24px;
+  font-family: 'Lora', serif;
+  color: #003d03;
+  white-space: nowrap;
 }
 
 .nicknameTitle {
@@ -35,12 +59,6 @@
   margin-bottom: 30px;
 }
 
-.membersTitle {
-  font-size: 28px;
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 15px;
-}
 
 .membersTable {
   width: 80%;
@@ -139,10 +157,10 @@
   z-index: 2000;
 }
 .modalContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 .modalContent {
   background: #f2ffe5;
@@ -339,11 +357,36 @@
   appearance: none;
 }
 
+.membersTitle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#D0FECF ;
+  padding: 10px;
+  font-size: 16px;
+  color: #2c3e50;
+  text-align: center;
+  border-radius: 4px;
+}
+ 
+  .members{
+  text-align: center;
+  border: 1px solid #003d03;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 80%;
+  margin: 0 auto 10px;
+}
+
+.members > *:nth-child(even) {
+  background-color: #f0f0f0; 
+}
+
 .member {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
+  padding: 10px;
 }
 .buttonContainer {
   display: flex;
@@ -356,16 +399,16 @@
   margin: 0;
 }
 
-
 .spanDlt,
 .spanEdit {
   margin-left: 10px;
   cursor: pointer;
   transition: color 0.3s ease;
+  color: #e74c3c;
 }
 
 .spanDlt:hover {
-  color: #e74c3c;
+  color: #00796b;
 }
 
 .spanEdit:hover {

@@ -43,6 +43,7 @@ export default function Header() {
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
+    localStorage.removeItem("selectedParque");
   };
 
   return (
