@@ -4,13 +4,14 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin: 120px auto 40px;
+  margin: 80px auto 40px;
   font-family: 'Raleway', sans-serif;
   color: #555;
   height: 100%;
   width: 80vw;
   overflow-y: visible;
-  background-color: white;
+  background-color: rgba(242, 247, 245, 0.7);
+  border: 2px solid rgba(204, 204, 204, 0.8);
   border-radius: 12px;
 }
 
