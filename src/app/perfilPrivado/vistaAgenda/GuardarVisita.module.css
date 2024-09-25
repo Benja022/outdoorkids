@@ -18,11 +18,13 @@
   font-weight: 600;
   color: rgba(51, 51, 51, 0.9); /* Translucido */
   font-size: 28px;
+  padding: 10px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .formGroup {
@@ -85,44 +87,40 @@
   font-weight: 500;
 }
 
+
 .deleteButton {
   width: 28px;
   height: 28px;
-  background-color: rgba(244, 67, 54, 0.9); /* Translucido */
   border: none;
-  border-radius: 50%;
-  color: white;
+  color: #e93c3c;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease;
+  background: none;
 }
 
 .deleteButton:hover {
-  background-color: rgba(211, 47, 47, 0.9); /* Translucido */
+  color: rgba(211, 47, 47, 0.9); /* Color más oscuro al pasar el ratón */
 }
 
-.backButton {
-  width: 40px;
-  height: 40px;
+.editButton {
+  background: none;
   border: none;
-  border-radius: 50%;
-  background-color: rgba(76, 175, 0.80, 0.9); /* Translucido */
-  color: white;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: rgb(122, 122, 255);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  font-size: 20px;
+  transition: color 0.3s ease;
 }
 
-.backButton:hover {
-  background-color: rgba(69, 160, 73, 0.9); /* Translucido */
+.editButton:hover {
+  color: rgb(61, 61, 132);
+}
+.editButton, .deleteButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 1px;
 }

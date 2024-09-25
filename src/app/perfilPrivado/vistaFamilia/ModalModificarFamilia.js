@@ -16,9 +16,6 @@ export default function ModificarFamilia({
   handlePhotoChange,
   handleNickname,
   nickname,
-  members,
-  handleDeleteMember,
-  handleAddMemberAndClose,
 }) {
   const [formData, setFormData] = useState({
     photo: "",
@@ -77,7 +74,7 @@ export default function ModificarFamilia({
         <span className={styles.close} onClick={onClose}>
           &times;
         </span>
-        <div className={styles.familyPhoto}>
+        <div className={styles.modalContainer}>
           <h1 className={classNames(styles.headerH1, styles.header)}>
             MI FAMILIA
           </h1>
@@ -105,7 +102,7 @@ export default function ModificarFamilia({
               id="file-input"
               onChange={handlePhotoChange}
             />
-            <label className={styles.fileInputLabel} for="file-input">
+            <label className={styles.fileInputLabel} htmlFor="file-input">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -123,8 +120,8 @@ export default function ModificarFamilia({
               </svg>
               <span>Upload file</span>
             </label>
-          </div>
-        </div>
+            </div>
+            </div>
         <div className={styles.familyNicknameContainer}>
           <input
             className={classNames(styles.headerH1, styles.header, styles.inputApodo)}
@@ -174,35 +171,21 @@ export default function ModificarFamilia({
             placeholder="Edad"
             className={classNames(styles.inputsNameAge, styles.member)}
           />
+          <div className={styles.buttonContainer}>
           <button
             onClick={handleAddMember}
             className={classNames(styles.fileInputLabel, styles.saveBtn)}
           >
             Añadir
           </button>
-          <p className={classNames(styles.headerH1, styles.header)}>Miembros</p>
-          <div id="members" className={styles.members}>
-            {members.map((member, index) => (
-              <div key={index} className={styles.member}>
-                <p>{member.role}</p>
-                <p>{member.name}</p>
-                <p>{member.edad}</p>
-                <span
-                  className={styles.spanDlt}
-                  onClick={() => handleDeleteMember(index)}
-                >
-                  &times;
-                </span>
-              </div>
-            ))}
-          </div>
-
+          {/* Se eliminó la sección que mostraba los miembros actuales */}
           <button
             onClick={onClose}
             className={classNames(styles.fileInputLabel, styles.saveBtn)}
           >
             Guardar y salir
           </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,12 +1,14 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import styles from "./GuardarVisita.module.css";
+import { FaTrash, FaEdit } from 'react-icons/fa';
 
 const GuardarVisita = () => {
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [parque, setParque] = useState("");
   const [visitas, setVisitas] = useState([]);
+  const [editIndex, setEditIndex] = useState(null); // Estado para el índice de edición
 
   useEffect(() => {
     const savedVisitas = JSON.parse(localStorage.getItem("visitas"));
@@ -34,9 +36,19 @@ const GuardarVisita = () => {
       year: "numeric",
     });
 
-    const nuevaVisita = { fecha: fechaFormateada, hora, parque };
-    setVisitas((prevVisitas) => [...prevVisitas, nuevaVisita]);
+    if (editIndex !== null) {
+      // Editar visita existente
+      const updatedVisitas = [...visitas];
+      updatedVisitas[editIndex] = { fecha: fechaFormateada, hora, parque };
+      setVisitas(updatedVisitas);
+      setEditIndex(null); // Resetear índice de edición
+    } else {
+      // Agregar nueva visita
+      const nuevaVisita = { fecha: fechaFormateada, hora, parque };
+      setVisitas((prevVisitas) => [...prevVisitas, nuevaVisita]);
+    }
 
+    // Limpiar campos
     setFecha("");
     setHora("");
     setParque("");
@@ -48,9 +60,16 @@ const GuardarVisita = () => {
     }
   };
 
+  const handleEdit = (index) => {
+    const visita = visitas[index];
+    setFecha(visita.fecha);
+    setHora(visita.hora);
+    setParque(visita.parque);
+    setEditIndex(index); // Establecer el índice de edición
+  };
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.h2}>Guardar Visita</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="fecha">
@@ -92,23 +111,32 @@ const GuardarVisita = () => {
           />
         </div>
         <button type="submit" className={styles.submitButton}>
-          Guardar
+          {editIndex !== null ? 'Actualizar' : 'Guardar'}
         </button>
       </form>
-      <h2 className={styles.h2}>Visitas Guardadas</h2>
+      <h2 className={styles.h2}>Quedadas guardadas</h2>
       <ul className={styles.listaVisitas}>
         {visitas.map((visita, index) => (
           <li className={styles.visitaItem} key={index}>
             <span>{visita.fecha}</span>
             <span>{visita.hora}</span>
             <span>{visita.parque}</span>
-            <button
-              onClick={() => handleDelete(index)}
-              className={styles.deleteButton}
-              aria-label={`Eliminar visita en ${visita.fecha} a las ${visita.hora}`}
-            >
-              &times;
-            </button>
+            <div className={styles.buttonContainer}> {/* Contenedor para los botones */}
+              <button
+                onClick={() => handleDelete(index)}
+                className={styles.deleteButton}
+                aria-label={`Eliminar visita en ${visita.fecha} a las ${visita.hora}`}
+              >
+                <FaTrash />
+              </button>
+              <button
+                onClick={() => handleEdit(index)} // Lógica para editar
+                className={styles.editButton}
+                aria-label={`Editar visita en ${visita.fecha} a las ${visita.hora}`}
+              >
+                <FaEdit />
+              </button>
+            </div>
           </li>
         ))}
       </ul>
