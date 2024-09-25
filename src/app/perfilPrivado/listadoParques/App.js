@@ -192,7 +192,7 @@ const App = () => {
         </button>
         <div className={styles.filterContainer}>
           <label htmlFor="activityType" className={styles.filterLabel}>
-            Selecciona tipo de actividad:
+            Tipo de actividad
           </label>
           <select
             id="activityType"
