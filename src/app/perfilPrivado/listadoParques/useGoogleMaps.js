@@ -20,7 +20,7 @@ const useGoogleMaps = (apiKey) => {
 
     return () => {
       if (script.parentNode) {
-        script.parentNode.removeChild(script);
+        script.parentNode?.removeChild(script);
       }
     };
   }, [apiKey]);

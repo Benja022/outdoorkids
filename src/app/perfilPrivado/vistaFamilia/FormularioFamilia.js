@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import style from "./formularioFamilia.module.css";
 import Image from "next/image";
-import ModificarFamilia from "./ModalModificarFamilia";
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import ModificarFamilia from "./ModalModificarFamilia"; // Asegúrate de que este componente esté correctamente importado.
 
 const FormularioFamilia = () => {
   const [nickname, setNickname] = useState("");
@@ -10,15 +11,15 @@ const FormularioFamilia = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newMember, setNewMember] = useState({ role: "", name: "", edad: "" });
   const [familyPhoto, setFamilyPhoto] = useState(null);
-  const [showRegistration, setShowRegistration] = useState(false);
+  const [editIndex, setEditIndex] = useState(null); // Estado para el índice de edición
 
   const openModal = () => {
-    setShowRegistration(true);
     setIsModalOpen(true);
+    setNewMember({ role: "", name: "", edad: "" }); // Reiniciar los campos del nuevo miembro
+    setEditIndex(null); // Asegurarse de que no haya un índice de edición al abrir el modal
   };
 
   const closeModal = () => {
-    setShowRegistration(false);
     setIsModalOpen(false);
   };
 
@@ -30,7 +31,7 @@ const FormularioFamilia = () => {
   const handleAddMember = () => {
     if (newMember.role && newMember.name && newMember.edad) {
       setMembers([...members, newMember]);
-      setNewMember({ role: "", name: "", edad: "" });
+      closeModal(); // Cerrar el modal después de añadir
     } else {
       alert("Por favor, completa todos los campos antes de agregar un nuevo miembro.");
     }
@@ -41,15 +42,21 @@ const FormularioFamilia = () => {
     setMembers(newMembers);
   };
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFamilyPhoto(reader.result);
-      };
-      reader.readAsDataURL(file);
+  const handleEditMember = (index) => {
+    if (editIndex === index) {
+      // Si ya está en modo de edición, guarda los cambios
+      setEditIndex(null);
+    } else {
+      // Si no está en modo de edición, activa el modo de edición
+      setEditIndex(index);
     }
+  };
+
+  const handleChangeMemberField = (index, field, value) => {
+    const updatedMembers = members.map((member, i) =>
+      i === index ? { ...member, [field]: value } : member
+    );
+    setMembers(updatedMembers);
   };
 
   return (
@@ -63,8 +70,7 @@ const FormularioFamilia = () => {
           height={200}
         />
       </div>
-      
-      {/* Renderizado condicional de "Alias:" y el nickname */}
+
       {nickname && (
         <>
           <h2 className={style.nicknameTitle}>Alias:</h2>
@@ -79,14 +85,53 @@ const FormularioFamilia = () => {
             <th>Rol</th>
             <th>Nombre</th>
             <th>Edad</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {members.map((member, index) => (
             <tr key={index}>
-              <td>{member.role}</td>
-              <td>{member.name}</td>
-              <td>{member.edad}</td>
+              <td>
+                {editIndex === index ? (
+                  <input
+                    type="text"
+                    value={member.role}
+                    onChange={(e) => handleChangeMemberField(index, 'role', e.target.value)}
+                  />
+                ) : (
+                  member.role
+                )}
+              </td>
+              <td>
+                {editIndex === index ? (
+                  <input
+                    type="text"
+                    value={member.name}
+                    onChange={(e) => handleChangeMemberField(index, 'name', e.target.value)}
+                  />
+                ) : (
+                  member.name
+                )}
+              </td>
+              <td>
+                {editIndex === index ? (
+                  <input
+                    type="text"
+                    value={member.edad}
+                    onChange={(e) => handleChangeMemberField(index, 'edad', e.target.value)}
+                  />
+                ) : (
+                  member.edad
+                )}
+              </td>
+              <td>
+                <button className={style.deleteBtn} onClick={() => handleDeleteMember(index)}>
+                  <FaTrash />
+                </button>
+                <button className={style.editBtn} onClick={() => handleEditMember(index)}>
+                  <FaEdit />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -94,28 +139,17 @@ const FormularioFamilia = () => {
 
       <div className={style.buttonContainer}>
         <button className={style.saveBtn} onClick={openModal}>
-          Agregar/Modificar Miembros
+          Añadir
         </button>
       </div>
 
-      {showRegistration && (
-        <ModificarFamilia
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          newMember={newMember}
-          handleNewMemberChange={handleNewMemberChange}
-          handleAddMember={handleAddMember}
-          familyPhoto={familyPhoto}
-          handlePhotoChange={handlePhotoChange}
-          nickname={nickname}
-          handleNickname={(e) => setNickname(e.target.value)}
-          members={members}
-          handleDeleteMember={handleDeleteMember} // Mantén esta función para usar en el modal
-        >
-          <h1 className={style.modalTitle}>Modificar familia</h1>
-          <p>Agrega o elimina un miembro.</p>
-        </ModificarFamilia>
-      )}
+      <ModificarFamilia
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        newMember={newMember}
+        handleNewMemberChange={handleNewMemberChange}
+        handleAddMember={handleAddMember} // Cambiar a la función que maneja agregar/editar
+      />
     </div>
   );
 };
