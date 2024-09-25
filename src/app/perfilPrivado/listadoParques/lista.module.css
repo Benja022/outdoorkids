@@ -47,7 +47,6 @@
   display: flex;
   align-items: center;
   margin-top: 10px;
-  text-transform: uppercase;
 }
 
 .filterLabel {
@@ -260,6 +259,7 @@
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
   margin-top: 10px;
+  margin-left: 70px;
 }
 
 

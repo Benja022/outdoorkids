@@ -59,7 +59,7 @@ export default function Header() {
             />
           </Link>
           <Link href="/">
-            <h1 className={style.title}>OutdoorKids</h1>
+            <h1 className={style.title}>Outdoor Kids</h1>
           </Link>
         </div>
         <nav className={`${style.nav} ${isMenuOpen ? style.open : ""}`}>
