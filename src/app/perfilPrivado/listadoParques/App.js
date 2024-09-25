@@ -208,6 +208,13 @@ const App = () => {
       console.error('Error al actualizar los parques:', error);
     }
   };
+
+  const handleAgendarClick = () => {
+    if (selectedPlace) {
+      localStorage.setItem('selectedParque', JSON.stringify(selectedPlace));
+    }
+  }; 
+  
   return (
     <div className={styles.App}>
       <h1 className={styles.h1}>Tu Guía de Actividades Infantiles</h1>
@@ -332,7 +339,8 @@ const App = () => {
               Cerrar
             </button>
             <Link href="/perfilPrivado/vistaAgenda">
-              <button className={styles.customButton}>Agendar</button>
+              <button className={styles.customButton}
+              onClick={handleAgendarClick}>Agendar</button>
             </Link>
           </motion.div>
         </motion.div>

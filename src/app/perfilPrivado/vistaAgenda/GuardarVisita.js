@@ -83,6 +83,12 @@ const GuardarVisita = () => {
     };
 
     fetchParques();
+
+    const selectedParque = localStorage.getItem("selectedParque");
+    if (selectedParque) {
+      const parqueData = JSON.parse(selectedParque);
+      setParque(parqueData.name);
+    }
   }, []);
 
   return (
