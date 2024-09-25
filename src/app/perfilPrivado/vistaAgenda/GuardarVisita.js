@@ -1,8 +1,5 @@
-/* eslint-disable quotes */
-/* eslint-disable semi */
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+'use client'
+import React, { useState, useEffect } from "react";
 import styles from "./GuardarVisita.module.css";
 
 const GuardarVisita = () => {
@@ -11,28 +8,44 @@ const GuardarVisita = () => {
   const [parque, setParque] = useState("");
   const [visitas, setVisitas] = useState([]);
 
+  useEffect(() => {
+    const savedVisitas = JSON.parse(localStorage.getItem("visitas"));
+    if (savedVisitas) {
+      setVisitas(savedVisitas);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("visitas", JSON.stringify(visitas));
+  }, [visitas]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Convertir la fecha al formato dd/MM/yyyy
+    if (!fecha || !hora || !parque) {
+      alert("Por favor, completa todos los campos antes de guardar.");
+      return;
+    }
+
     const fechaObj = new Date(fecha);
     const fechaFormateada = fechaObj.toLocaleDateString("es-ES", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
     });
-
 
     const nuevaVisita = { fecha: fechaFormateada, hora, parque };
     setVisitas((prevVisitas) => [...prevVisitas, nuevaVisita]);
-    // Limpiar el formulario después de enviar
+
     setFecha("");
     setHora("");
     setParque("");
   };
 
   const handleDelete = (index) => {
-    setVisitas((prevVisitas) => prevVisitas.filter((_, i) => i !== index));
+    if (window.confirm("¿Estás seguro de que deseas eliminar esta visita?")) {
+      setVisitas((prevVisitas) => prevVisitas.filter((_, i) => i !== index));
+    }
   };
 
   return (
@@ -92,6 +105,7 @@ const GuardarVisita = () => {
             <button
               onClick={() => handleDelete(index)}
               className={styles.deleteButton}
+              aria-label={`Eliminar visita en ${visita.fecha} a las ${visita.hora}`}
             >
               &times;
             </button>

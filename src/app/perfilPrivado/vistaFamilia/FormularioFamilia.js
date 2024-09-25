@@ -63,8 +63,7 @@ const FormularioFamilia = () => {
           height={200}
         />
       </div>
-      
-      {/* Renderizado condicional de "Alias:" y el nickname */}
+
       {nickname && (
         <>
           <h2 className={style.nicknameTitle}>Alias:</h2>
@@ -110,7 +109,7 @@ const FormularioFamilia = () => {
           nickname={nickname}
           handleNickname={(e) => setNickname(e.target.value)}
           members={members}
-          handleDeleteMember={handleDeleteMember} // Mantén esta función para usar en el modal
+          handleDeleteMember={handleDeleteMember}
         >
           <h1 className={style.modalTitle}>Modificar familia</h1>
           <p>Agrega o elimina un miembro.</p>

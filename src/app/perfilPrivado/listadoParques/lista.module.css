@@ -83,7 +83,12 @@
 .parkItem:hover {
   background-color: #e2e6ea;
 }
-
+@media (max-width: 768px){
+  .parkItem {
+  width: 400px;
+  height: 200px;
+  }
+}
 .parkImage {
   width: 100%;
   height: 150px;
