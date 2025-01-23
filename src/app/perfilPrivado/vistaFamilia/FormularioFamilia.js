@@ -80,7 +80,7 @@ const FormularioFamilia = () => {
             ) : (
               <Image
                 className={style.familyPhotoInput}
-                src="/images/estrella.png"
+                src="/images/fotoPerfil.jpg"
                 alt="Imagen de la familia"
                 width={200}
                 height={200}
