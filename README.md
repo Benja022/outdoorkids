@@ -1,3 +1,38 @@
+### INICIAR EL PROYECTO DOCKERFILE
+
+Este proyecto lleva incluido un dockerfile para poder ejecutarlo en un contenedor.
+Si deseas  ponerlo en marcha, sigue los siguientes pasos:
+
+1. Construye la imagen con el siguiente comando:
+ `docker build -t outdoorkids .`
+
+2. Pon en marcha el contenedor:
+    `docker run -p 3000:3000 outdoorkids`
+
+3. Abre tu navegador y escribe la siguiente dirección:
+    `http://localhost:3000`
+
+Para detener el contenedor en ejecución, sigue estos pasos:
+
+1. Lista los contenedores en ejecución para obtener el `container_id` o `container_name`:
+
+    ```sh docker ps
+    ```
+
+2. Detén el contenedor usando el `container_id` o `container_name`:
+
+    ```sh
+    docker stop <container_id>
+    ```
+
+    ó
+
+    ```sh
+    docker stop <container_name>
+    ```
+
+### INICIAR EL PROYECTO CON NEXTJS
+
 #### SOLO LA PRIMERA VEZ
 
 Esto instala la libreria npm
